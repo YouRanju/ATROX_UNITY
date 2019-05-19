@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\BackgroundAppear.cs" />
     <Compile Include="Assets\Script\BackgroundManager.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
+    <Compile Include="Assets\Script\EnemyManager.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\Shoot.cs" />
     <Compile Include="Assets\Script\ShootMove.cs" />

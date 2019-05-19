@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public Sprite[] runImg;
     public PolygonCollider2D UpColi;
     public PolygonCollider2D DownColi;
+    public AudioSource EnemySound;
 
     private Vector2 Dir;
     private Rigidbody2D Rigid;
@@ -54,6 +55,7 @@ public class Enemy : MonoBehaviour
             {
                 UpColi.enabled = true;
                 DownColi.enabled = false;
+                EnemySound.Play();
             }
             else
             {

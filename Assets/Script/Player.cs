@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     public PolygonCollider2D DownColi;
     public PolygonCollider2D[] groudColi;
     public Sprite[] runImg;
+    public AudioSource JumpAudio;
+    public AudioSource DblJumpAudio;
+
     static float rdt = 0;
     static float jdt = 0;
 
@@ -78,6 +81,7 @@ public class Player : MonoBehaviour
             m_2ndJump = true;
 
             Rigid.velocity = (Vector2.up * m_JumpPower);
+            DblJumpAudio.Play();
         }
 
         if (!m_Jump)
@@ -88,6 +92,7 @@ public class Player : MonoBehaviour
             m_PrHeight = this.transform.position.y;
 
             Rigid.velocity = (Vector2.up * m_JumpPower);
+            JumpAudio.Play();
 
             isFalling = (this.transform.position.y - m_PrHeight) < 0 ? false : true;
 
