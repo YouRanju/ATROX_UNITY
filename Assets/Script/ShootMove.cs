@@ -8,12 +8,13 @@ public class ShootMove : MonoBehaviour
 
     public Sprite ExplosionImg;
     public GameObject Explosion;
+    public AudioSource ShootAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         ShotRigid = GetComponent<Rigidbody2D>();
-        
+
         Invoke("explo", 1);
         Destroy(gameObject, 1);
     }
