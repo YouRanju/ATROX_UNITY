@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ExplosionMove.cs" />
     <Compile Include="Assets\Script\BackgroundAppear.cs" />
     <Compile Include="Assets\Script\BackgroundManager.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />

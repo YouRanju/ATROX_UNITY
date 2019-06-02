@@ -6,12 +6,21 @@ public class ShootMove : MonoBehaviour
 {
     private Rigidbody2D ShotRigid;
 
+    public Sprite ExplosionImg;
+    public GameObject Explosion;
+
     // Start is called before the first frame update
     void Start()
     {
         ShotRigid = GetComponent<Rigidbody2D>();
-
+        
+        Invoke("explo", 1);
         Destroy(gameObject, 1);
+    }
+
+    void explo()
+    {
+        Instantiate(Explosion, transform.position, transform.rotation);
     }
 
     // Update is called once per frame
@@ -27,7 +36,7 @@ public class ShootMove : MonoBehaviour
     {
         if (collision.transform.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            explo();
             Destroy(gameObject);
         }
     }

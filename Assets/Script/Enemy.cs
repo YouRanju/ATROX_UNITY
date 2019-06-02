@@ -9,11 +9,14 @@ public class Enemy : MonoBehaviour
     public PolygonCollider2D UpColi;
     public PolygonCollider2D DownColi;
     public AudioSource EnemySound;
+    public AudioSource DieSound;
+    public int hp;
 
     private Vector2 Dir;
     private Rigidbody2D Rigid;
     private float rdt;
     private int cnt;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +40,32 @@ public class Enemy : MonoBehaviour
 
         Dir.x = (Player.transform.position.x < this.transform.position.x) ?
            -1 : 1;
+        Dir.x = (this.transform.position.x - Player.transform.position.x < 5) ?
+            0 : Dir.x;
         Dir.y = (Player.transform.position.y < this.transform.position.y) ?
-            -1 : 1;
+            -0.5f : 0.5f;
+        Dir.y = (transform.position.y < -1 && Player.transform.position.y < -1) ?
+            0 : Dir.y;
+
+        if (hp < 0)
+        {
+            Dir.x = 0; Dir.y = 0;
+        }
 
         Rigid.velocity = Dir * 4.0f;
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Vector2 vec = transform.position;
+            vec.x += 0.4f;
+            transform.position = vec;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Vector2 vec = transform.position;
+            vec.x -= 0.4f;
+            transform.position = vec;
+        }
     }
 
     void Render()
@@ -55,7 +80,7 @@ public class Enemy : MonoBehaviour
             {
                 UpColi.enabled = true;
                 DownColi.enabled = false;
-                EnemySound.Play();
+                //EnemySound.Play();
             }
             else
             {
@@ -64,6 +89,24 @@ public class Enemy : MonoBehaviour
             }
 
             rdt = 0;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.transform.tag == "PlayerMissile")
+        {
+            DecHP(1);
+        }
+    }
+
+    public void DecHP(int damage)
+    {
+        hp -= damage;
+        if(hp < 0)
+        {
+            DieSound.Play();
+            Destroy(gameObject, 1);
         }
     }
 }
