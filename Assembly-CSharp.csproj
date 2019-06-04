@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Background\BackgroundAppear.cs" />
     <Compile Include="Assets\Script\Background\BackgroundManager.cs" />
+    <Compile Include="Assets\Script\Enemy\AlienShoot.cs" />
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyManager.cs" />
     <Compile Include="Assets\Script\Event\CameraView.cs" />
