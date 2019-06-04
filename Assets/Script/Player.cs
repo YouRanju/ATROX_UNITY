@@ -44,7 +44,10 @@ public class Player : MonoBehaviour
         rdt += Time.deltaTime;
         jdt += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) Jump();
+        if (transform.position.x > -7f)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow)) Jump();
+        }
 
         Render();
 

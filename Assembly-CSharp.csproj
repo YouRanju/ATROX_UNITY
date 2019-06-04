@@ -70,6 +70,7 @@
     <Compile Include="Assets\Script\GameStartBtn.cs" />
     <Compile Include="Assets\Script\IntroManager.cs" />
     <Compile Include="Assets\Script\IntroMove.cs" />
+    <Compile Include="Assets\Script\LineRender.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\Shoot.cs" />
     <Compile Include="Assets\Script\ShootMove.cs" />

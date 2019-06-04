@@ -173,3 +173,4 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 b4d3684ade76cd0507ecfbb063678e2e Assembly-CSharp.dll:.GameStartBtn
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.GameExit
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.CameraView
+711514f95cfb43c4f5f0faa803c57856 Assembly-CSharp.dll:.TypeEffect

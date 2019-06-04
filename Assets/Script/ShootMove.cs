@@ -10,13 +10,15 @@ public class ShootMove : MonoBehaviour
     public GameObject Explosion;
     public AudioSource ShootAudio;
 
+    public Vector3 dir;
+
     // Start is called before the first frame update
     void Start()
     {
         ShotRigid = GetComponent<Rigidbody2D>();
 
-        Invoke("explo", 1);
-        Destroy(gameObject, 1);
+        Invoke("explo", 0.7f);
+        Destroy(gameObject, 0.7f);
     }
 
     void explo()
@@ -27,9 +29,9 @@ public class ShootMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enabled)
+        if (enabled)
         {
-            ShotRigid.velocity = (Vector2.right * 7.0f);
+            ShotRigid.velocity = (dir * 6.0f);
         }
     }
 
