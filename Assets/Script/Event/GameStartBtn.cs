@@ -12,7 +12,7 @@ public class GameStartBtn : MonoBehaviour
 
     public void GameStart()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Stage1");
     }
 
 }

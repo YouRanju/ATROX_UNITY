@@ -12,7 +12,6 @@ public class ShootMove : MonoBehaviour
 
     public Vector3 dir;
 
-    // Start is called before the first frame update
     void Start()
     {
         ShotRigid = GetComponent<Rigidbody2D>();
@@ -22,16 +21,15 @@ public class ShootMove : MonoBehaviour
     }
 
     void explo()
-    {
+    { 
         Instantiate(Explosion, transform.position, transform.rotation);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (enabled)
         {
-            ShotRigid.velocity = (dir * 6.0f);
+            ShotRigid.velocity = (dir * 5.5f);
         }
     }
 
@@ -40,7 +38,8 @@ public class ShootMove : MonoBehaviour
         if (collision.transform.tag == "Enemy")
         {
             explo();
-            Destroy(gameObject);
+            GetComponent<AudioSource>().Play();
+            Destroy(gameObject,0.3f);
         }
     }
 }

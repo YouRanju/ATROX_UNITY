@@ -10,9 +10,6 @@ public class Shoot : MonoBehaviour
 
     public LineRenderer lineRenderer;
     private bool isTargeting;
-    private float startAngle;
-    private float guageBar;
-    private float cannonGuage;
     private Vector3 angle;
     private bool an = false;
 
@@ -41,24 +38,12 @@ public class Shoot : MonoBehaviour
             sdt = 0;
         }
 
-        if (Input.GetKey(KeyCode.LeftControl)) ChangeRotation();
+        if (Input.GetKey(KeyCode.LeftControl)) ShotInWindow();
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             lineRenderer.transform.localScale = new Vector3(0, 0, 0);
             isTargeting = false;
-
-            //Fire();
         }
-    }
-
-    void ChangeRotation()
-    {
-        ShotInWindow();
-    }
-
-    public void ShotToTarget(Vector2 direction)
-    {
-        Shot.GetComponent<Rigidbody2D>().velocity = direction;
     }
 
     private void ShotInWindow()
@@ -68,7 +53,6 @@ public class Shoot : MonoBehaviour
         lineRenderer.SetPosition(1, Vector3.Normalize(angle));
 
         isTargeting = true;
-        startAngle = transform.eulerAngles.z;
        
         if (isTargeting)
         {
@@ -94,52 +78,6 @@ public class Shoot : MonoBehaviour
             Vector3.Normalize(angle);
 
             lineRenderer.SetPosition(1, angle);
-            
-                //lineRenderer.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, transform.forward);
-
-            float power = Vector2.Distance(target, transform.position);
-
-            if (Mathf.Abs(power) > cannonGuage)
-                power = cannonGuage;
-
-            guageBar = power / cannonGuage;
         }        
     } 
-    
-    private float DifferenceBetweenAngles(float angle1, float angle2)
-    {
-        float angle = angle1 - angle2;
-        return Mathf.Atan2(Mathf.Sin(angle), Mathf.Cos(angle));
-    }
-    /*
-    public void Fire()
-    {
-        Vector2 direction = directionArrow.transform.rotation * new Vector2(cannonSpeed, 0.0f) * guageBa * guageFactor;
-        GameObject toInstance = Resources.Load<GameObject>("Prefabs/Cannon1");
-        GameObject cannon = Instantiate(toInstance, transform.position, transform.rotation);
-
-        cannon.GetComponent<PlayerCannon>().ShotToTarget(direction);
-
-    }
-
-    public class PlayerCannon : MonoBehaviour
-    {
-        private Rigidbody2D rb2d;
-        private Vector3 prevPosition;
-        // Update is called once per frame
-        void FixedUpdate()
-        {
-            Vector3 deltaPos = transform.position - prevPosition;
-            float angle = Mathf.Atan2(deltaPos.y, deltaPos.x) * Mathf.Rad2Deg;
-
-            if (0 != angle)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), 10.0f * Time.deltaTime);
-                prevPosition = transform.position;
-            }
-        }
-
-        
-
-    } */
 }

@@ -60,23 +60,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\BackgroundAppear.cs" />
-    <Compile Include="Assets\Script\BackgroundManager.cs" />
-    <Compile Include="Assets\Script\CameraView.cs" />
-    <Compile Include="Assets\Script\Enemy.cs" />
-    <Compile Include="Assets\Script\EnemyManager.cs" />
-    <Compile Include="Assets\Script\ExplosionMove.cs" />
-    <Compile Include="Assets\Script\GameExit.cs" />
-    <Compile Include="Assets\Script\GameStartBtn.cs" />
-    <Compile Include="Assets\Script\IntroManager.cs" />
-    <Compile Include="Assets\Script\IntroMove.cs" />
-    <Compile Include="Assets\Script\LineRender.cs" />
-    <Compile Include="Assets\Script\Player.cs" />
-    <Compile Include="Assets\Script\Shoot.cs" />
-    <Compile Include="Assets\Script\ShootMove.cs" />
-    <Compile Include="Assets\Script\Starlight.cs" />
-    <Compile Include="Assets\Script\TitleMeteorMove.cs" />
-    <Compile Include="Assets\Script\TypeEffect.cs" />
+    <Compile Include="Assets\Script\Background\BackgroundAppear.cs" />
+    <Compile Include="Assets\Script\Background\BackgroundManager.cs" />
+    <Compile Include="Assets\Script\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyManager.cs" />
+    <Compile Include="Assets\Script\Event\CameraView.cs" />
+    <Compile Include="Assets\Script\Event\GameExit.cs" />
+    <Compile Include="Assets\Script\Event\GameStartBtn.cs" />
+    <Compile Include="Assets\Script\Event\IntroManager.cs" />
+    <Compile Include="Assets\Script\Event\IntroMove.cs" />
+    <Compile Include="Assets\Script\Event\Starlight.cs" />
+    <Compile Include="Assets\Script\Event\TitleMeteorMove.cs" />
+    <Compile Include="Assets\Script\Event\TypeEffect.cs" />
+    <Compile Include="Assets\Script\Player\ExplosionMove.cs" />
+    <Compile Include="Assets\Script\Player\Player.cs" />
+    <Compile Include="Assets\Script\Player\Shoot.cs" />
+    <Compile Include="Assets\Script\Player\ShootMove.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/RanjuYou/Documents/GitHub/ATROX_UNITY/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
