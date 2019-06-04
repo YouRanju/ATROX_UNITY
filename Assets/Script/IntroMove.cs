@@ -11,18 +11,6 @@ public class IntroMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < IntroImg.Length; i++)
-        {
-            if(i%2 == 0)
-            {
-                Vector2 vec = new Vector2(0, -2);
-                IntroImg[i].GetComponent<Transform>().position = vec; 
-            } else
-            {
-                Vector2 vec = new Vector2(0, 2);
-                IntroImg[i].GetComponent<Transform>().position = vec;
-            }
-        }
     }
 
     // Update is called once per frame
