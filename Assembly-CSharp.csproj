@@ -70,6 +70,8 @@
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\Shoot.cs" />
     <Compile Include="Assets\Script\ShootMove.cs" />
+    <Compile Include="Assets\Script\Starlight.cs" />
+    <Compile Include="Assets\Script\TitleMeteorMove.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Mirim/Documents/GitHub/ATROX_UNITY/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
