@@ -30,10 +30,10 @@ public class BackgroundManager : MonoBehaviour
         eTime = Time.deltaTime;
 
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            m_dirX = 1;
+            m_dirX = 0.7f;
         }
         else if (Input.GetKey(KeyCode.RightArrow)) {
-            m_dirX = -1;
+            m_dirX = -0.7f;
         }
         else
         {

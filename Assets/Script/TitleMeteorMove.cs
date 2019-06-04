@@ -5,27 +5,24 @@ using UnityEngine;
 public class TitleMeteorMove : MonoBehaviour
 {
     private float fdt;
+    private Vector2 vec;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        vec = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        fdt += Time.deltaTime;
-
-        if(fdt > 1f)
+        if(transform.position.y < -0.2f)
         {
             GetComponent<Rigidbody2D>().velocity = (Vector2.up * 0.3f);
-            
         }
-        if (fdt > (1.5f) )
+        if (transform.position.y >= 0)
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            fdt = 0;
         }
     }
 }
