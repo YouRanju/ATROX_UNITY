@@ -41,5 +41,13 @@ public class ShootMove : MonoBehaviour
             GetComponent<AudioSource>().Play();
             Destroy(gameObject,0.3f);
         }
+
+        if(collision.transform.tag == "EnemyMissile")
+        {
+            explo();
+            GetComponent<AudioSource>().Play();
+            Destroy(gameObject, 0.3f);
+            Destroy(collision.gameObject);
+        }
     }
 }

@@ -4132,6 +4132,7 @@ GameObject:
   - component: {fileID: 1307001839}
   - component: {fileID: 1307001838}
   - component: {fileID: 1307001844}
+  - component: {fileID: 1307001845}
   m_Layer: 0
   m_Name: up alien1
   m_TagString: Enemy
@@ -4147,7 +4148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307001836}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.83, y: 7.26, z: -0.12695312}
+  m_LocalPosition: {x: -2.23, y: 3.52, z: -0.12695312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1650698550}
@@ -4416,7 +4417,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!212 &1307001843
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4561,6 +4562,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1307001845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307001836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e198bfb4c47e4489156250908db4f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 1307001836}
+  Shot: {fileID: 5239694736353571664, guid: e8d64fd1f3907d84aa53b3e81bf333ba, type: 3}
+  delayTime: 3
 --- !u!1 &1325684845
 GameObject:
   m_ObjectHideFlags: 0
@@ -5774,6 +5790,7 @@ GameObject:
   - component: {fileID: 1656830692}
   - component: {fileID: 1656830691}
   - component: {fileID: 1656830690}
+  - component: {fileID: 1656830697}
   m_Layer: 0
   m_Name: up alien2
   m_TagString: Enemy
@@ -6154,7 +6171,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!212 &1656830696
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6203,6 +6220,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1656830697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656830688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e198bfb4c47e4489156250908db4f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 1656830688}
+  Shot: {fileID: 5239694736353571664, guid: e8d64fd1f3907d84aa53b3e81bf333ba, type: 3}
+  delayTime: 5
 --- !u!1 &1674113011
 GameObject:
   m_ObjectHideFlags: 0
