@@ -5,6 +5,7 @@ using UnityEngine;
 public class DashEnemy : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject Explo;
     public Sprite[] runImg;
     public PolygonCollider2D UpColi;
     public PolygonCollider2D DownColi;
@@ -17,6 +18,8 @@ public class DashEnemy : MonoBehaviour
     private float rdt;
     private int cnt;
 
+    private float adt;
+    private bool col = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,11 +43,11 @@ public class DashEnemy : MonoBehaviour
 
         Dir.x = (Player.transform.position.x < this.transform.position.x) ?
            -1 : 1;
-        Dir.x = (this.transform.position.x - Player.transform.position.x < 5) ?
+        Dir.x = (Mathf.Abs(this.transform.position.x - Player.transform.position.x) < 1) ?
             0 : Dir.x;
         Dir.y = (Player.transform.position.y < this.transform.position.y) ?
             -0.5f : 0.5f;
-        Dir.y = (transform.position.y < -1 && Player.transform.position.y < -1) ?
+        Dir.y = (transform.position.y < -1.9 && Player.transform.position.y < -0.4) ?
             0 : Dir.y;
 
         if (hp < 0)
@@ -52,25 +55,26 @@ public class DashEnemy : MonoBehaviour
             Dir.x = 0; Dir.y = 0;
         }
 
-        Rigid.velocity = Dir * 4.0f;
+        GetComponent<SpriteRenderer>().flipX = Dir.x < 0 ? false : true;
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Vector2 vec = transform.position;
-            vec.x += 0.4f;
-            transform.position = vec;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        Rigid.velocity = Dir * 7.0f;
+
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 vec = transform.position;
             vec.x -= 0.4f;
             transform.position = vec;
         }
+
+        if(col)
+        {
+            Attack();
+        }
     }
 
     void Render()
     {
-        if (rdt > 0.5f)
+        if (rdt > 0.1f)
         {
             cnt++;
             if (cnt >= 2) cnt = 0;
@@ -80,7 +84,6 @@ public class DashEnemy : MonoBehaviour
             {
                 UpColi.enabled = true;
                 DownColi.enabled = false;
-                //EnemySound.Play();
             }
             else
             {
@@ -98,15 +101,37 @@ public class DashEnemy : MonoBehaviour
         {
             DecHP(1);
         }
+        if(collision.transform.tag == "Player" && !col)
+        {
+            col = true;
+            if(adt >= 255)
+            {
+                Player.GetComponent<Player>().DecHP();
+            }
+        }
     }
 
     public void DecHP(int damage)
     {
         hp -= damage;
-        if(hp < 0)
+        if(hp <= 0)
         {
             DieSound.Play();
-            Destroy(gameObject, 1);
+            Instantiate(Explo, transform.position, transform.rotation);
+            Destroy(gameObject, 0.5f);
+        }
+    }
+
+    private void Attack()
+    {
+        
+        adt += Time.deltaTime * 70;
+        GetComponent<SpriteRenderer>().color = new Color(255 - adt, 0, 255 - adt);
+ 
+        if(adt >= 255)
+        {
+            col = false;
+            DecHP(1); 
         }
     }
 }

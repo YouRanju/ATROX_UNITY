@@ -10,6 +10,8 @@ public class AlienShoot : MonoBehaviour
     public float oneShoting;
 
     private float sdt;
+    private float speed = 4;
+    private int cnt = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,19 +26,27 @@ public class AlienShoot : MonoBehaviour
 
         if (sdt > delayTime)
         {
+
             Shot.transform.position = Enemy.transform.position;
+
+            GameObject obj;
+            obj = (GameObject)Instantiate(Shot, transform.position, Quaternion.identity);
+
             if (Enemy.name == "Boss")
             {
+                float angle = 360 / oneShoting;
+
+                cnt++;
                 
+                obj.GetComponent<Rigidbody2D>().velocity = (new Vector2(speed * Mathf.Cos(Mathf.PI * 2 * cnt / oneShoting), speed * Mathf.Sin((Mathf.PI * 2 * cnt / oneShoting))));
+                obj.transform.position += new Vector3(0, -2, 0);
+                obj.transform.Rotate(new Vector3(0f, 0f, (360 * cnt / oneShoting + 90)));
+         
 
-                    for (int i = 0; i < oneShoting; i++)
-                    {
-                        float angle = 360 / oneShoting;
-                        Shot.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, angle);
-                    }
+                if (cnt >= oneShoting) cnt = 0;
+
             }
-            Instantiate(Shot);
-
+            
             sdt = 0;
         }
     }

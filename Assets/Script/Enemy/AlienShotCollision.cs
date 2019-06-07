@@ -6,21 +6,15 @@ class AlienShotCollision : MonoBehaviour
 {
     private void Start()
     {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 3f);
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 vec = transform.position;
-            vec.x += 0.4f;
-            transform.position = vec;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Vector2 vec = transform.position;
-            vec.x -= 0.4f;
+            vec.x -= 0.01f;
             transform.position = vec;
         }
     }
@@ -30,6 +24,11 @@ class AlienShotCollision : MonoBehaviour
         if(collision.transform.tag == "Player")
         {
             Debug.Log("아약");
+            Destroy(gameObject);
+        }
+
+        if(collision.transform.tag == "Back")
+        {
             Destroy(gameObject);
         }
     }

@@ -64,11 +64,12 @@
     <Compile Include="Assets\Script\Background\BackgroundLight.cs" />
     <Compile Include="Assets\Script\Background\BackgroundManager.cs" />
     <Compile Include="Assets\Script\Background\BackgroundStar.cs" />
+    <Compile Include="Assets\Script\Enemy\AlienLaser.cs" />
     <Compile Include="Assets\Script\Enemy\AlienShoot.cs" />
     <Compile Include="Assets\Script\Enemy\AlienShotCollision.cs" />
     <Compile Include="Assets\Script\Enemy\DashEnemy.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyManager.cs" />
-    <Compile Include="Assets\Script\Enemy\St1BossEnemy.cs" />
+    <Compile Include="Assets\Script\Enemy\St1Boss.cs" />
     <Compile Include="Assets\Script\Enemy\UpEnemy.cs" />
     <Compile Include="Assets\Script\Event\CameraView.cs" />
     <Compile Include="Assets\Script\Event\GameExit.cs" />

@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     float m_PrHeight;
     float m_JumpPower;
     float m_JumpTime;
-    int m_life;
+    int m_life = 3;
     bool isFalling;
     bool m_Jump;
     bool m_2ndJump;
@@ -136,6 +136,15 @@ public class Player : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = runImg[1];
             }
             else GetComponent<SpriteRenderer>().sprite = runImg[0];
+        }
+    }
+
+    public void DecHP()
+    {
+        m_life--;
+        if (m_life <= 0)
+        {
+            Debug.Log("GameOver");
         }
     }
 
