@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D Rigid;
     private int cnt = 0;
-
+    private bool isStart = false;
     
     float m_OrHeight;
     float m_PrHeight;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = runImg[0];
         Rigid = GetComponent<Rigidbody2D>();
 
-        Rigid.velocity = (Vector2.right * 7.0f);
+        Rigid.velocity = (Vector2.right * 13.0f);
     }
 
     // Update is called once per frame
@@ -44,12 +44,41 @@ public class Player : MonoBehaviour
         rdt += Time.deltaTime;
         jdt += Time.deltaTime;
 
-        if (transform.position.x > -7f)
+        if (transform.position.x > -5f && !isStart)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow)) Jump();
+            isStart = true;
         }
+        
+        if(isStart)
+        {
+            Rigid.constraints = RigidbodyConstraints2D.FreezePositionX;
 
-        Render();
+            if (Input.GetKeyDown(KeyCode.UpArrow)) Jump();
+
+            //if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -7f)
+            //{
+            //    Rigid.constraints = RigidbodyConstraints2D.None;
+            //    if (transform.rotation.z > 30)
+            //    {
+            //        transform.rotation = new Quaternion(0, 0, 0, 0);
+            //    }
+            //    Rigid.velocity = Vector2.down * 10;
+            //    Rigid.velocity = Vector2.left * 4;
+            //}
+
+            //if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -5f)
+            //{
+            //    Rigid.constraints = RigidbodyConstraints2D.None;
+            //    Rigid.velocity = Vector2.down * 10;
+            //    Rigid.velocity = Vector2.right * 4;
+            //}
+
+            if (transform.position.y < -1.6f)
+            {
+                transform.rotation = new Quaternion(0, 0, 0, 0);
+            }
+            Render();
+        }
 
     }
 
@@ -77,7 +106,7 @@ public class Player : MonoBehaviour
     }
 
     void Jump()
-    {
+    { 
         if (m_Jump && !m_2ndJump && isFalling)
         {
             m_JumpPower = 8.0f;
@@ -95,6 +124,9 @@ public class Player : MonoBehaviour
             m_PrHeight = this.transform.position.y;
 
             Rigid.velocity = (Vector2.up * m_JumpPower);
+            Rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+
             JumpAudio.Play();
 
             isFalling = (this.transform.position.y - m_PrHeight) < 0 ? false : true;
@@ -110,6 +142,10 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(m_Jump)
+        {
             m_Jump = false;
+            Rigid.freezeRotation = false;
+        }
+            
     }
 }

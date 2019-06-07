@@ -44,23 +44,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: B1
+  - name: Background
     uniqueID: 120514381
-    locked: 0
-  - name: B2
-    uniqueID: 3529486941
-    locked: 0
-  - name: B3
-    uniqueID: 3004918253
-    locked: 0
-  - name: B4
-    uniqueID: 60677677
-    locked: 0
-  - name: B5
-    uniqueID: 169959755
-    locked: 0
-  - name: B6
-    uniqueID: 3879951003
     locked: 0
   - name: Object
     uniqueID: 1211891339

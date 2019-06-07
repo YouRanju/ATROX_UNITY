@@ -16,8 +16,8 @@ public class ShootMove : MonoBehaviour
     {
         ShotRigid = GetComponent<Rigidbody2D>();
 
-        Invoke("explo", 0.7f);
-        Destroy(gameObject, 0.7f);
+        //Invoke("explo", 0.7f);
+        Destroy(gameObject, 1.3f);
     }
 
     void explo()

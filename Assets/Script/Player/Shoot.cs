@@ -29,7 +29,7 @@ public class Shoot : MonoBehaviour
     {
         sdt += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Space) && sdt > 0.3)
+        if (Input.GetKey(KeyCode.Space) && sdt > 0.25)
         {
             Shot.transform.position = Player.transform.position;
             Shot.GetComponent<ShootMove>().dir = angle;
