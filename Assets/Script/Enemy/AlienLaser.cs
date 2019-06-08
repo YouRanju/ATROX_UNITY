@@ -8,6 +8,7 @@ public class AlienLaser : MonoBehaviour
     public GameObject player;
     public GameObject Alien;
 
+    public BoxCollider2D coli;
     public LineRenderer lineRenderer;
     private Vector3 angle;
 
@@ -29,14 +30,27 @@ public class AlienLaser : MonoBehaviour
         
         if (sdt > 7) {
             ldt += Time.deltaTime;
-            lineRenderer.SetWidth(ldt, ldt * 1.2f);
+            lineRenderer.SetWidth(ldt, ldt);
             lineRenderer.SetColors(Color.yellow, Color.white);
-            lineRenderer.SetPosition(0, new Vector3(4.3f, 0.1f,0));
+            lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0, 2, 0));
+
             lineRenderer.SetPosition(1, angle);
 
-            lineRenderer.useWorldSpace = false;
+            Vector3 startPoint = Alien.transform.position - new Vector3(0, 2, 0);
+            Vector3 endPoint = angle;
 
-            if(sdt >= 10)
+            float lineWidth = ldt * 0.25f;
+            float lineLength = Vector3.Distance(startPoint, endPoint);
+            coli.size = new Vector3(lineLength, lineWidth, 1f);
+            
+            Vector3 midPoint = ((startPoint + endPoint)) / 2;
+            coli.transform.position = midPoint;
+
+            float angless = Mathf.Atan2((endPoint.y - startPoint.y), (endPoint.x - startPoint.x));
+            angless *= Mathf.Rad2Deg;
+            coli.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angless));
+            
+            if (sdt >= 10)
             {
                 ldt -= Time.deltaTime * 3f;
                 lineRenderer.SetWidth(ldt, ldt);
@@ -44,6 +58,7 @@ public class AlienLaser : MonoBehaviour
                 if (ldt <= 0 ) {
                     sdt = 0;
                     lineRenderer.SetWidth(0, 0);
+                    coli.size = new Vector3(0, 0, 0);
                 }
 
             }
@@ -64,6 +79,6 @@ public class AlienLaser : MonoBehaviour
         lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0,2,0));
         lineRenderer.SetPosition(1, player.transform.position);
 
-        angle = player.transform.position + new Vector3(3,1,0);
+        angle = player.transform.position * 2.2;
     }
 }
