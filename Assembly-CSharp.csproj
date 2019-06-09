@@ -86,6 +86,8 @@
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\Shoot.cs" />
     <Compile Include="Assets\Script\Player\ShootMove.cs" />
+    <Compile Include="Assets\Script\Trap\TrapCollision.cs" />
+    <Compile Include="Assets\Script\Trap\Trapshot.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/RanjuYou/Documents/GitHub/ATROX_UNITY/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

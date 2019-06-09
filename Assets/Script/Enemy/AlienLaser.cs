@@ -79,6 +79,6 @@ public class AlienLaser : MonoBehaviour
         lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0,2,0));
         lineRenderer.SetPosition(1, player.transform.position);
 
-        angle = player.transform.position * 2.2;
+        angle = player.transform.position * 2.2f;
     }
 }
