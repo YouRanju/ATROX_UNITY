@@ -8,7 +8,10 @@ public class TrapCollision : MonoBehaviour
     float m_Scroll;
     public float m_y;
     public bool isRock;
+    public GameObject Player;
 
+    bool die;
+    int m_life = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,10 +45,30 @@ public class TrapCollision : MonoBehaviour
             collision.GetComponent<Player>().DecHP();
             plzDes();
         }
+
+        if (collision.transform.tag == "PlayerMissile")
+        {
+            DecHP();
+        }
     }
 
     public void plzDes()
     {
         Destroy(gameObject);
+    }
+
+    public void DecHP()
+    {
+        m_life--;
+        if (m_life <= 0)
+        {
+            if (!die)
+            {
+                die = true;
+                Player.GetComponent<Player>().scoring += 300;
+
+                plzDes();
+            }
+        }
     }
 }

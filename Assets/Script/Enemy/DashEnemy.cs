@@ -21,6 +21,8 @@ public class DashEnemy : MonoBehaviour
     private float adt;
     private bool col = false;
 
+    bool die;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class DashEnemy : MonoBehaviour
         Dir.y = (Player.transform.position.y < this.transform.position.y) ?
             -1 : 1;
 
+        die = false;
         Rigid.velocity = Dir * 2.0f;
     }
 
@@ -116,9 +119,14 @@ public class DashEnemy : MonoBehaviour
         hp -= damage;
         if(hp <= 0)
         {
-            DieSound.Play();
-            Instantiate(Explo, transform.position, transform.rotation);
-            Destroy(gameObject, 0.5f);
+            if(!die)
+            {
+                die = true;
+                Player.GetComponent<Player>().scoring += 400;
+                DieSound.Play();
+                Instantiate(Explo, transform.position, transform.rotation);
+                Destroy(gameObject, 0.5f);
+            }
         }
     }
 

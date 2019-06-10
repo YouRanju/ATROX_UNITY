@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class Player : MonoBehaviour
     bool m_2ndJump;
     bool JumpKey;
     bool Is2ndJumpKey;
+
+    public Text Score;
+    public int scoring;
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +83,7 @@ public class Player : MonoBehaviour
             }
             Render();
         }
-
+        Score.text = scoring.ToString();
     }
 
     void Render()

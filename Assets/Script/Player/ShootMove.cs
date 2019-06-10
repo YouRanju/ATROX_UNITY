@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShootMove : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class ShootMove : MonoBehaviour
             explo();
             GetComponent<AudioSource>().Play();
             Destroy(gameObject,0.3f);
+            
         }
 
         if(collision.transform.tag == "EnemyMissile")
@@ -55,7 +57,7 @@ public class ShootMove : MonoBehaviour
             explo();
             GetComponent<AudioSource>().Play();
             Destroy(gameObject, 0.3f);
-            Destroy(collision.gameObject);
+            collision.GetComponent<TrapCollision>().DecHP();
         }
     }
 }

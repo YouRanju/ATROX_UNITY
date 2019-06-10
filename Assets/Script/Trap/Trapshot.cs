@@ -32,6 +32,7 @@ public class Trapshot : MonoBehaviour
             if (obj == null)
             {
                 obj = (GameObject)Instantiate(Traps[cnt], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                obj.SetActive(true);
             }
 
             if (obj.transform.position.x < -10)

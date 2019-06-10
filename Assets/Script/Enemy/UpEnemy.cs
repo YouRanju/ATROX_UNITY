@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpEnemy : MonoBehaviour
 {
+    public GameObject Player;
     public GameObject Explo;
     public Sprite[] runImg;
     public PolygonCollider2D UpColi;
@@ -18,6 +19,7 @@ public class UpEnemy : MonoBehaviour
     private int cnt;
 
     private bool isright = true;
+    bool die;
 
     void Start()
     {
@@ -27,6 +29,8 @@ public class UpEnemy : MonoBehaviour
         Dir.x = 1;
 
         Rigid.velocity = Dir * 2.0f;
+
+        die = false;
 
     }
 
@@ -85,9 +89,14 @@ public class UpEnemy : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
         {
-            DieSound.Play();
-            Instantiate(Explo, transform.position, transform.rotation);
-            Destroy(gameObject, 0.5f);
+            if (!die)
+            {
+                die = true;
+                Player.GetComponent<Player>().scoring += 400;
+                DieSound.Play();
+                Instantiate(Explo, transform.position, transform.rotation);
+                Destroy(gameObject, 0.5f);
+            }
         }
     }
 
