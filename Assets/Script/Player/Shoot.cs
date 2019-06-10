@@ -58,7 +58,7 @@ public class Shoot : MonoBehaviour
         {
             Vector2 target = lineRenderer.GetPosition(1);
        
-            if (angle.x < 1.5f && !an)
+            if (angle.x < 2f && !an)
             {
                 angle.x += Time.deltaTime * 2;
                 angle.y -= Time.deltaTime *2;
@@ -69,15 +69,13 @@ public class Shoot : MonoBehaviour
                 angle.x -= Time.deltaTime * 2;
                 angle.y += Time.deltaTime * 2;
 
-                if(angle.x < 0f)
+                if(angle.x < -1f)
                 {
                     an = false;
                 }
             }
 
-            Vector3.Normalize(angle);
-
-            lineRenderer.SetPosition(1, angle);
+            lineRenderer.SetPosition(1, Vector3.Normalize(angle));
         }        
     } 
 }
