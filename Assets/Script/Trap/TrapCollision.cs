@@ -38,12 +38,11 @@ public class TrapCollision : MonoBehaviour
         transform.position = pos1;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.transform.tag == "Player")
         {
-            collision.GetComponent<Player>().DecHP();
-            plzDes();
+            collision.gameObject.GetComponent<Player>().DecHP();
         }
 
         if (collision.transform.tag == "PlayerMissile" && isRock)

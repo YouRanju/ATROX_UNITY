@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
     public int scoring;
     public Camera camera;
 
+    public GameObject[] lifeUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,7 +88,11 @@ public class Player : MonoBehaviour
 
     void Render()
     {
-        
+        if(m_life >= 1)
+        {
+            lifeUI[m_life-1].SetActive(true);
+        }
+
         if (rdt > 0.5f)
         {
             cnt++;
@@ -145,7 +151,7 @@ public class Player : MonoBehaviour
 
     public void DecHP()
     {
-        m_life--;
+        lifeUI[--m_life].SetActive(false);
         
         if (m_life <= 0)
         {
