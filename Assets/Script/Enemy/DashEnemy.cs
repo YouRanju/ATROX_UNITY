@@ -65,7 +65,7 @@ public class DashEnemy : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 vec = transform.position;
-            vec.x -= 0.4f;
+            vec.x -= 0.2f;
             transform.position = vec;
         }
 
@@ -107,10 +107,6 @@ public class DashEnemy : MonoBehaviour
         if(collision.transform.tag == "Player" && !col)
         {
             col = true;
-            if(adt >= 255)
-            {
-                Player.GetComponent<Player>().DecHP();
-            }
         }
     }
 
@@ -130,6 +126,22 @@ public class DashEnemy : MonoBehaviour
         }
     }
 
+    public void AttDec(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            if (!die)
+            {
+                die = true;
+                DieSound.Play();
+                Instantiate(Explo, transform.position, transform.rotation);
+                Player.GetComponent<Player>().DecHP();
+                Destroy(gameObject, 0.5f);
+            }
+        }
+    }
+
     private void Attack()
     {
         
@@ -139,7 +151,7 @@ public class DashEnemy : MonoBehaviour
         if(adt >= 255)
         {
             col = false;
-            DecHP(1); 
+            AttDec(1); 
         }
     }
 }

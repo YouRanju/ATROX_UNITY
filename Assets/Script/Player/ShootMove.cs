@@ -49,7 +49,7 @@ public class ShootMove : MonoBehaviour
             explo();
             GetComponent<AudioSource>().Play();
             Destroy(gameObject, 0.3f);
-            Destroy(collision.gameObject);
+            
         }
 
         if (collision.transform.tag == "trap" &&  collision.GetComponent<TrapCollision>().isRock)

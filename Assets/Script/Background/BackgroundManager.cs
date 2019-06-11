@@ -8,11 +8,14 @@ public class BackgroundManager : MonoBehaviour
     private Vector2 startPos;
 
     public GameObject m_Spr;
+    public GameObject player;
 
     public Vector3 m_Scroll;
     public float m_Screen;
     public float m_dirX;
     public float m_Speed;
+
+    bool left = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +31,21 @@ public class BackgroundManager : MonoBehaviour
     {
         eTime = Time.deltaTime;
 
-       if (Input.GetKey(KeyCode.RightArrow)) {
+        if (Input.GetKey(KeyCode.RightArrow)) {
             m_dirX = -0.7f;
-       }
+            left = false;
+        }
+        //else if(Input.GetKey(KeyCode.LeftArrow) && m_Scroll.x - startPos.x < 4f)
+        //{
+        //    if(left)
+        //    {
+        //        m_dirX = 0.7f;
+        //    } else
+        //    {
+        //        startPos = m_Scroll;
+        //        left = true;
+        //    }
+        //}
         else
         {
             m_dirX = 0;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 class AlienShotCollision : MonoBehaviour
 {
+    public GameObject player;
+
     private void Start()
     {
         Destroy(gameObject, 3f);
@@ -14,7 +16,7 @@ class AlienShotCollision : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 vec = transform.position;
-            vec.x -= 0.01f;
+            vec.x -= 0.2f;
             transform.position = vec;
         }
     }
@@ -23,12 +25,18 @@ class AlienShotCollision : MonoBehaviour
     {
         if(collision.transform.tag == "Player")
         {
-            Debug.Log("아약");
+            player.GetComponent<Player>().DecHP();
             Destroy(gameObject);
         }
 
         if(collision.transform.tag == "Back")
         {
+            Destroy(gameObject);
+        }
+
+        if(collision.transform.tag == "PlayerMissile")
+        {
+            player.GetComponent<Player>().scoring += 50;
             Destroy(gameObject);
         }
     }

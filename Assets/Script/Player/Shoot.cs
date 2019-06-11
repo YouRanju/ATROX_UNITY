@@ -14,6 +14,7 @@ public class Shoot : MonoBehaviour
     private bool an = false;
 
     private float sdt;
+    private float dt;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class Shoot : MonoBehaviour
     {
         sdt += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Space) && sdt > 0.25)
+        if (Input.GetKey(KeyCode.Space) && sdt > 0.2)
         {
             Shot.transform.position = Player.transform.position;
             Shot.GetComponent<ShootMove>().dir = angle;
@@ -57,23 +58,30 @@ public class Shoot : MonoBehaviour
         if (isTargeting)
         {
             Vector2 target = lineRenderer.GetPosition(1);
+            dt += Time.deltaTime;
        
-            if (angle.x < 2f && !an)
+            if(dt > 0.02f)
             {
-                angle.x += Time.deltaTime * 2;
-                angle.y -= Time.deltaTime *2;
-            }
-            else
-            { 
-                an = true;
-                angle.x -= Time.deltaTime * 2;
-                angle.y += Time.deltaTime * 2;
-
-                if(angle.x < -1f)
+                if (angle.x < 1.8f && !an)
                 {
-                    an = false;
+                    angle.x += Time.deltaTime * 3 ;
+                    angle.y -= Time.deltaTime * 3;
                 }
+                else
+                {
+                    an = true;
+                    angle.x -= Time.deltaTime * 3;
+                    angle.y += Time.deltaTime * 3;
+
+                    if (angle.x < 0f)
+                    {
+                        an = false;
+                    }
+                }
+
+                dt = 0;
             }
+            
 
             lineRenderer.SetPosition(1, Vector3.Normalize(angle));
         }        

@@ -31,6 +31,7 @@ public class AlienShoot : MonoBehaviour
 
             GameObject obj;
             obj = (GameObject)Instantiate(Shot, transform.position, Quaternion.identity);
+            obj.SetActive(true);
             obj.GetComponent<Rigidbody2D>().velocity = Vector2.down *4f;
                 
             sdt = 0;

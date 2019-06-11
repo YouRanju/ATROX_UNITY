@@ -30,8 +30,11 @@ public class Player : MonoBehaviour
     bool JumpKey;
     bool Is2ndJumpKey;
 
+    bool isGround = true;
+
     public Text Score;
     public int scoring;
+    public Camera camera;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +51,7 @@ public class Player : MonoBehaviour
         rdt += Time.deltaTime;
         jdt += Time.deltaTime;
 
-        if (transform.position.x > -5f && !isStart)
+        if (transform.position.x > -3.2f && !isStart)
         {
             isStart = true;
         }
@@ -56,30 +59,25 @@ public class Player : MonoBehaviour
         if(isStart)
         {
             Rigid.constraints = RigidbodyConstraints2D.FreezePositionX;
+            Rigid.gravityScale = 1;
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) Jump();
 
-            //if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -7f)
+            //if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -7f && isGround)
             //{
             //    Rigid.constraints = RigidbodyConstraints2D.None;
-            //    if (transform.rotation.z > 30)
-            //    {
-            //        transform.rotation = new Quaternion(0, 0, 0, 0);
-            //    }
-            //    Rigid.velocity = Vector2.down * 10;
-            //    Rigid.velocity = Vector2.left * 4;
+            //    Rigid.AddForce(Vector2.left * 10);
             //}
 
-            //if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -5f)
+            //if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -3.2f && isGround)
             //{
             //    Rigid.constraints = RigidbodyConstraints2D.None;
-            //    Rigid.velocity = Vector2.down * 10;
-            //    Rigid.velocity = Vector2.right * 4;
+            //    Rigid.AddForce(Vector2.right * 10);
             //}
 
             if (transform.position.y < -1.6f)
             {
-                transform.rotation = new Quaternion(0, 0, 0, 0);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             Render();
         }
@@ -88,6 +86,7 @@ public class Player : MonoBehaviour
 
     void Render()
     {
+        
         if (rdt > 0.5f)
         {
             cnt++;
@@ -126,6 +125,7 @@ public class Player : MonoBehaviour
             m_2ndJump = false;
             m_JumpPower = 8.0f;
             m_PrHeight = this.transform.position.y;
+            isGround = false;
 
             Rigid.velocity = (Vector2.up * m_JumpPower);
             Rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -146,6 +146,7 @@ public class Player : MonoBehaviour
     public void DecHP()
     {
         m_life--;
+        
         if (m_life <= 0)
         {
             Debug.Log("GameOver");
@@ -154,11 +155,16 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(m_Jump)
+        if (collision.gameObject.name == "floor" || collision.gameObject.name == "upperfloor")
         {
-            m_Jump = false;
-            Rigid.freezeRotation = false;
+            if (m_Jump)
+            {
+                m_Jump = false;
+
+                Rigid.freezeRotation = false;
+            }
+
+            isGround = true;
         }
-            
     }
 }

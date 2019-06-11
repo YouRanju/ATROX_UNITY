@@ -31,6 +31,7 @@ public class BossShot : MonoBehaviour
 
             GameObject obj;
             obj = (GameObject)Instantiate(Shot, transform.position, Quaternion.identity);
+            obj.SetActive(true);
 
            
                 float angle = 360 / oneShoting;

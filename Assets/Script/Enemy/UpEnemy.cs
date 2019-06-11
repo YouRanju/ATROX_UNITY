@@ -19,7 +19,7 @@ public class UpEnemy : MonoBehaviour
     private int cnt;
 
     private bool isright = true;
-    bool die;
+    public bool die;
 
     void Start()
     {
@@ -56,7 +56,7 @@ public class UpEnemy : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 vec = transform.position;
-            vec.x -= 0.4f;
+            vec.x -= 0.2f;
             transform.position = vec;
         }
     }

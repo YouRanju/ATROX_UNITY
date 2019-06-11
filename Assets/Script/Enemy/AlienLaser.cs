@@ -7,6 +7,7 @@ public class AlienLaser : MonoBehaviour
     public int damage = 1;
     public GameObject player;
     public GameObject Alien;
+    public Camera camera;
 
     public BoxCollider2D coli;
     public LineRenderer lineRenderer;
@@ -49,7 +50,9 @@ public class AlienLaser : MonoBehaviour
             float angless = Mathf.Atan2((endPoint.y - startPoint.y), (endPoint.x - startPoint.x));
             angless *= Mathf.Rad2Deg;
             coli.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angless));
-            
+
+            camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0,0,-10);
+
             if (sdt >= 10)
             {
                 ldt -= Time.deltaTime * 3f;
@@ -59,15 +62,16 @@ public class AlienLaser : MonoBehaviour
                     sdt = 0;
                     lineRenderer.SetWidth(0, 0);
                     coli.size = new Vector3(0, 0, 0);
+                    camera.transform.localPosition = new Vector3(0, 0, -10);
                 }
 
             }
         }
         else if (sdt > 3)
         {
-            lineRenderer.SetWidth(0.2f, 0.2f);
+            lineRenderer.SetWidth(0.08f, 0.08f);
             lineRenderer.useWorldSpace = true;
-            lineRenderer.SetColors(Color.grey, Color.red);
+            lineRenderer.SetColors(Color.grey, Color.white);
             ShotInWindow();
         }
 
@@ -77,8 +81,8 @@ public class AlienLaser : MonoBehaviour
     {
         lineRenderer.transform.localScale = new Vector3(1, 1, 1);
         lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0,2,0));
-        lineRenderer.SetPosition(1, player.transform.position);
+        lineRenderer.SetPosition(1, player.transform.position * Mathf.Abs(player.transform.position.x)/1.6f);
 
-        angle = player.transform.position * 2.2f;
+        angle = player.transform.position * Mathf.Abs(player.transform.position.x)/1.6f;
     }
 }

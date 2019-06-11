@@ -24,7 +24,7 @@ public class TrapCollision : MonoBehaviour
         
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            m_dirX = -0.3f;
+            m_dirX = -0.2f;
         }
 
         else
@@ -46,7 +46,7 @@ public class TrapCollision : MonoBehaviour
             plzDes();
         }
 
-        if (collision.transform.tag == "PlayerMissile")
+        if (collision.transform.tag == "PlayerMissile" && isRock)
         {
             DecHP();
         }

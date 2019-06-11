@@ -13,12 +13,7 @@ public class ExplosionMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        { 
-            Vector2 vec = transform.position;
-            vec.x += 0.4f;
-            transform.position = vec;
-        } else if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 vec = transform.position;
             vec.x -= 0.4f;
