@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5743763}
   - component: {fileID: 5743764}
   m_Layer: 0
-  m_Name: "2\uB2E8 \uC810"
+  m_Name: double
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 460707501}
   - component: {fileID: 460707502}
   m_Layer: 0
-  m_Name: "\uC2A4\uD53C\uB4DC"
+  m_Name: speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 464669679}
   - component: {fileID: 464669680}
   m_Layer: 0
-  m_Name: "\uC0AC\uAC70\uB9AC"
+  m_Name: range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 1134671756}
   - component: {fileID: 1134671757}
   m_Layer: 0
-  m_Name: "\uD638\uBC0D"
+  m_Name: homing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1860,7 +1860,7 @@ GameObject:
   - component: {fileID: 1372783148}
   - component: {fileID: 1372783149}
   m_Layer: 0
-  m_Name: "3\uBC29\uD5A5"
+  m_Name: threeway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
