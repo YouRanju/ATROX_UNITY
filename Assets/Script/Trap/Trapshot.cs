@@ -27,7 +27,7 @@ public class Trapshot : MonoBehaviour
 
         if (sdt > delayTime)
         {
-            cnt = Random.Range(0, 2);
+            cnt = Random.Range(0, Traps.Length);
 
             if (obj == null)
             {

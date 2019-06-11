@@ -136,7 +136,7 @@ MonoBehaviour:
   Explosion: {fileID: 3792155834408013280, guid: 1604cd39220eca947a81413121b654d5,
     type: 3}
   ShootAudio: {fileID: 6270360842300617149}
-  dir: {x: 1.4171207, y: -0.0029071663, z: 0}
+  dir: {x: 0.7071068, y: 0.7071068, z: 0}
 --- !u!82 &6270360842300617149
 AudioSource:
   m_ObjectHideFlags: 0
