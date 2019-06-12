@@ -34,34 +34,31 @@ public class RunTime : MonoBehaviour
             runTime += Time.deltaTime;
         }
 
-        Debug.Log(runTime);
-
-        if (runTime > 5f && runTime < 6f)
+        if (runTime > 5f && runTime < 6.3f)
         {
             for (int i = 0; i < 4; i++)
             {
                 if (obj[i] == null)
                 {
                     obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(2, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
                     obj[i].SetActive(true);
                     created = true;
                 }
             }
         }
 
-        if(created)
+        if(runTime > 7.7f && runTime < 7.9f)
         {
             for (int i = 0; i < 4; i++)
             {
-                if (obj[i] == null)
+                if(obj[i] != null)
                 {
-                    obj[i] = (GameObject)Instantiate(Items[0], EnemyPosition[i], Quaternion.identity);
-                    continue;
+                    Vector2 vec = obj[i].transform.position;
+                    vec.x -= 0.6f;
+
+                    obj[i].transform.position = vec;
                 }
-
-                EnemyPosition[i] = obj[i].transform.position;
-
-                Debug.Log(i + ": " + EnemyPosition[i]);
             }
         }
 
@@ -78,13 +75,32 @@ public class RunTime : MonoBehaviour
                 {
                     obj[i] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
                     obj[i].SetActive(true);
+                    created = true;
                 }
             }
         }
 
         if (runTime > 13f && runTime < 13.2f)
         {
-            delete();
+            for (int i = 0; i < 4; i++)
+            {
+                obj[i].GetComponent<DashEnemy>().AttDec(1);
+            }
+        }
+
+        if (created)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
+                    obj[i].SetActive(true);
+                    continue;
+                }
+
+                EnemyPosition[i] = obj[i].transform.position;
+            }
         }
     }
 
