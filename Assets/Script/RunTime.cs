@@ -8,7 +8,6 @@ public class RunTime : MonoBehaviour
 
     private float runTime;
     private GameObject[] obj;
-    private int cnt;
 
     public GameObject[] Enemys;
     public GameObject[] Items;
@@ -23,7 +22,6 @@ public class RunTime : MonoBehaviour
         runTime = 0;
         obj = new GameObject[4];
         EnemyPosition = new Vector3[4]; 
-        cnt = 0;
     }
 
     // Update is called once per frame
@@ -33,8 +31,9 @@ public class RunTime : MonoBehaviour
         {
             runTime += Time.deltaTime;
         }
+        //Debug.Log(runTime);
 
-        if (runTime > 5f && runTime < 6.3f)
+        if (runTime > 2f && runTime < 2.1f)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -48,7 +47,7 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if(runTime > 7.7f && runTime < 7.9f)
+        if(runTime > 7.2f && runTime < 7.8f)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -62,12 +61,12 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if (runTime > 8f && runTime < 8.2f)
+        if (runTime > 7.9f && runTime < 8f)
         {
             delete();
         }
 
-        if (runTime > 10f && runTime < 11f)
+        if (runTime > 9f && runTime < 9.1f)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -80,7 +79,7 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if (runTime > 13f && runTime < 13.2f)
+        if (runTime > 15f && runTime < 15.1f)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -96,7 +95,7 @@ public class RunTime : MonoBehaviour
                 {
                     obj[i] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
                     obj[i].SetActive(true);
-                    continue;
+                    created = false;
                 }
 
                 EnemyPosition[i] = obj[i].transform.position;

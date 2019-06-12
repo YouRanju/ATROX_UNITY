@@ -5,38 +5,48 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    //이미지와 충돌처리, 이동
+    public Sprite[] runImg;
     public PolygonCollider2D UpColi;
     public PolygonCollider2D DownColi;
-    public PolygonCollider2D[] groudColi;
-    public Sprite[] runImg;
+    Rigidbody2D Rigid;
+    int cnt = 0; //충돌처리용
+
+    //사운드
     public AudioSource JumpAudio;
     public AudioSource DblJumpAudio;
 
+    //시간변수
     static float rdt = 0;
-    static float jdt = 0;
 
-    private Rigidbody2D Rigid;
-    private int cnt = 0;
-    private bool isStart = false;
-    
-    float m_OrHeight;
+    //점프용 변수
     float m_PrHeight;
     float m_JumpPower;
-    float m_JumpTime;
-    int m_life = 3;
     bool isFalling;
     bool m_Jump;
     bool m_2ndJump;
-    bool JumpKey;
-    bool Is2ndJumpKey;
 
-    bool isGround = true;
-
+    //점수용
     public Text Score;
     public int scoring;
-    public Camera camera;
 
+    //생명용
     public GameObject[] lifeUI;
+    public Text Life;
+    int m_life = 3;
+
+    //item용 변수
+    public GameObject[] ItemUI;
+    bool canDouble = false;
+    bool canThree = false;
+    bool canRange = false;
+    bool canSpeed = false;
+    bool canHom = false;
+
+    // 임시변수
+    bool isStart = false; //시작용          
+    bool isGround = true; //이동용
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +61,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         rdt += Time.deltaTime;
-        jdt += Time.deltaTime;
 
         if (transform.position.x > -3.2f && !isStart)
         {
@@ -83,7 +92,9 @@ public class Player : MonoBehaviour
             }
             Render();
         }
+
         Score.text = scoring.ToString();
+        Life.text = m_life.ToString();
     }
 
     void Render()
@@ -116,7 +127,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     { 
-        if (m_Jump && !m_2ndJump && isFalling)
+        if (m_Jump && !m_2ndJump && isFalling && canDouble)
         {
             m_JumpPower = 8.0f;
             m_2ndJump = true;
@@ -173,14 +184,50 @@ public class Player : MonoBehaviour
             isGround = true;
         }
 
-        
+        if (collision.transform.tag == "hole")
+        {
+            Vector2 vec = transform.position;
+
+            vec.y -= 2f;
+            transform.position = vec;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "double")
         {
-            Debug.Log("dd");
+            canDouble = true;
+            ItemUI[0].SetActive(true);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.transform.tag == "three")
+        {
+            canThree = true;
+            ItemUI[1].SetActive(true);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.transform.tag == "range")
+        {
+            canRange = true;
+            ItemUI[2].SetActive(true);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.transform.tag == "speed")
+        {
+            canSpeed = true;
+            ItemUI[3].SetActive(true);
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.transform.tag == "homing")
+        {
+            canHom = true;
+            ItemUI[4].SetActive(true);
+            Destroy(collision.gameObject);
         }
     }
 }

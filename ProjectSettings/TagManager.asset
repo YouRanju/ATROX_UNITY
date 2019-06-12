@@ -14,6 +14,7 @@ TagManager:
   - range
   - speed
   - homing
+  - hole
   layers:
   - Default
   - TransparentFX
