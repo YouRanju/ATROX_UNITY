@@ -9,6 +9,11 @@ TagManager:
   - EnemyMissile
   - Back
   - trap
+  - double
+  - three
+  - range
+  - speed
+  - homing
   layers:
   - Default
   - TransparentFX

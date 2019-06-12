@@ -172,5 +172,15 @@ public class Player : MonoBehaviour
 
             isGround = true;
         }
+
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "double")
+        {
+            Debug.Log("dd");
+        }
     }
 }
