@@ -13,9 +13,12 @@ public class RunTime : MonoBehaviour
     public GameObject[] Items;
     public GameObject[] Traps;
     public GameObject Boss;
+    public GameObject CheckPoint;
 
     private Vector3[] EnemyPosition;
     private bool created;
+    private float checkpointtime;
+    private int cnt = 0;
 
     void Start()
     {
@@ -63,7 +66,7 @@ public class RunTime : MonoBehaviour
 
         if (runTime > 7.9f && runTime < 8f)
         {
-            delete();
+            delete(0,4);
         }
 
         if (runTime > 9f && runTime < 9.1f)
@@ -83,7 +86,46 @@ public class RunTime : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                obj[i].GetComponent<DashEnemy>().AttDec(1);
+                obj[i].GetComponent<DashEnemy>().bomb();
+            }
+            created = false;
+        }
+
+        if(runTime > 17f && runTime < 17.1f)
+        {
+            while(cnt < 2)
+            {
+                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
+                cnt++;
+            }
+            while (cnt < 4)
+            {
+                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
+                cnt++;
+            }
+            created = true;
+        }
+
+        if (runTime > 22f && runTime < 22.1f)
+        {
+            while (cnt < 2)
+            {
+                obj[cnt].GetComponent<DashEnemy>().bomb();
+                cnt++;
+            }
+
+            delete(2,4);
+        }
+
+        if(runTime > 40f && runTime <40.1f)
+        {
+            if(obj[0] == null)
+            {
+                obj[0] = (GameObject)Instantiate(Boss, new Vector3(20 + Random.Range(5, 10), Boss.transform.position.y, 0), Quaternion.identity);
+                obj[0].SetActive(true);
+                created = true;
             }
         }
 
@@ -101,15 +143,30 @@ public class RunTime : MonoBehaviour
                 EnemyPosition[i] = obj[i].transform.position;
             }
         }
+
+        if(CheckPoint.GetComponent<CheckpointColiision>().check)
+        {
+            checkpointtime = 30f;
+        }
+
+        for(int i = 0; i < 4; i++)
+        {
+            if(obj[i].transform.position.x < -10f)
+            {
+                Destroy(obj[i].gameObject);
+                obj[i] = null;
+                created = false;
+            } 
+        }
     }
 
-    private void delete()
+    private void delete(int start, int end)
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = start; i < end; i++)
         {
             Destroy(obj[i].gameObject);
             obj[i] = null;
-            created = false;
         }
+        created = false;
     }
 }

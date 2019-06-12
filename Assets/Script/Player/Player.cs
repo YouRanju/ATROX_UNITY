@@ -74,17 +74,17 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) Jump();
 
-            //if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -7f && isGround)
-            //{
-            //    Rigid.constraints = RigidbodyConstraints2D.None;
-            //    Rigid.AddForce(Vector2.left * 10);
-            //}
+            if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -7f && isGround)
+            {
+                Rigid.constraints = RigidbodyConstraints2D.None;
+                Rigid.AddForce(Vector2.left * 20);
+            }
 
-            //if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -3.2f && isGround)
-            //{
-            //    Rigid.constraints = RigidbodyConstraints2D.None;
-            //    Rigid.AddForce(Vector2.right * 10);
-            //}
+            if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -3.2f && isGround)
+            {
+                Rigid.constraints = RigidbodyConstraints2D.None;
+                Rigid.AddForce(Vector2.right * 10);
+            }
 
             if (transform.position.y < -1.6f)
             {

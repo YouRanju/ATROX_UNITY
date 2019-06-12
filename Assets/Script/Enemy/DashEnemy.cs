@@ -142,6 +142,21 @@ public class DashEnemy : MonoBehaviour
         }
     }
 
+    public void bomb()
+    {
+        hp -= hp;
+        if (hp <= 0)
+        {
+            if (!die)
+            {
+                die = true;
+                DieSound.Play();
+                Instantiate(Explo, transform.position, transform.rotation);
+                Destroy(gameObject, 0.5f);
+            }
+        }
+    }
+
     private void Attack()
     {
         
