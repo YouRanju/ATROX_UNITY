@@ -43,5 +43,10 @@ public class Itemcollision : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
         }
+
+        if (collision.transform.tag == "Respawn")
+        {
+            Destroy(gameObject);
+        }
     }
 }

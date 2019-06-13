@@ -108,6 +108,10 @@ public class DashEnemy : MonoBehaviour
         {
             col = true;
         }
+        if (collision.transform.tag == "Respawn")
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void DecHP(int damage)

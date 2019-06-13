@@ -106,5 +106,10 @@ public class UpEnemy : MonoBehaviour
         {
             DecHP(1);
         }
+
+        if(collision.transform.tag == "Respawn")
+        {
+            Destroy(gameObject);
+        }
     }
 }

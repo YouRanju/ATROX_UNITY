@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     //생명용
     public GameObject[] lifeUI;
     public Text Life;
-    int m_life = 3;
+    public int m_life = 3;
 
     //item용 변수
     public GameObject[] ItemUI;

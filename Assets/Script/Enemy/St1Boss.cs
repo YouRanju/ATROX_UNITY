@@ -27,6 +27,7 @@ public class St1Boss : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = runImg[0];
         Rigid = GetComponent<Rigidbody2D>();
+        Rigid.velocity = Vector2.left * 30;
     }
 
     void Update()

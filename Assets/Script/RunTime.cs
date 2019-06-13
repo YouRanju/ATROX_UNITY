@@ -9,6 +9,7 @@ public class RunTime : MonoBehaviour
     private float runTime;
     private GameObject[] obj;
 
+    public GameObject Player;
     public GameObject[] Enemys;
     public GameObject[] Items;
     public GameObject[] Traps;
@@ -20,11 +21,14 @@ public class RunTime : MonoBehaviour
     private float checkpointtime;
     private int cnt = 0;
 
+    private int playerLife;
+
     void Start()
     {
         runTime = 0;
-        obj = new GameObject[4];
-        EnemyPosition = new Vector3[4]; 
+        obj = new GameObject[8];
+        EnemyPosition = new Vector3[8];
+        playerLife = Player.GetComponent<Player>().m_life;
     }
 
     // Update is called once per frame
@@ -34,11 +38,38 @@ public class RunTime : MonoBehaviour
         {
             runTime += Time.deltaTime;
         }
-        //Debug.Log(runTime);
 
+        EnemyAppear();
+
+        if (created)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (obj[i] == null)
+                {
+                    if(Random.Range(0,10) == 7)
+                    {
+                        obj[i] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
+                        obj[i].SetActive(true);
+                        created = false;
+                    }
+                }
+
+                EnemyPosition[i] = obj[i].transform.position;
+            }
+        }
+
+        if(CheckPoint.GetComponent<CheckpointColiision>().check)
+        {
+            checkpointtime = 30f;
+        }
+    }
+
+    private void EnemyAppear()
+    {
         if (runTime > 2f && runTime < 2.1f)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 8; i++)
             {
                 if (obj[i] == null)
                 {
@@ -50,28 +81,40 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if(runTime > 7.2f && runTime < 7.8f)
+        if (runTime > 4f && runTime < 4.1f)
         {
-            for (int i = 0; i < 4; i++)
+            while (cnt < 4)
             {
-                if(obj[i] != null)
-                {
-                    Vector2 vec = obj[i].transform.position;
-                    vec.x -= 0.6f;
+                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
+                cnt++;
+            }
+            while (cnt < 8)
+            {
+                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
+                cnt++;
+            }
+            created = true;
+        }
 
-                    obj[i].transform.position = vec;
+        if (runTime > 5.7f && runTime < 5.8f)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(2, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].SetActive(true);
+                    created = true;
                 }
             }
         }
 
-        if (runTime > 7.9f && runTime < 8f)
-        {
-            delete(0,4);
-        }
-
         if (runTime > 9f && runTime < 9.1f)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 8; i++)
             {
                 if (obj[i] == null)
                 {
@@ -82,24 +125,15 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if (runTime > 15f && runTime < 15.1f)
+        if (runTime > 12f && runTime < 12.1f)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                obj[i].GetComponent<DashEnemy>().bomb();
-            }
-            created = false;
-        }
-
-        if(runTime > 17f && runTime < 17.1f)
-        {
-            while(cnt < 2)
+            while (cnt < 4)
             {
                 obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
                 obj[cnt].SetActive(true);
                 cnt++;
             }
-            while (cnt < 4)
+            while (cnt < 8)
             {
                 obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
                 obj[cnt].SetActive(true);
@@ -108,55 +142,65 @@ public class RunTime : MonoBehaviour
             created = true;
         }
 
-        if (runTime > 22f && runTime < 22.1f)
+        if (runTime > 17f && runTime < 17.1f)
+        {
+            while (cnt < 4)
+            {
+                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
+                cnt++;
+            }
+            while (cnt < 8)
+            {
+                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
+                cnt++;
+            }
+            created = true;
+        }
+
+        if (runTime > 21f && runTime < 11.1f)
+        {
+            while (cnt < 6)
+            {
+                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
+                cnt++;
+            }
+            while (cnt < 8)
+            {
+                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
+                cnt++;
+            }
+            created = true;
+        }
+
+        if (runTime > 26f && runTime < 26.1f)
         {
             while (cnt < 2)
             {
-                obj[cnt].GetComponent<DashEnemy>().bomb();
+                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
                 cnt++;
             }
-
-            delete(2,4);
+            while (cnt < 8)
+            {
+                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                obj[cnt].SetActive(true);
+                cnt++;
+            }
+            created = true;
         }
 
-        if(runTime > 40f && runTime <40.1f)
+        if (runTime > 31f && runTime < 31.1f)
         {
-            if(obj[0] == null)
+            if (obj[0] == null)
             {
-                obj[0] = (GameObject)Instantiate(Boss, new Vector3(20 + Random.Range(5, 10), Boss.transform.position.y, 0), Quaternion.identity);
+                obj[0] = (GameObject)Instantiate(Boss, new Vector3(20, Boss.transform.position.y, 0), Quaternion.identity);
                 obj[0].SetActive(true);
                 created = true;
             }
-        }
-
-        if (created)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                if (obj[i] == null)
-                {
-                    obj[i] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
-                    obj[i].SetActive(true);
-                    created = false;
-                }
-
-                EnemyPosition[i] = obj[i].transform.position;
-            }
-        }
-
-        if(CheckPoint.GetComponent<CheckpointColiision>().check)
-        {
-            checkpointtime = 30f;
-        }
-
-        for(int i = 0; i < 4; i++)
-        {
-            if(obj[i].transform.position.x < -10f)
-            {
-                Destroy(obj[i].gameObject);
-                obj[i] = null;
-                created = false;
-            } 
         }
     }
 
