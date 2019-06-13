@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     public GameObject Bomb;
     int canBomb = 2;
     float keydelay = 0;
+    public bool isBomb = false;
 
     // 임시변수
     public bool isStart = false; //시작용          
@@ -133,7 +134,22 @@ public class Player : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.LeftShift) && keydelay > 0.3f)
                 {
                     Bombs[--canBomb].SetActive(false);
+                    Bomb.transform.position = new Vector3(-10, 6);
+                    
+                    isBomb = true;
+                    Bomb.SetActive(true);
+
                     keydelay = 0;
+                }
+
+                if(isBomb)
+                {
+                    Bomb.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 5);
+
+                    if(Bomb.active == false)
+                    {
+                        isBomb = false;
+                    }
                 }
             }
 

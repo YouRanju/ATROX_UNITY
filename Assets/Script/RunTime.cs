@@ -32,6 +32,8 @@ public class RunTime : MonoBehaviour
     //플레이어 피격 시
     private int playerLife;
 
+    float dt;
+
     void Start()
     {
         runTime = 0;
@@ -56,6 +58,18 @@ public class RunTime : MonoBehaviour
         if(player.GetComponent<Player>().canSpeed)
         {
             runTime += Time.deltaTime * 2;
+        }
+
+        //핵폭탄
+        if(player.GetComponent<Player>().isBomb)
+        {
+            dt += Time.deltaTime;
+
+            if(dt > 2f)
+            {
+                delete();
+                dt = 0;
+            }           
         }
 
         PlayerLifeCheck(); //피격체크
@@ -106,6 +120,8 @@ public class RunTime : MonoBehaviour
 
         //남은거리
         slider.value = runTime / 1000 * 32;
+
+       
     }
 
     private void PlayerLifeCheck()
@@ -114,24 +130,31 @@ public class RunTime : MonoBehaviour
         {
             runTime = checkpointtime;
             created = false;
-            for(int i = 0; i < 8; i++)
-            {
-                if(obj[i] != null)
-                {
-                    Destroy(obj[i].gameObject);
-                }
-
-                if (itemObj[i] != null)
-                {
-                    Destroy(itemObj[i].gameObject);
-                }
-            }
-
-            if(trapObj != null)
-            {
-                Destroy(trapObj.gameObject);
-            }
+            delete();
             playerLife = player.GetComponent<Player>().m_life;
+        }
+    }
+    
+    private void delete()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            if (obj[i] != null)
+            {
+                Destroy(obj[i].gameObject);
+            }
+
+            if (i > 1) continue;
+
+            if (itemObj[i] != null)
+            {
+                Destroy(itemObj[i].gameObject);
+            }
+        }
+
+        if (trapObj != null)
+        {
+            Destroy(trapObj.gameObject);
         }
     }
 
