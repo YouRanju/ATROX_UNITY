@@ -9,6 +9,7 @@ public class RunTime : MonoBehaviour
     private float runTime;
     public GameObject[] obj;
     private GameObject[] itemObj;
+    private GameObject trapObj;
 
     public GameObject player;
     public GameObject[] Enemys;
@@ -27,9 +28,11 @@ public class RunTime : MonoBehaviour
     void Start()
     {
         runTime = 0;
+
         obj = new GameObject[8];
-        EnemyPosition = new Vector3[8];
+        EnemyPosition = new Vector3[9];
         itemObj = new GameObject[8];
+
         playerLife = player.GetComponent<Player>().m_life;
         checkpointtime = 0;
     }
@@ -43,26 +46,35 @@ public class RunTime : MonoBehaviour
         }
 
         EnemyAppear();
+        TrapAppear();
         PlayerLifeCheck();
 
         //아이템
         if (created)
         {
-            for (int i = 0; i < 8; i++)
+            if(trapObj != null)
+            {
+                EnemyPosition[0] = trapObj.transform.position;
+            } else
+            {
+                EnemyPosition[0] = new Vector3(0, 0, 3);
+            }
+
+            for (int i = 1; i < 9; i++)
             {
                 if (EnemyPosition[i] == new Vector3(0, 0, 3))
                 {
-                    if (Random.Range(0, 15) == 7)
+                    if (Random.Range(0, 7) == 7)
                     {
-                        itemObj[i] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
-                        itemObj[i].SetActive(true);
+                        itemObj[i-1] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
+                        itemObj[i-1].SetActive(true);
                         created = false;
                     }
                 }
 
-                if(obj[i] != null)
+                if(obj[i-1] != null)
                 {
-                    EnemyPosition[i] = obj[i].transform.position;
+                    EnemyPosition[i] = obj[i-1].transform.position;
                 } else
                 {
                     EnemyPosition[i] = new Vector3(0,0,3);
@@ -93,6 +105,82 @@ public class RunTime : MonoBehaviour
                 Destroy(obj[i].gameObject);
             }
             playerLife = player.GetComponent<Player>().m_life;
+        }
+    }
+
+    private void TrapAppear()
+    {
+        if(runTime > 0.6f && runTime < 0.7f)
+        {
+            if(trapObj == null)
+            {
+                trapObj = (GameObject)Instantiate(Traps[0], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                trapObj.SetActive(true);
+            }
+        }
+        if (runTime > 2.2f && runTime < 2.3f)
+        {
+            if (trapObj == null)
+            {
+                trapObj = (GameObject)Instantiate(Traps[1], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                trapObj.SetActive(true);
+            }
+        }
+        if (runTime > 5.7f && runTime < 5.8f)
+        {
+            if (trapObj == null)
+            {
+                trapObj = (GameObject)Instantiate(Traps[1], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                trapObj.SetActive(true);
+            }
+        }
+        if (runTime > 9f && runTime < 9.1f)
+        {
+            if (trapObj == null)
+            {
+                trapObj = (GameObject)Instantiate(Traps[0], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                trapObj.SetActive(true);
+            }
+        }
+        if (runTime > 11.6f && runTime < 11.7f)
+        {
+            if (trapObj == null)
+            {
+                trapObj = (GameObject)Instantiate(Traps[0], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                trapObj.SetActive(true);
+            }
+        }
+        if (runTime > 13.4f && runTime < 13.5f)
+        {
+            if (trapObj == null)
+            {
+                trapObj = (GameObject)Instantiate(Traps[1], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                trapObj.SetActive(true);
+            }
+        }
+        if (runTime > 17.2 && runTime < 17.3f)
+        {
+            if (trapObj == null)
+            {
+                trapObj = (GameObject)Instantiate(Traps[1], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                trapObj.SetActive(true);
+            }
+        }
+        if (runTime > 22.4f && runTime < 22.5f)
+        {
+            if (trapObj == null)
+            {
+                trapObj = (GameObject)Instantiate(Traps[0], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                trapObj.SetActive(true);
+            }
+        }
+        if (runTime > 25f && runTime < 25.1f)
+        {
+            if (trapObj == null)
+            {
+                trapObj = (GameObject)Instantiate(Traps[0], new Vector3(20, -3.2f, 0), Quaternion.identity);
+                trapObj.SetActive(true);
+            }
         }
     }
 
@@ -134,10 +222,14 @@ public class RunTime : MonoBehaviour
                     created = true;
                 }
             }
-            
         }
 
-        if (runTime > 5.7f && runTime < 5.8f)
+        if(runTime > 4.1 && runTime < 4.11)
+        {
+            cnt = 0;
+        }
+
+        if (runTime > 6.9f && runTime < 7f)
         {
             for (int i = 0; i < 8; i++)
             {
@@ -151,7 +243,7 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if (runTime > 9f && runTime < 9.1f)
+        if (runTime > 9.6f && runTime < 9.7f)
         {
             for (int i = 0; i < 8; i++)
             {
@@ -164,17 +256,17 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if (runTime > 12f && runTime < 12.1f)
+        if (runTime > 12.4f && runTime < 12.5f)
         {
             while (cnt < 4)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
+                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
                 obj[cnt].SetActive(true);
                 cnt++;
             }
             while (cnt < 8)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
                 obj[cnt].SetActive(true);
                 cnt++;
             }
@@ -185,6 +277,11 @@ public class RunTime : MonoBehaviour
                     created = true;
                 }
             }
+        }
+
+        if (runTime > 12.5 && runTime < 12.51)
+        {
+            cnt = 0;
         }
 
         if (runTime > 17f && runTime < 17.1f)
@@ -210,7 +307,12 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if (runTime > 21f && runTime < 11.1f)
+        if (runTime > 17.1 && runTime < 17.11)
+        {
+            cnt = 0;
+        }
+
+        if (runTime > 21f && runTime < 21.1f)
         {
             while (cnt < 6)
             {
@@ -233,8 +335,13 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if (runTime > 26f && runTime < 26.1f)
+        if (runTime > 21.1 && runTime < 21.11)
         {
+            cnt = 0;
+        }
+
+        if (runTime > 26f && runTime < 26.1f)
+        { 
             while (cnt < 2)
             {
                 obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
@@ -254,6 +361,11 @@ public class RunTime : MonoBehaviour
                     created = true;
                 }
             }
+        }
+
+        if (runTime > 26.1 && runTime < 26.11)
+        {
+            cnt = 0;
         }
 
         if (runTime > 31f && runTime < 31.1f)

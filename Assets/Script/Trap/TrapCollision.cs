@@ -54,6 +54,11 @@ public class TrapCollision : MonoBehaviour
         {
             DecHP();
         }
+
+        if(collision.transform.tag == "Respawn")
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void plzDes()

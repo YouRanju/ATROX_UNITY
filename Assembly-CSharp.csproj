@@ -60,18 +60,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Background\BackgroundAppear.cs" />
     <Compile Include="Assets\Script\Background\BackgroundLight.cs" />
     <Compile Include="Assets\Script\Background\BackgroundManager.cs" />
     <Compile Include="Assets\Script\Background\BackgroundStar.cs" />
     <Compile Include="Assets\Script\CheckpointColiision.cs" />
     <Compile Include="Assets\Script\Enemy\AlienLaser.cs" />
-    <Compile Include="Assets\Script\Enemy\AlienMoving.cs" />
     <Compile Include="Assets\Script\Enemy\AlienShoot.cs" />
     <Compile Include="Assets\Script\Enemy\AlienShotCollision.cs" />
     <Compile Include="Assets\Script\Enemy\BossShot.cs" />
     <Compile Include="Assets\Script\Enemy\DashEnemy.cs" />
-    <Compile Include="Assets\Script\Enemy\EnemyManager.cs" />
     <Compile Include="Assets\Script\Enemy\LaserCollision.cs" />
     <Compile Include="Assets\Script\Enemy\St1Boss.cs" />
     <Compile Include="Assets\Script\Enemy\UpEnemy.cs" />
@@ -85,13 +82,16 @@
     <Compile Include="Assets\Script\Event\TypeEffect.cs" />
     <Compile Include="Assets\Script\FullTime.cs" />
     <Compile Include="Assets\Script\item\Itemcollision.cs" />
+    <Compile Include="Assets\Script\notuse\AlienMoving.cs" />
+    <Compile Include="Assets\Script\notuse\BackgroundAppear.cs" />
+    <Compile Include="Assets\Script\notuse\EnemyManager.cs" />
+    <Compile Include="Assets\Script\notuse\Trapshot.cs" />
     <Compile Include="Assets\Script\Player\ExplosionMove.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\Shoot.cs" />
     <Compile Include="Assets\Script\Player\ShootMove.cs" />
     <Compile Include="Assets\Script\RunTime.cs" />
     <Compile Include="Assets\Script\Trap\TrapCollision.cs" />
-    <Compile Include="Assets\Script\Trap\Trapshot.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Mirim/Documents/GitHub/ATROX_UNITY/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

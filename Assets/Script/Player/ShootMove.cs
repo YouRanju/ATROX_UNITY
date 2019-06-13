@@ -38,7 +38,7 @@ public class ShootMove : MonoBehaviour
         if (canHo)
         {
             float rotateAmount = Vector3.Cross(dir, transform.up).z;
-            GetComponent<Rigidbody2D>().angularVelocity = -rotateAmount * 300f;
+            GetComponent<Rigidbody2D>().angularVelocity = -rotateAmount * 1200f;
             GetComponent<Rigidbody2D>().velocity = transform.up * 12f;
         }
     }

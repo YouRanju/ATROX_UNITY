@@ -34,16 +34,15 @@ public class BossShot : MonoBehaviour
             obj.SetActive(true);
 
            
-                float angle = 360 / oneShoting;
+            float angle = 360 / oneShoting;
 
-                cnt++;
+            cnt++;
 
-                obj.GetComponent<Rigidbody2D>().velocity = (new Vector2(speed * Mathf.Cos(Mathf.PI * 2 * cnt / oneShoting), speed * Mathf.Sin((Mathf.PI * 2 * cnt / oneShoting))));
-                obj.transform.position += new Vector3(0, -2, 0);
-                obj.transform.Rotate(new Vector3(0f, 0f, (360 * cnt / oneShoting + 90)));
-
-
-                if (cnt >= oneShoting) cnt = 0;
+            obj.GetComponent<Rigidbody2D>().velocity = (new Vector2(speed * Mathf.Cos(Mathf.PI * 2 * cnt / oneShoting), speed * Mathf.Sin((Mathf.PI * 2 * cnt / oneShoting))));
+            obj.transform.position += new Vector3(0, -2, 0);
+            obj.transform.Rotate(new Vector3(0f, 0f, (360 * cnt / oneShoting + 90)));
+            obj.GetComponent<AlienShotCollision>().isBoss = true;
+             if (cnt >= oneShoting) cnt = 0;
 
             sdt = 0;
         }

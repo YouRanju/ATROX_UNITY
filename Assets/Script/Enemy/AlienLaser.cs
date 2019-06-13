@@ -29,7 +29,7 @@ public class AlienLaser : MonoBehaviour
     {
         sdt += Time.deltaTime;
         
-        if (sdt > 7) {
+        if (sdt > 15) {
             ldt += Time.deltaTime;
             lineRenderer.SetWidth(ldt, ldt);
             lineRenderer.SetColors(Color.yellow, Color.white);
@@ -53,7 +53,7 @@ public class AlienLaser : MonoBehaviour
 
             camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0,0,-10);
 
-            if (sdt >= 10)
+            if (sdt >= 18)
             {
                 ldt -= Time.deltaTime * 3f;
                 lineRenderer.SetWidth(ldt, ldt);
@@ -67,7 +67,7 @@ public class AlienLaser : MonoBehaviour
 
             }
         }
-        else if (sdt > 3)
+        else if (sdt > 7)
         {
             lineRenderer.SetWidth(0.08f, 0.08f);
             lineRenderer.useWorldSpace = true;

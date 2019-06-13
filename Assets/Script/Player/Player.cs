@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
                 GetComponent<Shoot>().time = 2f;
             } else
             {
-                GetComponent<Shoot>().time = 0.8f;
+                GetComponent<Shoot>().time = 1f;
             }
         }
 

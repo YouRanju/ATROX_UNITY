@@ -60,12 +60,12 @@ public class DashEnemy : MonoBehaviour
 
         GetComponent<SpriteRenderer>().flipX = Dir.x < 0 ? false : true;
 
-        Rigid.velocity = Dir * 7.0f;
+        Rigid.velocity = Dir * (Random.Range(3,12) * 0.7f);
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 vec = transform.position;
-            vec.x -= 0.2f;
+            vec.x -= 0.3f;
             transform.position = vec;
         }
 
@@ -164,7 +164,7 @@ public class DashEnemy : MonoBehaviour
     private void Attack()
     {
         
-        adt += Time.deltaTime * 70;
+        adt += Time.deltaTime * 150;
         GetComponent<SpriteRenderer>().color = new Color(255 - adt, 0, 255 - adt);
  
         if(adt >= 255)

@@ -6,6 +6,8 @@ class AlienShotCollision : MonoBehaviour
 {
     public GameObject player;
 
+    public bool isBoss;
+
     private void Start()
     {
         Destroy(gameObject, 3f);
@@ -15,9 +17,12 @@ class AlienShotCollision : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            Vector2 vec = transform.position;
-            vec.x -= 0.2f;
-            transform.position = vec;
+            if(!isBoss)
+            {
+                Vector2 vec = transform.position;
+                vec.x -= 0.2f;
+                transform.position = vec;
+            }
         }
 
         if(player.GetComponent<Player>().isStart == false)
