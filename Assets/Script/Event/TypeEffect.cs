@@ -16,17 +16,13 @@ public class TypeEffect : MonoBehaviour
 
     void Start()
     {
-        Get_Typing(dialog_cnt, fulltext);
+        this.GetComponent<Text>().text = "";
     }
 
-    public void Get_Typing(int _dialog_cnt, string[] _fullText)
+    public void Get_Typing()
     {
         text_exit = false;
         cnt = 0;
-
-        dialog_cnt = _dialog_cnt;
-        fulltext = new string[dialog_cnt];
-        fulltext = _fullText;
 
         StartCoroutine(ShowText(fulltext));
     }

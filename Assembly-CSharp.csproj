@@ -80,6 +80,7 @@
     <Compile Include="Assets\Script\Event\IntroMove.cs" />
     <Compile Include="Assets\Script\Event\Starlight.cs" />
     <Compile Include="Assets\Script\Event\TitleMeteorMove.cs" />
+    <Compile Include="Assets\Script\Event\ToIntro.cs" />
     <Compile Include="Assets\Script\Event\TypeEffect.cs" />
     <Compile Include="Assets\Script\FullTime.cs" />
     <Compile Include="Assets\Script\item\Itemcollision.cs" />
