@@ -9,6 +9,7 @@ public class TrapCollision : MonoBehaviour
     public float m_y;
     public bool isRock;
     public GameObject player;
+    public AudioSource dieSound;
 
     bool die;
     int m_life = 3;
@@ -24,7 +25,7 @@ public class TrapCollision : MonoBehaviour
         
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            m_dirX = -0.2f;
+            m_dirX = -0.3f;
         }
 
         else
@@ -63,7 +64,8 @@ public class TrapCollision : MonoBehaviour
 
     public void plzDes()
     {
-        Destroy(gameObject);
+        dieSound.Play();
+        Destroy(gameObject, 1f);
     }
 
     public void DecHP()

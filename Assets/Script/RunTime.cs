@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RunTime : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class RunTime : MonoBehaviour
     public GameObject[] Traps;
     public GameObject Boss;
     public GameObject CheckPoint;
+    public Slider slider;
 
     public Vector3[] EnemyPosition;
     private bool created;
@@ -30,7 +32,7 @@ public class RunTime : MonoBehaviour
         runTime = 0;
 
         obj = new GameObject[8];
-        EnemyPosition = new Vector3[9];
+        EnemyPosition = new Vector3[8];
         itemObj = new GameObject[8];
 
         playerLife = player.GetComponent<Player>().m_life;
@@ -45,36 +47,28 @@ public class RunTime : MonoBehaviour
             runTime += Time.deltaTime;
         }
 
+        PlayerLifeCheck();
         EnemyAppear();
         TrapAppear();
-        PlayerLifeCheck();
 
         //아이템
         if (created)
         {
-            if(trapObj != null)
+            for (int i = 0; i < 8; i++)
             {
-                EnemyPosition[0] = trapObj.transform.position;
-            } else
-            {
-                EnemyPosition[0] = new Vector3(0, 0, 3);
-            }
-
-            for (int i = 1; i < 9; i++)
-            {
-                if (EnemyPosition[i] == new Vector3(0, 0, 3))
+                if (obj[i] == null)
                 {
-                    if (Random.Range(0, 7) == 7)
+                    if (Random.Range(0, 7)%2 == 0)
                     {
-                        itemObj[i-1] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
-                        itemObj[i-1].SetActive(true);
-                        created = false;
+                        itemObj[i] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
+                        itemObj[i].SetActive(true);
                     }
+                    created = false;
                 }
 
-                if(obj[i-1] != null)
+                if(obj[i] != null)
                 {
-                    EnemyPosition[i] = obj[i-1].transform.position;
+                    EnemyPosition[i] = obj[i].transform.position;
                 } else
                 {
                     EnemyPosition[i] = new Vector3(0,0,3);
@@ -82,6 +76,7 @@ public class RunTime : MonoBehaviour
             }
         }
 
+        if (runTime < 17f) CheckPoint.SetActive(false);
         if (runTime > 17f)
         {
             CheckPoint.transform.position = new Vector3(30, CheckPoint.transform.position.y, 0);
@@ -92,6 +87,8 @@ public class RunTime : MonoBehaviour
         {
             checkpointtime = 17f;
         }
+
+        slider.value = runTime / 1000 * 32;
     }
 
     private void PlayerLifeCheck()
@@ -102,7 +99,15 @@ public class RunTime : MonoBehaviour
             created = false;
             for(int i = 0; i < 8; i++)
             {
-                Destroy(obj[i].gameObject);
+                if(obj[i] != null)
+                {
+                    Destroy(obj[i].gameObject);
+                }
+            }
+
+            if(trapObj != null)
+            {
+                Destroy(trapObj.gameObject);
             }
             playerLife = player.GetComponent<Player>().m_life;
         }
@@ -231,7 +236,7 @@ public class RunTime : MonoBehaviour
 
         if (runTime > 6.9f && runTime < 7f)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (obj[i] == null)
                 {
@@ -245,7 +250,7 @@ public class RunTime : MonoBehaviour
 
         if (runTime > 9.6f && runTime < 9.7f)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (obj[i] == null)
                 {

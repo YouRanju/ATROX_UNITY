@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     //사운드
     public AudioSource JumpAudio;
     public AudioSource DblJumpAudio;
+    public AudioSource Falldown;
 
     //시간변수
     static float rdt = 0;
@@ -236,6 +237,7 @@ public class Player : MonoBehaviour
 
         if (collision.transform.tag == "hole")
         {
+            Falldown.Play();
             Vector2 vec = transform.position;
 
             vec.y -= 2f;

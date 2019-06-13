@@ -5,9 +5,11 @@ using UnityEngine;
 public class CheckpointColiision : MonoBehaviour
 {
     public bool check = false;
+    public AudioSource checkin;
 
     float m_dirX = 0;
     float m_Scroll;
+    float time;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +37,8 @@ public class CheckpointColiision : MonoBehaviour
 
         if(check)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
+            time += Time.deltaTime* 70;
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(time, time, time);
         }
 
     }
@@ -44,6 +47,7 @@ public class CheckpointColiision : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
+            checkin.Play();
             check = true;
         }
     }
