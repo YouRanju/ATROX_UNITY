@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class St1Boss : MonoBehaviour
 {
@@ -68,6 +69,8 @@ public class St1Boss : MonoBehaviour
             DieSound.Play();
             Instantiate(Explo, transform.position, transform.rotation);
             Destroy(gameObject, 0.5f);
+
+            SceneManager.LoadScene("StageClear");
         }
     }
 

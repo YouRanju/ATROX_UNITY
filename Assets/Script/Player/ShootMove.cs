@@ -13,12 +13,14 @@ public class ShootMove : MonoBehaviour
 
     public Vector3 dir;
 
+    public float deathTime = 0.8f;
+    public bool canHo = false;
+
     void Start()
     {
         ShotRigid = GetComponent<Rigidbody2D>();
 
-        //Invoke("explo", 0.7f);
-        Destroy(gameObject, 1.3f);
+        Destroy(gameObject, deathTime);
     }
 
     void explo()
@@ -31,6 +33,13 @@ public class ShootMove : MonoBehaviour
         if (enabled)
         {
             ShotRigid.velocity = (dir * 5.5f);
+        }
+
+        if (canHo)
+        {
+            float rotateAmount = Vector3.Cross(dir, transform.up).z;
+            GetComponent<Rigidbody2D>().angularVelocity = -rotateAmount * 300f;
+            GetComponent<Rigidbody2D>().velocity = transform.up * 12f;
         }
     }
 

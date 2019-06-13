@@ -12,7 +12,7 @@ public class CheckpointColiision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_Scroll = transform.position.x;
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class CheckpointColiision : MonoBehaviour
 
         if(check)
         {
-           // gameObject.GetComponent<SpriteRenderer>().color = new Color()
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
         }
 
     }

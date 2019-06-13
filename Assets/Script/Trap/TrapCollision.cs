@@ -8,7 +8,7 @@ public class TrapCollision : MonoBehaviour
     float m_Scroll;
     public float m_y;
     public bool isRock;
-    public GameObject Player;
+    public GameObject player;
 
     bool die;
     int m_life = 3;
@@ -36,11 +36,16 @@ public class TrapCollision : MonoBehaviour
 
         Vector2 pos1 = new Vector2(m_Scroll, m_y);
         transform.position = pos1;
+
+        if(player.GetComponent<Player>().isStart == false)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.tag == "Player" && !isRock)
+        if(collision.transform.tag == "Player")
         {
             collision.gameObject.GetComponent<Player>().DecHP();
         }
@@ -64,7 +69,7 @@ public class TrapCollision : MonoBehaviour
             if (!die)
             {
                 die = true;
-                Player.GetComponent<Player>().scoring += 300;
+                player.GetComponent<Player>().scoring += 300;
 
                 plzDes();
             }

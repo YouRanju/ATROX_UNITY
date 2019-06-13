@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -34,17 +35,23 @@ public class Player : MonoBehaviour
     public GameObject[] lifeUI;
     public Text Life;
     public int m_life = 3;
+    float dieTime = 0;
 
     //item용 변수
     public GameObject[] ItemUI;
-    bool canDouble = false;
-    bool canThree = false;
-    bool canRange = false;
-    bool canSpeed = false;
-    bool canHom = false;
+    public bool canDouble = false;
+    public bool canThree = false;
+    public bool canRange = false;
+    public bool canSpeed = false;
+    public bool canHom = false;
+
+    //핵폭탄
+    public GameObject[] Bombs;
+    int canBomb = 2;
+    float keydelay = 0;
 
     // 임시변수
-    bool isStart = false; //시작용          
+    public bool isStart = false; //시작용          
     bool isGround = true; //이동용
 
 
@@ -54,7 +61,7 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = runImg[0];
         Rigid = GetComponent<Rigidbody2D>();
 
-        Rigid.velocity = (Vector2.right * 13.0f);
+        transform.position = new Vector2(-11.79f, -1.31f);
     }
 
     // Update is called once per frame
@@ -62,13 +69,39 @@ public class Player : MonoBehaviour
     {
         rdt += Time.deltaTime;
 
-        if (transform.position.x > -3.2f && !isStart)
+        if (m_life <= 0)
         {
-            isStart = true;
+            SceneManager.LoadScene("GameOver");
+        }
+
+        if (!isStart)
+        {
+            Vector2 vec = transform.position;
+            vec.x += 0.4f;
+
+            transform.position = vec;
+
+            canDouble = false;
+            canThree  = false;
+            canRange  = false;
+            canSpeed  = false;
+            canHom = false;
+
+            if (transform.position.x > -3.2f)
+            {
+                isStart = true;
+            }
+
+            if (m_life >= 1)
+            {
+                lifeUI[m_life - 1].SetActive(true);
+            }
         }
         
         if(isStart)
         {
+            keydelay += Time.deltaTime;
+
             Rigid.constraints = RigidbodyConstraints2D.FreezePositionX;
             Rigid.gravityScale = 1;
 
@@ -91,6 +124,23 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             Render();
+
+            if(canBomb >= 0)
+            {
+                if (Input.GetKeyUp(KeyCode.LeftShift) && keydelay > 0.3f)
+                {
+                    Bombs[--canBomb].SetActive(false);
+                    keydelay = 0;
+                }
+            }
+
+            if(canRange)
+            {
+                GetComponent<Shoot>().time = 2f;
+            } else
+            {
+                GetComponent<Shoot>().time = 0.8f;
+            }
         }
 
         Score.text = scoring.ToString();
@@ -99,11 +149,6 @@ public class Player : MonoBehaviour
 
     void Render()
     {
-        if(m_life >= 1)
-        {
-            lifeUI[m_life-1].SetActive(true);
-        }
-
         if (rdt > 0.5f)
         {
             cnt++;
@@ -123,6 +168,12 @@ public class Player : MonoBehaviour
 
             rdt = 0;
         }
+
+        ItemUI[0].SetActive(canDouble);
+        ItemUI[1].SetActive(canThree);
+        ItemUI[2].SetActive(canRange);
+        ItemUI[3].SetActive(canSpeed);
+        ItemUI[4].SetActive(canHom);
     }
 
     void Jump()
@@ -163,11 +214,10 @@ public class Player : MonoBehaviour
     public void DecHP()
     {
         lifeUI[--m_life].SetActive(false);
-        
-        if (m_life <= 0)
-        {
-            Debug.Log("GameOver");
-        }
+
+        transform.position = new Vector2(-11.79f, -1.31f);
+
+        isStart = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -198,35 +248,30 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "double")
         {
             canDouble = true;
-            ItemUI[0].SetActive(true);
             Destroy(collision.gameObject);
         }
 
         if (collision.transform.tag == "three")
         {
             canThree = true;
-            ItemUI[1].SetActive(true);
             Destroy(collision.gameObject);
         }
 
         if (collision.transform.tag == "range")
         {
             canRange = true;
-            ItemUI[2].SetActive(true);
             Destroy(collision.gameObject);
         }
 
         if (collision.transform.tag == "speed")
         {
             canSpeed = true;
-            ItemUI[3].SetActive(true);
             Destroy(collision.gameObject);
         }
 
         if (collision.transform.tag == "homing")
         {
             canHom = true;
-            ItemUI[4].SetActive(true);
             Destroy(collision.gameObject);
         }
     }

@@ -19,6 +19,11 @@ class AlienShotCollision : MonoBehaviour
             vec.x -= 0.2f;
             transform.position = vec;
         }
+
+        if(player.GetComponent<Player>().isStart == false)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

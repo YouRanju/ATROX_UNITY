@@ -7,16 +7,17 @@ public class RunTime : MonoBehaviour
     // Start is called before the first frame update
 
     private float runTime;
-    private GameObject[] obj;
+    public GameObject[] obj;
+    private GameObject[] itemObj;
 
-    public GameObject Player;
+    public GameObject player;
     public GameObject[] Enemys;
     public GameObject[] Items;
     public GameObject[] Traps;
     public GameObject Boss;
     public GameObject CheckPoint;
 
-    private Vector3[] EnemyPosition;
+    public Vector3[] EnemyPosition;
     private bool created;
     private float checkpointtime;
     private int cnt = 0;
@@ -28,7 +29,9 @@ public class RunTime : MonoBehaviour
         runTime = 0;
         obj = new GameObject[8];
         EnemyPosition = new Vector3[8];
-        playerLife = Player.GetComponent<Player>().m_life;
+        itemObj = new GameObject[8];
+        playerLife = player.GetComponent<Player>().m_life;
+        checkpointtime = 0;
     }
 
     // Update is called once per frame
@@ -40,28 +43,56 @@ public class RunTime : MonoBehaviour
         }
 
         EnemyAppear();
+        PlayerLifeCheck();
 
+        //아이템
         if (created)
         {
             for (int i = 0; i < 8; i++)
             {
-                if (obj[i] == null)
+                if (EnemyPosition[i] == new Vector3(0, 0, 3))
                 {
-                    if(Random.Range(0,10) == 7)
+                    if (Random.Range(0, 15) == 7)
                     {
-                        obj[i] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
-                        obj[i].SetActive(true);
+                        itemObj[i] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
+                        itemObj[i].SetActive(true);
                         created = false;
                     }
                 }
 
-                EnemyPosition[i] = obj[i].transform.position;
+                if(obj[i] != null)
+                {
+                    EnemyPosition[i] = obj[i].transform.position;
+                } else
+                {
+                    EnemyPosition[i] = new Vector3(0,0,3);
+                }
             }
         }
 
-        if(CheckPoint.GetComponent<CheckpointColiision>().check)
+        if (runTime > 17f)
         {
-            checkpointtime = 30f;
+            CheckPoint.transform.position = new Vector3(30, CheckPoint.transform.position.y, 0);
+            CheckPoint.SetActive(true);
+        }
+
+        if (CheckPoint.GetComponent<CheckpointColiision>().check)
+        {
+            checkpointtime = 17f;
+        }
+    }
+
+    private void PlayerLifeCheck()
+    {
+        if (playerLife != player.GetComponent<Player>().m_life)
+        {
+            runTime = checkpointtime;
+            created = false;
+            for(int i = 0; i < 8; i++)
+            {
+                Destroy(obj[i].gameObject);
+            }
+            playerLife = player.GetComponent<Player>().m_life;
         }
     }
 
@@ -95,7 +126,15 @@ public class RunTime : MonoBehaviour
                 obj[cnt].SetActive(true);
                 cnt++;
             }
-            created = true;
+
+            for(int i = 0; i < 8; i++)
+            {
+                if(obj[i] != null)
+                {
+                    created = true;
+                }
+            }
+            
         }
 
         if (runTime > 5.7f && runTime < 5.8f)
@@ -139,7 +178,13 @@ public class RunTime : MonoBehaviour
                 obj[cnt].SetActive(true);
                 cnt++;
             }
-            created = true;
+            for (int i = 0; i < 8; i++)
+            {
+                if (obj[i] != null)
+                {
+                    created = true;
+                }
+            }
         }
 
         if (runTime > 17f && runTime < 17.1f)
@@ -156,7 +201,13 @@ public class RunTime : MonoBehaviour
                 obj[cnt].SetActive(true);
                 cnt++;
             }
-            created = true;
+            for (int i = 0; i < 8; i++)
+            {
+                if (obj[i] != null)
+                {
+                    created = true;
+                }
+            }
         }
 
         if (runTime > 21f && runTime < 11.1f)
@@ -173,7 +224,13 @@ public class RunTime : MonoBehaviour
                 obj[cnt].SetActive(true);
                 cnt++;
             }
-            created = true;
+            for (int i = 0; i < 8; i++)
+            {
+                if (obj[i] != null)
+                {
+                    created = true;
+                }
+            }
         }
 
         if (runTime > 26f && runTime < 26.1f)
@@ -190,7 +247,13 @@ public class RunTime : MonoBehaviour
                 obj[cnt].SetActive(true);
                 cnt++;
             }
-            created = true;
+            for (int i = 0; i < 8; i++)
+            {
+                if (obj[i] != null)
+                {
+                    created = true;
+                }
+            }
         }
 
         if (runTime > 31f && runTime < 31.1f)
@@ -201,7 +264,7 @@ public class RunTime : MonoBehaviour
                 obj[0].SetActive(true);
                 created = true;
             }
-        }
+        } 
     }
 
     private void delete(int start, int end)

@@ -7,6 +7,7 @@ public class Shoot : MonoBehaviour
     public int damage = 1;
     public GameObject Player;
     public GameObject Shot;
+    public float time;
 
     public LineRenderer lineRenderer;
     private bool isTargeting;
@@ -15,6 +16,9 @@ public class Shoot : MonoBehaviour
 
     private float sdt;
     private float dt;
+
+    private Rigidbody2D rb;
+    public GameObject manager;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +36,55 @@ public class Shoot : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && sdt > 0.2)
         {
-            Shot.transform.position = Player.transform.position;
-            Shot.GetComponent<ShootMove>().dir = angle;
-            Instantiate(Shot);
+            if(Player.GetComponent<Player>().canHom)
+            {
+                GameObject target = null;
+
+                for (int i = 0; i < 8; i++)
+                {
+                    if (manager.GetComponent<RunTime>().obj[i] != null)
+                    {
+                        target = manager.GetComponent<RunTime>().obj[i];
+                    }
+                }
+
+                if (target != null)
+                {
+                    Vector2 direction = (Vector2)target.transform.position - (Vector2)Player.transform.position;
+                    direction.Normalize();
+                    
+                    Shot.transform.position = Player.transform.position;
+                    Shot.GetComponent<ShootMove>().canHo = true;
+                    Shot.GetComponent<ShootMove>().deathTime = 1.3f;
+                    Shot.GetComponent<ShootMove>().dir = direction;
+                    Instantiate(Shot);
+                    
+                } else
+                {
+                    Shot.transform.position = Player.transform.position;
+                    Shot.GetComponent<ShootMove>().canHo = false;
+                    Shot.GetComponent<ShootMove>().deathTime = time;
+                    Shot.GetComponent<ShootMove>().dir = angle;
+                    Instantiate(Shot);
+                }
+
+            }
+            else
+            {
+                Shot.transform.position = Player.transform.position;
+                Shot.GetComponent<ShootMove>().deathTime = time;
+                Shot.GetComponent<ShootMove>().dir = angle;
+                Shot.GetComponent<ShootMove>().canHo = false;
+                Instantiate(Shot);
+
+                if (Player.GetComponent<Player>().canThree)
+                {
+                    Shot.GetComponent<ShootMove>().dir = angle + new Vector3(-0.4f, 0.4f);
+                    Instantiate(Shot);
+                    Shot.GetComponent<ShootMove>().dir = angle + new Vector3(0.4f, -0.4f);
+                    Instantiate(Shot);
+                }
+            }
 
             sdt = 0;
         }
@@ -60,7 +110,7 @@ public class Shoot : MonoBehaviour
             Vector2 target = lineRenderer.GetPosition(1);
             dt += Time.deltaTime;
        
-            if(dt > 0.02f)
+            if(dt > 0.002f)
             {
                 if (angle.x < 1.8f && !an)
                 {
