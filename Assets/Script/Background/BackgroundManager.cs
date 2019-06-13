@@ -43,6 +43,11 @@ public class BackgroundManager : MonoBehaviour
             m_dirX = 0;
         }
 
+        if(player.GetComponent<Player>().canSpeed)
+        {
+            m_dirX = -1.5f;
+        }
+
         m_Scroll.x += m_dirX * m_Speed * eTime;
         Move();
        

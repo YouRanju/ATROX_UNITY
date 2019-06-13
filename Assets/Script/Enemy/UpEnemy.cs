@@ -59,6 +59,18 @@ public class UpEnemy : MonoBehaviour
             vec.x -= 0.2f;
             transform.position = vec;
         }
+
+        if(Player.GetComponent<Player>().canSpeed)
+        {
+            Vector2 vec = transform.position;
+            vec.x -= 0.2f;
+            transform.position = vec;
+        }
+
+        if(Player.GetComponent<Player>().isStart == false)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Render()

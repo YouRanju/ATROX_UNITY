@@ -5,13 +5,17 @@ using UnityEngine.UI;
 
 public class RunTime : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //거리-시간
+    float runTime;
+    float checkpointtime;
 
-    private float runTime;
+    //소환용 변수
     public GameObject[] obj;
-    private GameObject[] itemObj;
-    private GameObject trapObj;
+    GameObject[] itemObj;
+    GameObject trapObj;
+    int cnt = 0;
 
+    //패턴적용용
     public GameObject player;
     public GameObject[] Enemys;
     public GameObject[] Items;
@@ -20,26 +24,27 @@ public class RunTime : MonoBehaviour
     public GameObject CheckPoint;
     public Slider slider;
 
-    public Vector3[] EnemyPosition;
-    private bool created;
-    private float checkpointtime;
-    private int cnt = 0;
 
+    //아이템 생성용
+    Vector3[] EnemyPosition; //죽은 적 위치 정보
+    bool created;
+
+    //플레이어 피격 시
     private int playerLife;
 
     void Start()
     {
         runTime = 0;
+        checkpointtime = 0;
 
         obj = new GameObject[8];
+        itemObj = new GameObject[2];
+
         EnemyPosition = new Vector3[8];
-        itemObj = new GameObject[8];
 
         playerLife = player.GetComponent<Player>().m_life;
-        checkpointtime = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.RightArrow))
@@ -47,9 +52,15 @@ public class RunTime : MonoBehaviour
             runTime += Time.deltaTime;
         }
 
-        PlayerLifeCheck();
-        EnemyAppear();
-        TrapAppear();
+        //스피드 아이템 획득시
+        if(player.GetComponent<Player>().canSpeed)
+        {
+            runTime += Time.deltaTime * 2;
+        }
+
+        PlayerLifeCheck(); //피격체크
+        EnemyAppear();  //외계인 소환 패턴
+        TrapAppear();   //함정 소환 패턴
 
         //아이템
         if (created)
@@ -58,11 +69,15 @@ public class RunTime : MonoBehaviour
             {
                 if (obj[i] == null)
                 {
-                    if (Random.Range(0, 7)%2 == 0)
+                    for(int j = 0; j < 2; j++)
                     {
-                        itemObj[i] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
-                        itemObj[i].SetActive(true);
+                        if (Random.Range(0, 7) % 2 == 0 && itemObj[j] == null)
+                        {
+                            itemObj[j] = (GameObject)Instantiate(Items[Random.Range(0, 5)], EnemyPosition[i], Quaternion.identity);
+                            itemObj[j].SetActive(true);
+                        }
                     }
+                    
                     created = false;
                 }
 
@@ -76,8 +91,9 @@ public class RunTime : MonoBehaviour
             }
         }
 
-        if (runTime < 17f) CheckPoint.SetActive(false);
-        if (runTime > 17f)
+        //체크포인트
+        if (runTime < 13f) CheckPoint.SetActive(false);
+        if (runTime > 13f)
         {
             CheckPoint.transform.position = new Vector3(30, CheckPoint.transform.position.y, 0);
             CheckPoint.SetActive(true);
@@ -85,9 +101,10 @@ public class RunTime : MonoBehaviour
 
         if (CheckPoint.GetComponent<CheckpointColiision>().check)
         {
-            checkpointtime = 17f;
+            checkpointtime = 15f;
         }
 
+        //남은거리
         slider.value = runTime / 1000 * 32;
     }
 
@@ -102,6 +119,11 @@ public class RunTime : MonoBehaviour
                 if(obj[i] != null)
                 {
                     Destroy(obj[i].gameObject);
+                }
+
+                if (itemObj[i] != null)
+                {
+                    Destroy(itemObj[i].gameObject);
                 }
             }
 
@@ -382,15 +404,5 @@ public class RunTime : MonoBehaviour
                 created = true;
             }
         } 
-    }
-
-    private void delete(int start, int end)
-    {
-        for (int i = start; i < end; i++)
-        {
-            Destroy(obj[i].gameObject);
-            obj[i] = null;
-        }
-        created = false;
     }
 }

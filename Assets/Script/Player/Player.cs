@@ -45,9 +45,11 @@ public class Player : MonoBehaviour
     public bool canRange = false;
     public bool canSpeed = false;
     public bool canHom = false;
+    float[] itemTime = new float[5];
 
     //핵폭탄
     public GameObject[] Bombs;
+    public GameObject Bomb;
     int canBomb = 2;
     float keydelay = 0;
 
@@ -108,13 +110,13 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) Jump();
 
-            if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -7f && isGround)
+            if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -7f)
             {
                 Rigid.constraints = RigidbodyConstraints2D.None;
                 Rigid.AddForce(Vector2.left * 20);
             }
 
-            if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -3.2f && isGround)
+            if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -3.2f)
             {
                 Rigid.constraints = RigidbodyConstraints2D.None;
                 Rigid.AddForce(Vector2.right * 10);
@@ -144,8 +146,64 @@ public class Player : MonoBehaviour
             }
         }
 
+        ItemCheck();
+
         Score.text = scoring.ToString();
         Life.text = m_life.ToString();
+    }
+
+    void ItemCheck()
+    {
+        if(canDouble)
+        {
+            itemTime[0] += Time.deltaTime;
+
+            if(itemTime[0] > 7f)
+            {
+                canDouble = false;
+                itemTime[0] = 0;
+            }
+        }
+        if (canThree)
+        {
+            itemTime[1] += Time.deltaTime;
+
+            if (itemTime[1] > 7f)
+            {
+                canThree = false;
+                itemTime[1] = 0;
+            }
+        }
+        if (canRange)
+        {
+            itemTime[2] += Time.deltaTime;
+
+            if (itemTime[2] > 7f)
+            {
+                canRange = false;
+                itemTime[2] = 0;
+            }
+        }
+        if (canSpeed)
+        {
+            itemTime[3] += Time.deltaTime;
+
+            if (itemTime[3] > 1f)
+            {
+                canSpeed = false;
+                itemTime[3] = 0;
+            }
+        }
+        if (canHom)
+        {
+            itemTime[4] += Time.deltaTime;
+
+            if (itemTime[4] > 7f)
+            {
+                canHom = false;
+                itemTime[4] = 0;
+            }
+        }
     }
 
     void Render()

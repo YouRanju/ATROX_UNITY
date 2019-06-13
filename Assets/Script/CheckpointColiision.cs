@@ -22,7 +22,7 @@ public class CheckpointColiision : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            m_dirX = -0.2f;
+            m_dirX = -0.3f;
         }
 
         else

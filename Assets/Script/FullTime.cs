@@ -10,7 +10,7 @@ public class FullTime : MonoBehaviour
 
     void Start()
     {
-        timeUI.text = 150.ToString();
+        timeUI.text = 100.ToString();
         ftime = 0;
     }
 
@@ -19,6 +19,6 @@ public class FullTime : MonoBehaviour
     {
         ftime += Time.deltaTime;
 
-        timeUI.text = (150 - Mathf.CeilToInt(ftime)).ToString();
+        timeUI.text = (100 - Mathf.CeilToInt(ftime)).ToString();
     }
 }

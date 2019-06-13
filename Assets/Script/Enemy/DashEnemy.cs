@@ -73,6 +73,18 @@ public class DashEnemy : MonoBehaviour
         {
             Attack();
         }
+
+        if (Player.GetComponent<Player>().canSpeed)
+        {
+            Vector2 vec = transform.position;
+            vec.x -= 0.3f;
+            transform.position = vec;
+        }
+
+        if (Player.GetComponent<Player>().isStart == false)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Render()
