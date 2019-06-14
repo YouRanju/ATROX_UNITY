@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     //점수용
     public Text Score;
     public int scoring;
+    public GameObject onlyScore;
 
     //생명용
     public GameObject[] lifeUI;
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
     // 임시변수
     public bool isStart = false; //시작용          
     bool isGround = true; //이동용
-
+    public int level = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -155,16 +156,17 @@ public class Player : MonoBehaviour
 
             if(canRange)
             {
-                GetComponent<Shoot>().time = 2f;
+                GetComponent<Shoot>().time = 2f + (level * 0.2f);
             } else
             {
-                GetComponent<Shoot>().time = 1f;
+                GetComponent<Shoot>().time = 1f + (level * 0.2f);
             }
         }
 
         ItemCheck();
 
         Score.text = scoring.ToString();
+        OnlyScore.score = scoring;
         Life.text = m_life.ToString();
     }
 

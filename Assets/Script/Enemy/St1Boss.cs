@@ -24,6 +24,8 @@ public class St1Boss : MonoBehaviour
 
     private bool isright = true;
 
+    public bool death;
+
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = runImg[0];
@@ -67,10 +69,9 @@ public class St1Boss : MonoBehaviour
         if (hp <= 0)
         {
             DieSound.Play();
+            death = true;
             Instantiate(Explo, transform.position, transform.rotation);
             Destroy(gameObject, 0.5f);
-
-            SceneManager.LoadScene("StageClear");
         }
     }
 

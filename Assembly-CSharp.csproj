@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\OnlyScore.cs" />
     <Compile Include="Assets\Script\Background\BackgroundLight.cs" />
     <Compile Include="Assets\Script\Background\BackgroundManager.cs" />
     <Compile Include="Assets\Script\Background\BackgroundStar.cs" />
@@ -75,9 +76,11 @@
     <Compile Include="Assets\Script\Enemy\UpEnemy.cs" />
     <Compile Include="Assets\Script\Event\CameraView.cs" />
     <Compile Include="Assets\Script\Event\GameExit.cs" />
+    <Compile Include="Assets\Script\Event\GameOverToTitle.cs" />
     <Compile Include="Assets\Script\Event\GameStartBtn.cs" />
     <Compile Include="Assets\Script\Event\IntroManager.cs" />
     <Compile Include="Assets\Script\Event\IntroMove.cs" />
+    <Compile Include="Assets\Script\Event\Stage1to2.cs" />
     <Compile Include="Assets\Script\Event\Starlight.cs" />
     <Compile Include="Assets\Script\Event\TitleMeteorMove.cs" />
     <Compile Include="Assets\Script\Event\ToIntro.cs" />

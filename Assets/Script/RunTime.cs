@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RunTime : MonoBehaviour
@@ -8,11 +9,13 @@ public class RunTime : MonoBehaviour
     //거리-시간
     float runTime;
     float checkpointtime;
+    public GameObject fullTime;
 
     //소환용 변수
     public GameObject[] obj;
     GameObject[] itemObj;
     GameObject trapObj;
+    GameObject BossObj;
     int cnt = 0;
 
     //패턴적용용
@@ -33,6 +36,7 @@ public class RunTime : MonoBehaviour
     private int playerLife;
 
     float dt;
+    bool bossdeath;
 
     void Start()
     {
@@ -55,21 +59,21 @@ public class RunTime : MonoBehaviour
         }
 
         //스피드 아이템 획득시
-        if(player.GetComponent<Player>().canSpeed)
+        if (player.GetComponent<Player>().canSpeed)
         {
             runTime += Time.deltaTime * 2;
         }
 
         //핵폭탄
-        if(player.GetComponent<Player>().isBomb)
+        if (player.GetComponent<Player>().isBomb)
         {
             dt += Time.deltaTime;
 
-            if(dt > 2f)
+            if (dt > 2f)
             {
                 delete();
                 dt = 0;
-            }           
+            }
         }
 
         PlayerLifeCheck(); //피격체크
@@ -83,7 +87,7 @@ public class RunTime : MonoBehaviour
             {
                 if (obj[i] == null)
                 {
-                    for(int j = 0; j < 2; j++)
+                    for (int j = 0; j < 2; j++)
                     {
                         if (Random.Range(0, 7) % 2 == 0 && itemObj[j] == null)
                         {
@@ -91,16 +95,17 @@ public class RunTime : MonoBehaviour
                             itemObj[j].SetActive(true);
                         }
                     }
-                    
+
                     created = false;
                 }
 
-                if(obj[i] != null)
+                if (obj[i] != null)
                 {
                     EnemyPosition[i] = obj[i].transform.position;
-                } else
+                }
+                else
                 {
-                    EnemyPosition[i] = new Vector3(0,0,3);
+                    EnemyPosition[i] = new Vector3(0, 0, 3);
                 }
             }
         }
@@ -121,7 +126,20 @@ public class RunTime : MonoBehaviour
         //남은거리
         slider.value = runTime / 1000 * 32;
 
-       
+        //클리어
+        if (runTime > 31.5f && BossObj == null)
+        {
+            dt += Time.deltaTime;
+
+            player.GetComponent<Player>().scoring += 1200;
+            fullTime.GetComponent<FullTime>().timeadd();
+
+            if (dt > 5)
+            {
+
+                SceneManager.LoadScene("StageClear");
+            }
+        }
     }
 
     private void PlayerLifeCheck()
@@ -134,7 +152,7 @@ public class RunTime : MonoBehaviour
             playerLife = player.GetComponent<Player>().m_life;
         }
     }
-    
+
     private void delete()
     {
         for (int i = 0; i < 8; i++)
@@ -160,9 +178,9 @@ public class RunTime : MonoBehaviour
 
     private void TrapAppear()
     {
-        if(runTime > 0.6f && runTime < 0.7f)
+        if (runTime > 0.6f && runTime < 0.7f)
         {
-            if(trapObj == null)
+            if (trapObj == null)
             {
                 trapObj = (GameObject)Instantiate(Traps[0], new Vector3(20, -3.2f, 0), Quaternion.identity);
                 trapObj.SetActive(true);
@@ -265,16 +283,16 @@ public class RunTime : MonoBehaviour
                 cnt++;
             }
 
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
-                if(obj[i] != null)
+                if (obj[i] != null)
                 {
                     created = true;
                 }
             }
         }
 
-        if(runTime > 4.1 && runTime < 4.11)
+        if (runTime > 4.1 && runTime < 4.11)
         {
             cnt = 0;
         }
@@ -391,7 +409,7 @@ public class RunTime : MonoBehaviour
         }
 
         if (runTime > 26f && runTime < 26.1f)
-        { 
+        {
             while (cnt < 2)
             {
                 obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
@@ -418,14 +436,20 @@ public class RunTime : MonoBehaviour
             cnt = 0;
         }
 
+
+        if (runTime > 30f && runTime < 30.1f)
+        {
+            delete();
+        }
+
         if (runTime > 31f && runTime < 31.1f)
         {
-            if (obj[0] == null)
+            if (BossObj == null)
             {
-                obj[0] = (GameObject)Instantiate(Boss, new Vector3(20, Boss.transform.position.y, 0), Quaternion.identity);
-                obj[0].SetActive(true);
-                created = true;
+                BossObj = (GameObject)Instantiate(Boss, new Vector3(20, Boss.transform.position.y, 0), Quaternion.identity);
+                BossObj.SetActive(true);
             }
-        } 
+
+        }
     }
 }

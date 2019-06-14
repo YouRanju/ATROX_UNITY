@@ -34,10 +34,6 @@ public class BackgroundManager : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow)) {
             m_dirX = -0.7f;
         }
-        //else if(Input.GetKey(KeyCode.LeftArrow) && player.transform.position.x < -4f)
-        //{
-        //    m_dirX = 0.7;
-        //} 
         else
         {
             m_dirX = 0;
