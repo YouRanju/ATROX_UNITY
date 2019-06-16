@@ -29,7 +29,7 @@ public class TrapCollision : MonoBehaviour
         }
         else if (player.GetComponent<Player>().canSpeed)
         {
-            m_dirX = -0.3f;
+            m_dirX = -1f;
         }
         else
         {

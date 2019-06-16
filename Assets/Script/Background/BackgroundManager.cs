@@ -34,15 +34,16 @@ public class BackgroundManager : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow)) {
             m_dirX = -0.7f;
         }
+        else if (player.GetComponent<Player>().canSpeed)
+        {
+            m_dirX = -1.5f;
+        }
         else
         {
             m_dirX = 0;
         }
 
-        if(player.GetComponent<Player>().canSpeed)
-        {
-            m_dirX = -1.5f;
-        }
+        
 
         m_Scroll.x += m_dirX * m_Speed * eTime;
         Move();
