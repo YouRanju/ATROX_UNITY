@@ -29,11 +29,16 @@ class AlienShotCollision : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (player.GetComponent<Player>().isBomb)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Player")
+        if(collision.transform.tag == "Player" && !collision.GetComponent<Player>().canSpeed)
         {
             player.GetComponent<Player>().DecHP();
             Destroy(gameObject);

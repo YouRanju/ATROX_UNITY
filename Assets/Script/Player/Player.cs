@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
     public PolygonCollider2D DownColi;
     Rigidbody2D Rigid;
     int cnt = 0; //충돌처리용
+    public Camera camera;
 
     //사운드
     public AudioSource JumpAudio;
     public AudioSource DblJumpAudio;
     public AudioSource Falldown;
+    public AudioSource ouchSound;
 
     //시간변수
     static float rdt = 0;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
     public Text Life;
     public int m_life = 3;
     float dieTime = 0;
+    public GameObject ouch;
 
     //item용 변수
     public GameObject[] ItemUI;
@@ -74,15 +77,11 @@ public class Player : MonoBehaviour
     {
         rdt += Time.deltaTime;
 
-        if (m_life <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
-
         if (!isStart)
         {
+            camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0, 0, -10);
             Vector2 vec = transform.position;
-            vec.x += 0.4f;
+            vec.x += 0.2f;
 
             transform.position = vec;
 
@@ -105,6 +104,7 @@ public class Player : MonoBehaviour
         
         if(isStart)
         {
+            camera.transform.localPosition = new Vector3(0, 0, -10);
             keydelay += Time.deltaTime;
 
             Rigid.constraints = RigidbodyConstraints2D.FreezePositionX;
@@ -112,10 +112,11 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) Jump();
 
-            if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -7f)
+            if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -8f)
             {
                 Rigid.constraints = RigidbodyConstraints2D.None;
                 Rigid.AddForce(Vector2.left * 20);
+                if (transform.position.x < -8f) transform.position = new Vector2(-8, transform.position.y);
             }
 
             if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -3.2f)
@@ -206,7 +207,7 @@ public class Player : MonoBehaviour
         {
             itemTime[3] += Time.deltaTime;
 
-            if (itemTime[3] > 1f)
+            if (itemTime[3] > 1.1f)
             {
                 canSpeed = false;
                 itemTime[3] = 0;
@@ -293,8 +294,14 @@ public class Player : MonoBehaviour
         lifeUI[--m_life].SetActive(false);
 
         transform.position = new Vector2(-11.79f, -1.31f);
-
+        ouchSound.Play();
+        
         isStart = false;
+
+        if (m_life <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -311,7 +318,7 @@ public class Player : MonoBehaviour
             isGround = true;
         }
 
-        if (collision.transform.tag == "hole")
+        if (collision.transform.tag == "hole" && !canSpeed)
         {
             Falldown.Play();
             Vector2 vec = transform.position;

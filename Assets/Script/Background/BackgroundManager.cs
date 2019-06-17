@@ -31,12 +31,13 @@ public class BackgroundManager : MonoBehaviour
     {
         eTime = Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.RightArrow)) {
-            m_dirX = -0.7f;
-        }
-        else if (player.GetComponent<Player>().canSpeed)
+        if (player.GetComponent<Player>().canSpeed)
         {
             m_dirX = -1.5f;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            m_dirX = -0.7f;
         }
         else
         {
@@ -54,7 +55,7 @@ public class BackgroundManager : MonoBehaviour
     {
         if (m_Scroll.x < m_Screen)
         {
-            m_Scroll.x += 40f;
+            m_Scroll.x += 40;
         }
 
         Vector2 pos1 = new Vector2(m_Scroll.x, m_Scroll.y);

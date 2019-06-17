@@ -26,6 +26,7 @@ public class RunTime : MonoBehaviour
     public GameObject Boss;
     public GameObject CheckPoint;
     public Slider slider;
+    public GameObject upperfloor;
 
 
     //아이템 생성용
@@ -36,7 +37,6 @@ public class RunTime : MonoBehaviour
     private int playerLife;
 
     float dt;
-    bool bossdeath;
 
     void Start()
     {
@@ -69,7 +69,7 @@ public class RunTime : MonoBehaviour
         {
             dt += Time.deltaTime;
 
-            if (dt > 2f)
+            if (dt > 2.4f)
             {
                 delete();
                 dt = 0;
@@ -111,8 +111,8 @@ public class RunTime : MonoBehaviour
         }
 
         //체크포인트
-        if (runTime < 13f) CheckPoint.SetActive(false);
-        if (runTime > 13f)
+        if (runTime < 13.3f) CheckPoint.SetActive(false);
+        if (runTime > 13.3f)
         {
             CheckPoint.transform.position = new Vector3(30, CheckPoint.transform.position.y, 0);
             CheckPoint.SetActive(true);
@@ -130,13 +130,13 @@ public class RunTime : MonoBehaviour
         if (runTime > 31.5f && BossObj == null)
         {
             dt += Time.deltaTime;
+            fullTime.GetComponent<FullTime>().checking = false;
+            fullTime.GetComponent<Camera>().transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0, 0, -10);
 
-            player.GetComponent<Player>().scoring += 1200;
-            fullTime.GetComponent<FullTime>().timeadd();
-
-            if (dt > 5)
+            if (dt > 6)
             {
-
+                fullTime.GetComponent<Camera>().transform.localPosition = new Vector3(0, 0, -10);
+                player.GetComponent<Player>().scoring += 2000;
                 SceneManager.LoadScene("StageClear");
             }
         }
@@ -149,6 +149,7 @@ public class RunTime : MonoBehaviour
             runTime = checkpointtime;
             created = false;
             delete();
+            if (BossObj != null) Destroy(BossObj.gameObject);
             playerLife = player.GetComponent<Player>().m_life;
         }
     }
@@ -442,12 +443,29 @@ public class RunTime : MonoBehaviour
             delete();
         }
 
+        if (runTime < 31f)
+        {
+            upperfloor.SetActive(false);
+        }
+
         if (runTime > 31f && runTime < 31.1f)
         {
             if (BossObj == null)
             {
                 BossObj = (GameObject)Instantiate(Boss, new Vector3(20, Boss.transform.position.y, 0), Quaternion.identity);
                 BossObj.SetActive(true);
+            }
+
+            if(BossObj !=null)
+            {
+                if(Mathf.CeilToInt(runTime)%4 == 0)
+                {
+                    upperfloor.SetActive(true);
+                }
+                if(upperfloor.transform.position.x < -20)
+                {
+                    upperfloor.SetActive(false);
+                }
             }
 
         }

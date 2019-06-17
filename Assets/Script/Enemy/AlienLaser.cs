@@ -30,7 +30,7 @@ public class AlienLaser : MonoBehaviour
         sdt += Time.deltaTime;
         
         if (sdt > 15) {
-            ldt += Time.deltaTime;
+            ldt += Time.deltaTime * 0.6f;
             lineRenderer.SetWidth(ldt, ldt);
             lineRenderer.SetColors(Color.yellow, Color.white);
             lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0, 2, 0));
@@ -40,18 +40,21 @@ public class AlienLaser : MonoBehaviour
             Vector3 startPoint = Alien.transform.position - new Vector3(0, 2, 0);
             Vector3 endPoint = angle;
 
-            float lineWidth = ldt * 0.25f;
-            float lineLength = Vector3.Distance(startPoint, endPoint);
-            coli.size = new Vector3(lineLength, lineWidth, 1f);
-            
-            Vector3 midPoint = ((startPoint + endPoint)) / 2;
-            coli.transform.position = midPoint;
+            if(sdt > 16.4f)
+            {
+                float lineWidth = ldt * 0.25f;
+                float lineLength = Vector3.Distance(startPoint, endPoint);
+                coli.size = new Vector3(lineLength, lineWidth, 1f);
 
-            float angless = Mathf.Atan2((endPoint.y - startPoint.y), (endPoint.x - startPoint.x));
-            angless *= Mathf.Rad2Deg;
-            coli.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angless));
+                Vector3 midPoint = ((startPoint + endPoint)) / 2;
+                coli.transform.position = midPoint;
 
-            camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0,0,-10);
+                float angless = Mathf.Atan2((endPoint.y - startPoint.y), (endPoint.x - startPoint.x));
+                angless *= Mathf.Rad2Deg;
+                coli.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angless));
+
+                camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0, 0, -10);
+            }
 
             if (sdt >= 18)
             {

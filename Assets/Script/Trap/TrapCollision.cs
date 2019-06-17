@@ -23,13 +23,14 @@ public class TrapCollision : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            m_dirX = -0.3f;
-        }
-        else if (player.GetComponent<Player>().canSpeed)
+        
+       if (player.GetComponent<Player>().canSpeed)
         {
             m_dirX = -1f;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            m_dirX = -0.3f;
         }
         else
         {
@@ -49,7 +50,7 @@ public class TrapCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.tag == "Player")
+        if(collision.transform.tag == "Player" && !collision.gameObject.GetComponent<Player>().canSpeed)
         {
             collision.gameObject.GetComponent<Player>().DecHP();
         }

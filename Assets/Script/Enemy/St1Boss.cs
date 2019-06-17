@@ -9,6 +9,8 @@ public class St1Boss : MonoBehaviour
 
     public Sprite[] runImg;
 
+    public GameObject player;
+
     public PolygonCollider2D UpColi;
     public PolygonCollider2D DownColi;
 
@@ -25,6 +27,8 @@ public class St1Boss : MonoBehaviour
     private bool isright = true;
 
     public bool death;
+
+    GameObject obj;
 
     void Start()
     {
@@ -68,10 +72,15 @@ public class St1Boss : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
         {
-            DieSound.Play();
-            death = true;
-            Instantiate(Explo, transform.position, transform.rotation);
-            Destroy(gameObject, 0.5f);
+            if(!death)
+            {
+                death = true;
+                DieSound.Play();
+                obj = (GameObject)Instantiate(Explo, transform.position, transform.rotation);
+                Destroy(gameObject, 0.5f);
+                Destroy(obj.gameObject, 5f);
+            }
+            
         }
     }
 

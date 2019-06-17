@@ -39,8 +39,8 @@ public class UpEnemy : MonoBehaviour
         rdt += Time.deltaTime;
         Render();
 
-        Dir.x = (this.transform.position.x > 10 && isright) ? -1 :
-            (this.transform.position.x < -10 && !isright) ? 1 : Dir.x;
+        Dir.x = (this.transform.position.x > 10 && isright) ? -Random.Range(1, 4) :
+            (this.transform.position.x < -10 && !isright) ? Random.Range(1, 4) : Dir.x;
 
         isright = Dir.x < 0 ? false : true;
 
@@ -53,21 +53,23 @@ public class UpEnemy : MonoBehaviour
 
         Rigid.velocity = Dir * 5.0f;
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Vector2 vec = transform.position;
-            vec.x -= 0.2f;
-            transform.position = vec;
-        }
+        
 
         if(Player.GetComponent<Player>().canSpeed)
         {
             Vector2 vec = transform.position;
+            vec.x -= 0.5f;
+            transform.position = vec;
+        }
+
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Vector2 vec = transform.position;
             vec.x -= 0.2f;
             transform.position = vec;
         }
 
-        if(Player.GetComponent<Player>().isStart == false)
+        if (Player.GetComponent<Player>().isStart == false)
         {
             Destroy(gameObject);
         }

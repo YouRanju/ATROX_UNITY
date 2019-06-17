@@ -62,12 +62,7 @@ public class DashEnemy : MonoBehaviour
 
         Rigid.velocity = Dir * (Random.Range(3,12) * 0.7f);
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Vector2 vec = transform.position;
-            vec.x -= 0.3f;
-            transform.position = vec;
-        }
+       
 
         if(col)
         {
@@ -75,6 +70,13 @@ public class DashEnemy : MonoBehaviour
         }
 
         if (Player.GetComponent<Player>().canSpeed)
+        {
+            Vector2 vec = transform.position;
+            vec.x -= 0.5f;
+            transform.position = vec;
+        }
+
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 vec = transform.position;
             vec.x -= 0.3f;
@@ -152,7 +154,10 @@ public class DashEnemy : MonoBehaviour
                 die = true;
                 DieSound.Play();
                 Instantiate(Explo, transform.position, transform.rotation);
-                Player.GetComponent<Player>().DecHP();
+                if (Mathf.Abs(Player.transform.position.x - this.transform.position.x) < 1.5f)
+                {
+                    Player.GetComponent<Player>().DecHP();
+                }
                 Destroy(gameObject, 0.5f);
             }
         }
