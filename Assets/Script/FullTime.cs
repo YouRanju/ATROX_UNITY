@@ -41,6 +41,7 @@ public class FullTime : MonoBehaviour
         else
         {
             tem = (100 - Mathf.CeilToInt(ftime)) * 0.06f;
+            GetComponent<Camera>().transform.localPosition = (Vector3)Random.insideUnitCircle * 0.6f + new Vector3(0, 0, -10);
             timeadd();
         }
        

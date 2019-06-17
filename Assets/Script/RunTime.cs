@@ -131,7 +131,6 @@ public class RunTime : MonoBehaviour
         {
             dt += Time.deltaTime;
             fullTime.GetComponent<FullTime>().checking = false;
-            fullTime.GetComponent<Camera>().transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0, 0, -10);
 
             if (dt > 6)
             {
