@@ -116,7 +116,6 @@ public class Player : MonoBehaviour
             {
                 Rigid.constraints = RigidbodyConstraints2D.None;
                 Rigid.AddForce(Vector2.left * 20);
-                if (transform.position.x < -8f) transform.position = new Vector2(-8, transform.position.y);
             }
 
             if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -3.2f)
@@ -124,6 +123,8 @@ public class Player : MonoBehaviour
                 Rigid.constraints = RigidbodyConstraints2D.None;
                 Rigid.AddForce(Vector2.right * 10);
             }
+
+            if (transform.position.x < -8f) transform.position = new Vector2(-8, transform.position.y);
 
             if (transform.position.y < -1.6f)
             {
@@ -207,7 +208,7 @@ public class Player : MonoBehaviour
         {
             itemTime[3] += Time.deltaTime;
 
-            if (itemTime[3] > 1.1f)
+            if (itemTime[3] > 1f)
             {
                 canSpeed = false;
                 itemTime[3] = 0;

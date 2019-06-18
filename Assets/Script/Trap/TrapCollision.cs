@@ -48,9 +48,9 @@ public class TrapCollision : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Player" && !collision.gameObject.GetComponent<Player>().canSpeed)
+        if (collision.transform.tag == "Player" && !collision.gameObject.GetComponent<Player>().canSpeed)
         {
             collision.gameObject.GetComponent<Player>().DecHP();
         }
@@ -60,7 +60,7 @@ public class TrapCollision : MonoBehaviour
             DecHP();
         }
 
-        if(collision.transform.tag == "Respawn")
+        if (collision.transform.tag == "Respawn")
         {
             Destroy(gameObject);
         }

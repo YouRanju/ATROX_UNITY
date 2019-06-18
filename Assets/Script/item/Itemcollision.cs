@@ -34,11 +34,6 @@ public class Itemcollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Player")
-        {
-            //collision.gameObject.GetComponent<Player>().DecHP();
-        }
-
         if (collision.transform.tag == "Back")
         {
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;

@@ -32,7 +32,7 @@ public class ShootMove : MonoBehaviour
     {
         if (enabled)
         {
-            ShotRigid.velocity = (dir * 5.5f);
+            ShotRigid.velocity = (Vector3.Normalize(dir) * 5.5f);
         }
 
         if (canHo)

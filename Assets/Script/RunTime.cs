@@ -28,6 +28,11 @@ public class RunTime : MonoBehaviour
     public Slider slider;
     public GameObject upperfloor;
 
+    public AudioSource bossBgm;
+    public AudioSource bossSE;
+    public SpriteRenderer warning;
+    bool wanr;
+    float wdt;
 
     //아이템 생성용
     Vector3[] EnemyPosition; //죽은 적 위치 정보
@@ -131,10 +136,10 @@ public class RunTime : MonoBehaviour
         {
             dt += Time.deltaTime;
             fullTime.GetComponent<FullTime>().checking = false;
+            fullTime.GetComponent<Camera>().transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0, 0, -10);
 
             if (dt > 6)
-            {
-                fullTime.GetComponent<Camera>().transform.localPosition = new Vector3(0, 0, -10);
+            { 
                 player.GetComponent<Player>().scoring += 2000;
                 SceneManager.LoadScene("StageClear");
             }
@@ -173,6 +178,12 @@ public class RunTime : MonoBehaviour
         if (trapObj != null)
         {
             Destroy(trapObj.gameObject);
+        }
+
+        if (bossBgm.isPlaying)
+        {
+            fullTime.GetComponent<AudioSource>().Play();
+            bossBgm.Pause();
         }
     }
 
@@ -440,6 +451,34 @@ public class RunTime : MonoBehaviour
         if (runTime > 30f && runTime < 30.1f)
         {
             delete();
+            bossSE.Play();
+        }
+
+        if(runTime > 30.2f && runTime <31f)
+        {
+            wdt += Time.deltaTime * 2;
+
+            if(wanr)
+            {
+                warning.color += new Color(0, 0, 0, wdt);
+                wdt = 0;
+
+                if (warning.color.a > 0.8f)
+                {
+                    wanr = false;
+                }  
+            }
+            else
+            {
+                warning.color -= new Color(0, 0, 0, wdt);
+                wdt = 0;
+
+                if (warning.color.a <= 0f)
+                {
+                    wanr = true;
+                }
+            }
+
         }
 
         if (runTime < 31f)
@@ -449,6 +488,9 @@ public class RunTime : MonoBehaviour
 
         if (runTime > 31f && runTime < 31.1f)
         {
+            warning.color = new Color(255, 0, 0, 0);
+            fullTime.GetComponent<AudioSource>().Pause();
+            bossBgm.Play();
             if (BossObj == null)
             {
                 BossObj = (GameObject)Instantiate(Boss, new Vector3(20, Boss.transform.position.y, 0), Quaternion.identity);
@@ -468,5 +510,7 @@ public class RunTime : MonoBehaviour
             }
 
         }
+
     }
+
 }

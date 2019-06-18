@@ -33,17 +33,19 @@ public class BackgroundManager : MonoBehaviour
 
         if (player.GetComponent<Player>().canSpeed)
         {
-            m_dirX = -1.5f;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            m_dirX = -0.7f;
+            m_dirX = -2.8f;
         }
         else
         {
-            m_dirX = 0;
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                m_dirX = -0.7f;
+            }
+            else
+            {
+                m_dirX = 0;
+            }
         }
-
         
 
         m_Scroll.x += m_dirX * m_Speed * eTime;
