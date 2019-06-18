@@ -171,8 +171,6 @@ public class Player : MonoBehaviour
         Score.text = scoring.ToString();
         OnlyScore.score = scoring;
         Life.text = m_life.ToString();
-
-        Debug.Log(OnlyScore.score);
     }
 
     void ItemCheck()

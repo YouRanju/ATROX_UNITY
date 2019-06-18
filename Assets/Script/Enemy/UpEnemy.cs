@@ -16,6 +16,7 @@ public class UpEnemy : MonoBehaviour
     private Vector2 Dir;
     private Rigidbody2D Rigid;
     private float rdt;
+    private float dt;
     private int cnt;
 
     private bool isright = true;
@@ -53,25 +54,41 @@ public class UpEnemy : MonoBehaviour
 
         Rigid.velocity = Dir * 5.0f;
 
-        
 
-        if(Player.GetComponent<Player>().canSpeed)
+
+        if (Player.GetComponent<Player>().canSpeed)
         {
             Vector2 vec = transform.position;
             vec.x -= 0.5f;
             transform.position = vec;
         }
 
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else
         {
-            Vector2 vec = transform.position;
-            vec.x -= 0.2f;
-            transform.position = vec;
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                Vector2 vec = transform.position;
+                vec.x -= 0.2f;
+                transform.position = vec;
+            }
         }
 
         if (Player.GetComponent<Player>().isStart == false)
         {
             Destroy(gameObject);
+        }
+
+        if (Player.GetComponent<Player>().isBomb)
+        {
+            dt += Time.deltaTime;
+
+            if (dt > 2.4f)
+            {
+                Player.GetComponent<Player>().scoring += 400;
+                Destroy(gameObject);
+
+                dt = 0;
+            }
         }
     }
 

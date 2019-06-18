@@ -11,6 +11,8 @@ public class TrapCollision : MonoBehaviour
     public GameObject player;
     public AudioSource dieSound;
 
+    private float dt;
+
     bool die;
     int m_life = 3;
     // Start is called before the first frame update
@@ -22,19 +24,22 @@ public class TrapCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-       if (player.GetComponent<Player>().canSpeed)
+
+
+        if (player.GetComponent<Player>().canSpeed)
         {
             m_dirX = -1f;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            m_dirX = -0.3f;
-        }
         else
         {
-            m_dirX = 0;
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                m_dirX = -0.3f;
+            }
+            else
+            {
+                m_dirX = 0;
+            }
         }
 
         m_Scroll += m_dirX;
@@ -45,6 +50,19 @@ public class TrapCollision : MonoBehaviour
         if(player.GetComponent<Player>().isStart == false)
         {
             Destroy(gameObject);
+        }
+
+        if (player.GetComponent<Player>().isBomb)
+        {
+            dt += Time.deltaTime;
+
+            if (dt > 2.4f)
+            {
+                player.GetComponent<Player>().scoring += 300;
+                Destroy(gameObject);
+
+                dt = 0;
+            }
         }
     }
 

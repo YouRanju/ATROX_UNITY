@@ -69,18 +69,6 @@ public class RunTime : MonoBehaviour
             runTime += Time.deltaTime * 2;
         }
 
-        //핵폭탄
-        if (player.GetComponent<Player>().isBomb)
-        {
-            dt += Time.deltaTime;
-
-            if (dt > 2.4f)
-            {
-                delete();
-                dt = 0;
-            }
-        }
-
         PlayerLifeCheck(); //피격체크
         EnemyAppear();  //외계인 소환 패턴
         TrapAppear();   //함정 소환 패턴
@@ -491,6 +479,7 @@ public class RunTime : MonoBehaviour
             warning.color = new Color(255, 0, 0, 0);
             fullTime.GetComponent<AudioSource>().Pause();
             bossBgm.Play();
+
             if (BossObj == null)
             {
                 BossObj = (GameObject)Instantiate(Boss, new Vector3(20, Boss.transform.position.y, 0), Quaternion.identity);
