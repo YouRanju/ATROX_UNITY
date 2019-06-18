@@ -9536,6 +9536,11 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 373219036}
+    - target: {fileID: 7893375232959516594, guid: 797df3993b32b9f47b62afff585a186f,
+        type: 3}
+      propertyPath: Shot
+      value: 
+      objectReference: {fileID: 127, guid: a64ab0cf8f05d654fafdde621d832e41, type: 3}
     - target: {fileID: 7893375232959516592, guid: 797df3993b32b9f47b62afff585a186f,
         type: 3}
       propertyPath: m_Volume

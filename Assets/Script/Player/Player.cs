@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
         Rigid = GetComponent<Rigidbody2D>();
 
         transform.position = new Vector2(-11.79f, -1.31f);
+        scoring = OnlyScore.score;
     }
 
     // Update is called once per frame
@@ -170,6 +171,8 @@ public class Player : MonoBehaviour
         Score.text = scoring.ToString();
         OnlyScore.score = scoring;
         Life.text = m_life.ToString();
+
+        Debug.Log(OnlyScore.score);
     }
 
     void ItemCheck()

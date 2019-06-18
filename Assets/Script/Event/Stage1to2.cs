@@ -31,7 +31,7 @@ public class Stage1to2 : MonoBehaviour
 
         if (Input.anyKey && dt > 3f)
         {
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene("Stage2");
             dt = 0;
         }
 

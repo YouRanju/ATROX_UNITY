@@ -4,9 +4,9 @@ C:/Users/Mirim/Documents/GitHub/ATROX_UNITY/ATROX.exe
 SceneListBegin?
 Assets/Scenes/Title.unity
 Assets/Scenes/Stage1.unity
+Assets/Scenes/Stage2.unity
 Assets/Scenes/GameOver.unity
 Assets/Scenes/StageClear.unity
-Assets/Scenes/Stage2.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
@@ -197,3 +197,5 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 8309c524794bf8c1f07a3a6d514b1aec Assembly-CSharp.dll:.AlienShoot
+23f342eca9a5841f5d1b0585b24f2967 Assembly-CSharp.dll:.AlienLaserMin
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Meteo2
