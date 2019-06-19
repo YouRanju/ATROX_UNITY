@@ -6,8 +6,7 @@ public class AlienLaserMin : MonoBehaviour
 {
     public int damage = 1;
     public GameObject player;
-    public GameObject Alien;
-    public Camera camera;
+    GameObject Alien;
 
     public BoxCollider2D coli;
     public LineRenderer lineRenderer;
@@ -16,76 +15,81 @@ public class AlienLaserMin : MonoBehaviour
     private float sdt;
     private float ldt;
 
+    int rand;
+
     void Start()
     {
         lineRenderer.SetWidth(0, 0);
         lineRenderer.SetColors(Color.grey, Color.red);
 
         angle = player.transform.position;
+        Alien = this.gameObject;
+
+        rand = Random.Range(0, 9);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        sdt += Time.deltaTime;
-        
-        if (sdt > 15) {
-            ldt += Time.deltaTime * 0.6f;
-            lineRenderer.SetWidth(ldt, ldt);
-            lineRenderer.SetColors(Color.yellow, Color.white);
-            lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0, 2, 0));
+        if(rand == 5)
+        {
+            sdt += Time.deltaTime;
 
-            lineRenderer.SetPosition(1, angle);
-
-            Vector3 startPoint = Alien.transform.position - new Vector3(0, 2, 0);
-            Vector3 endPoint = angle;
-
-            if(sdt > 16.4f)
+            if (sdt > 6)
             {
-                float lineWidth = ldt * 0.25f;
-                float lineLength = Vector3.Distance(startPoint, endPoint);
-                coli.size = new Vector3(lineLength, lineWidth, 1f);
-
-                Vector3 midPoint = ((startPoint + endPoint)) / 2;
-                coli.transform.position = midPoint;
-
-                float angless = Mathf.Atan2((endPoint.y - startPoint.y), (endPoint.x - startPoint.x));
-                angless *= Mathf.Rad2Deg;
-                coli.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angless));
-
-                camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0, 0, -10);
-            }
-
-            if (sdt >= 18)
-            {
-                ldt -= Time.deltaTime * 3f;
+                ldt += Time.deltaTime * 0.3f;
                 lineRenderer.SetWidth(ldt, ldt);
+                lineRenderer.SetColors(Color.yellow, Color.white);
+                lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0, 0.5f, 0));
+                lineRenderer.SetPosition(1, angle);
 
-                if (ldt <= 0 ) {
-                    sdt = 0;
-                    lineRenderer.SetWidth(0, 0);
-                    coli.size = new Vector3(0, 0, 0);
-                    camera.transform.localPosition = new Vector3(0, 0, -10);
+                Vector3 startPoint = Alien.transform.position - new Vector3(0, 0.5f, 0);
+                Vector3 endPoint = angle;
+
+                if (sdt > 6.5f)
+                {
+                    float lineWidth = ldt * 0.25f;
+                    float lineLength = Vector3.Distance(startPoint, endPoint);
+                    coli.size = new Vector3(lineLength, lineWidth, 1f);
+
+                    Vector3 midPoint = ((startPoint + endPoint)) / 2;
+                    coli.transform.position = midPoint;
+
+                    float angless = Mathf.Atan2((endPoint.y - startPoint.y), (endPoint.x - startPoint.x));
+                    angless *= Mathf.Rad2Deg;
+                    coli.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angless));
                 }
 
+                if (sdt >= 7.4f)
+                {
+                    ldt -= Time.deltaTime * 3f;
+                    lineRenderer.SetWidth(ldt, ldt);
+
+                    if (ldt <= 0)
+                    {
+                        sdt = 0;
+                        lineRenderer.SetWidth(0, 0);
+                        coli.size = new Vector3(0, 0, 0);
+
+                    }
+
+                }
+            }
+            else if (sdt > 2)
+            {
+                lineRenderer.SetWidth(0.08f, 0.08f);
+                lineRenderer.useWorldSpace = true;
+                lineRenderer.SetColors(Color.grey, Color.white);
+                ShotInWindow();
             }
         }
-        else if (sdt > 7)
-        {
-            lineRenderer.SetWidth(0.08f, 0.08f);
-            lineRenderer.useWorldSpace = true;
-            lineRenderer.SetColors(Color.grey, Color.white);
-            ShotInWindow();
-        }
-
     }
 
     private void ShotInWindow()
     {
         lineRenderer.transform.localScale = new Vector3(1, 1, 1);
-        lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0,2,0));
-        lineRenderer.SetPosition(1, player.transform.position * Mathf.Abs(player.transform.position.x)/1.6f);
+        lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0, 0.5f, 0));
+        lineRenderer.SetPosition(1, player.transform.position);
 
-        angle = player.transform.position * Mathf.Abs(player.transform.position.x)/1.6f;
+        angle = player.transform.position;
     }
 }

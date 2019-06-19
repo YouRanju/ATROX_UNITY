@@ -42,10 +42,19 @@ public class Shoot : MonoBehaviour
 
                 for (int i = 0; i < 8; i++)
                 {
-                    if (manager.GetComponent<RunTime>().obj[i] != null)
+                    if(manager.GetComponent<RunTime>() != null)
                     {
-                        target = manager.GetComponent<RunTime>().obj[i];
+                        if (manager.GetComponent<RunTime>().obj[i] != null)
+                        {
+                            target = manager.GetComponent<RunTime>().obj[i];
+                        }
                     }
+                    else if (manager.GetComponent<RunTime2>() != null)
+                        if (manager.GetComponent<RunTime2>().obj[i] != null)
+                        {
+                            target = manager.GetComponent<RunTime2>().obj[i];
+                        }
+
                 }
 
                 if (target != null)

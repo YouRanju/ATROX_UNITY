@@ -131,7 +131,7 @@ public class DashEnemy : MonoBehaviour
     {
         if(collision.transform.tag == "PlayerMissile")
         {
-            DecHP(1);
+            DecHP(Player.GetComponent<Player>().level); DecHP(1);
         }
         if(collision.transform.tag == "Player" && !col)
         {

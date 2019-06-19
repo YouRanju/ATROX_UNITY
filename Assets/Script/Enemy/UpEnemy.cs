@@ -135,7 +135,7 @@ public class UpEnemy : MonoBehaviour
     {
         if (collision.transform.tag == "PlayerMissile")
         {
-            DecHP(1);
+            DecHP(Player.GetComponent<Player>().level);
         }
 
         if(collision.transform.tag == "Respawn")
