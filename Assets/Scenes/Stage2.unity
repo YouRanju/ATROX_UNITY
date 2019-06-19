@@ -4218,7 +4218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1161644634
 Transform:
   m_ObjectHideFlags: 0
@@ -4399,8 +4399,8 @@ MonoBehaviour:
   player: {fileID: 1597286074}
   EnemySound: {fileID: 1161644637}
   DieSound: {fileID: 1161644641}
-  hp: 200
   death: 0
+  hp: 200
 --- !u!212 &1161644640
 SpriteRenderer:
   m_ObjectHideFlags: 0
