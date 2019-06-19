@@ -25,12 +25,12 @@ public class AlienLaserMin : MonoBehaviour
         angle = player.transform.position;
         Alien = this.gameObject;
 
-        rand = Random.Range(0, 9);
+        rand = Random.Range(0, 5);
     }
 
     void Update()
     {
-        if(rand == 5)
+        if(rand == 3)
         {
             sdt += Time.deltaTime;
 
@@ -45,7 +45,7 @@ public class AlienLaserMin : MonoBehaviour
                 Vector3 startPoint = Alien.transform.position - new Vector3(0, 0.5f, 0);
                 Vector3 endPoint = angle;
 
-                if (sdt > 6.5f)
+                if (sdt > 8f)
                 {
                     float lineWidth = ldt * 0.25f;
                     float lineLength = Vector3.Distance(startPoint, endPoint);
@@ -59,7 +59,7 @@ public class AlienLaserMin : MonoBehaviour
                     coli.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angless));
                 }
 
-                if (sdt >= 7.4f)
+                if (sdt >= 8.9f)
                 {
                     ldt -= Time.deltaTime * 3f;
                     lineRenderer.SetWidth(ldt, ldt);

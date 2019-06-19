@@ -63,6 +63,9 @@ public class Player : MonoBehaviour
     bool isGround = true; //이동용
     public int level = 1;
 
+    //스테이지 보스용
+    public bool isStartBoss2 = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,11 +122,25 @@ public class Player : MonoBehaviour
                 Rigid.AddForce(Vector2.left * 20);
             }
 
-            if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -3.2f)
+            if(!isStartBoss2)
+            {
+                if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < -3.2f)
+                {
+                    Rigid.constraints = RigidbodyConstraints2D.None;
+                    Rigid.AddForce(Vector2.right * 10);
+                }
+            } else
             {
                 Rigid.constraints = RigidbodyConstraints2D.None;
-                Rigid.AddForce(Vector2.right * 10);
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    Rigid.AddForce(Vector2.right * 10);
+                }
+                
+                Rigid.velocity += (Vector2.right * 0.08f);
             }
+            
 
             if (transform.position.x < -8f) transform.position = new Vector2(-8, transform.position.y);
 

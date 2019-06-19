@@ -20,7 +20,18 @@ public class St2Boss : MonoBehaviour
 
     void Start()
     {
+        Rigid = GetComponent<Rigidbody2D>();
 
+        Rigid.velocity = (Vector2.left * 30);
+        player.GetComponent<Player>().isStartBoss2 = true;
+    }
+
+    private void Update()
+    {
+        if (transform.position.x < 9.27f)
+        {
+            Rigid.velocity = Vector2.zero;
+        }
     }
 
     public void DecHP(int damage)
@@ -39,12 +50,16 @@ public class St2Boss : MonoBehaviour
             
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "PlayerMissile")
         {
             DecHP(player.GetComponent<Player>().level);
+        }
+
+        if (collision.transform.tag == "Player")
+        {
+            player.GetComponent<Player>().DecHP();
         }
     }
 }
