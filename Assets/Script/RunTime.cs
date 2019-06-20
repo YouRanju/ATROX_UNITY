@@ -269,19 +269,23 @@ public class RunTime : MonoBehaviour
 
         if (runTime > 4f && runTime < 4.1f)
         {
-            while (cnt < 4)
+            for (int i = 0; i < 4; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].SetActive(true);
+                }
             }
-            while (cnt < 8)
+            for (int i = 4; i < 8; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].SetActive(true);
+                }
             }
-
             for (int i = 0; i < 8; i++)
             {
                 if (obj[i] != null)
@@ -289,11 +293,6 @@ public class RunTime : MonoBehaviour
                     created = true;
                 }
             }
-        }
-
-        if (runTime > 4.1 && runTime < 4.11)
-        {
-            cnt = 0;
         }
 
         if (runTime > 6.9f && runTime < 7f)
@@ -325,17 +324,22 @@ public class RunTime : MonoBehaviour
 
         if (runTime > 12.4f && runTime < 12.5f)
         {
-            while (cnt < 4)
+            for (int i = 0; i < 4; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].SetActive(true);
+                }
             }
-            while (cnt < 8)
+            for (int i = 4; i < 8; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].SetActive(true);
+                }
             }
             for (int i = 0; i < 8; i++)
             {
@@ -344,26 +348,26 @@ public class RunTime : MonoBehaviour
                     created = true;
                 }
             }
-        }
-
-        if (runTime > 12.5 && runTime < 12.51)
-        {
-            cnt = 0;
         }
 
         if (runTime > 17f && runTime < 17.1f)
         {
-            while (cnt < 4)
+            for (int i = 0; i < 3; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].SetActive(true);
+                }
             }
-            while (cnt < 8)
+            for (int i = 3; i < 8; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].SetActive(true);
+                }
             }
             for (int i = 0; i < 8; i++)
             {
@@ -372,26 +376,26 @@ public class RunTime : MonoBehaviour
                     created = true;
                 }
             }
-        }
-
-        if (runTime > 17.1 && runTime < 17.11)
-        {
-            cnt = 0;
         }
 
         if (runTime > 21f && runTime < 21.1f)
         {
-            while (cnt < 6)
+            for (int i = 0; i < 6; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].SetActive(true);
+                }
             }
-            while (cnt < 8)
+            for (int i = 6; i < 8; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].SetActive(true);
+                }
             }
             for (int i = 0; i < 8; i++)
             {
@@ -400,26 +404,26 @@ public class RunTime : MonoBehaviour
                     created = true;
                 }
             }
-        }
-
-        if (runTime > 21.1 && runTime < 21.11)
-        {
-            cnt = 0;
         }
 
         if (runTime > 26f && runTime < 26.1f)
         {
-            while (cnt < 2)
+            for (int i = 0; i < 2; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[0].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[0], new Vector3(20 + Random.Range(2, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].SetActive(true);
+                }
             }
-            while (cnt < 8)
+            for (int i = 2; i < 8; i++)
             {
-                obj[cnt] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                obj[cnt].SetActive(true);
-                cnt++;
+                if (obj[i] == null)
+                {
+                    obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].SetActive(true);
+                }
             }
             for (int i = 0; i < 8; i++)
             {
@@ -429,12 +433,6 @@ public class RunTime : MonoBehaviour
                 }
             }
         }
-
-        if (runTime > 26.1 && runTime < 26.11)
-        {
-            cnt = 0;
-        }
-
 
         if (runTime > 30f && runTime < 30.1f)
         {

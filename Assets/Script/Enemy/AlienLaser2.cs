@@ -51,7 +51,7 @@ public class AlienLaser2 : MonoBehaviour
                 camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0, 0, -10);
             }
 
-            if (sdt >= delay+1)
+            if (sdt >= delay+0.9)
             {
                 ldt -= Time.deltaTime * 3f;
                 lineRenderer.SetPosition(0, new Vector3(10.7f+ldt, y, 0));

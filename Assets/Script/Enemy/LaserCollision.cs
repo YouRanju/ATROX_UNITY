@@ -23,6 +23,7 @@ public class LaserCollision : MonoBehaviour
         {
             if(!touch)
             {
+                Debug.Log("Laser");
                 collision.GetComponent<Player>().DecHP();
                 touch = true;
             }

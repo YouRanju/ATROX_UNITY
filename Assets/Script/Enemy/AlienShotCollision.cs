@@ -40,6 +40,7 @@ class AlienShotCollision : MonoBehaviour
     {
         if(collision.transform.tag == "Player" && !collision.GetComponent<Player>().canSpeed)
         {
+            Debug.Log("shot");
             player.GetComponent<Player>().DecHP();
             Destroy(gameObject);
         }

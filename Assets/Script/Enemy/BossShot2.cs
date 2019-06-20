@@ -42,7 +42,7 @@ public class BossShot2 : MonoBehaviour
                 obj.transform.Rotate(new Vector3(0f, 0f, (-90)));
             } else
             {
-                obj.transform.Rotate(new Vector3(0f, 0f, (360 * -rotateAmount)));
+                obj.transform.Rotate(new Vector3(0f, 0f, (360 * -rotateAmount + 20)));
             }
            
             
@@ -53,10 +53,10 @@ public class BossShot2 : MonoBehaviour
             sdt = 0;
         }
 
-        if(adt > 6f)
+        if(adt > 8f)
         {
-            GameObject[] obj = new GameObject[3];
-            for(int i =0; i < 3; i++)
+            GameObject[] obj = new GameObject[2];
+            for(int i =0; i < 2; i++)
             {
                 if(obj[i] == null)
                 {

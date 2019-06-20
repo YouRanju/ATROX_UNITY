@@ -84,6 +84,7 @@
     <Compile Include="Assets\Script\Event\GameStartBtn.cs" />
     <Compile Include="Assets\Script\Event\IntroManager.cs" />
     <Compile Include="Assets\Script\Event\IntroMove.cs" />
+    <Compile Include="Assets\Script\Event\introtoTitle.cs" />
     <Compile Include="Assets\Script\Event\Meteo2.cs" />
     <Compile Include="Assets\Script\Event\Stage1to2.cs" />
     <Compile Include="Assets\Script\Event\Stage2to3.cs" />

@@ -45,9 +45,10 @@ public class AlienLaserMin : MonoBehaviour
                 Vector3 startPoint = Alien.transform.position - new Vector3(0, 0.5f, 0);
                 Vector3 endPoint = angle;
 
-                if (sdt > 8f)
+                if (sdt > 7f)
                 {
-                    float lineWidth = ldt * 0.25f;
+                    coli.enabled = true;
+                    float lineWidth = ldt * 0.15f;
                     float lineLength = Vector3.Distance(startPoint, endPoint);
                     coli.size = new Vector3(lineLength, lineWidth, 1f);
 
@@ -59,7 +60,7 @@ public class AlienLaserMin : MonoBehaviour
                     coli.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angless));
                 }
 
-                if (sdt >= 8.9f)
+                if (sdt >= 8.5f)
                 {
                     ldt -= Time.deltaTime * 3f;
                     lineRenderer.SetWidth(ldt, ldt);
@@ -69,7 +70,7 @@ public class AlienLaserMin : MonoBehaviour
                         sdt = 0;
                         lineRenderer.SetWidth(0, 0);
                         coli.size = new Vector3(0, 0, 0);
-
+                        coli.enabled = false;
                     }
 
                 }

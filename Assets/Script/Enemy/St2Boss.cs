@@ -28,7 +28,7 @@ public class St2Boss : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x < 9.27f)
+        if (transform.position.x < 8f)
         {
             Rigid.velocity = Vector2.zero;
         }
@@ -50,16 +50,20 @@ public class St2Boss : MonoBehaviour
             
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            player.GetComponent<Player>().DecHP();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "PlayerMissile")
         {
             DecHP(player.GetComponent<Player>().level);
-        }
-
-        if (collision.transform.tag == "Player")
-        {
-            player.GetComponent<Player>().DecHP();
         }
     }
 }

@@ -104,8 +104,8 @@ public class RunTime2 : MonoBehaviour
         }
 
         //체크포인트
-        if (runTime < 13.3f) CheckPoint.SetActive(false);
-        if (runTime > 13.3f)
+        if (runTime < 10.3f) CheckPoint.SetActive(false);
+        if (runTime > 10.3f)
         {
             CheckPoint.transform.position = new Vector3(30, CheckPoint.transform.position.y, 0);
             CheckPoint.SetActive(true);
@@ -113,11 +113,11 @@ public class RunTime2 : MonoBehaviour
 
         if (CheckPoint.GetComponent<CheckpointColiision>().check)
         {
-            checkpointtime = 15f;
+            checkpointtime = 14f;
         }
 
         //남은거리
-        slider.value = runTime / 1000 * 32;
+        slider.value = runTime / 1000 * 38;
 
         //클리어
         if (runTime > 26.6f && BossObj == null)
@@ -128,7 +128,7 @@ public class RunTime2 : MonoBehaviour
 
             if (dt > 6)
             { 
-                player.GetComponent<Player>().scoring += 2000;
+                player.GetComponent<Player>().scoring += 3000;
                 SceneManager.LoadScene("Stage2Clear");
             }
         }
@@ -143,6 +143,7 @@ public class RunTime2 : MonoBehaviour
             delete();
             if (BossObj != null) Destroy(BossObj.gameObject);
             playerLife = player.GetComponent<Player>().m_life;
+            player.GetComponent<Player>().isStartBoss2 = false;
         }
     }
 
@@ -485,7 +486,7 @@ public class RunTime2 : MonoBehaviour
 
             if (BossObj == null)
             {
-                BossObj = (GameObject)Instantiate(Boss, new Vector3(20, Boss.transform.position.y, 0), Boss.transform.rotation);
+                BossObj = (GameObject)Instantiate(Boss, new Vector3(Boss.transform.position.x, Boss.transform.position.y, 0), Boss.transform.rotation);
                 BossObj.SetActive(true);
             }
 
