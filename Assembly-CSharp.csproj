@@ -107,6 +107,8 @@
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\Shoot.cs" />
     <Compile Include="Assets\Script\Player\ShootMove.cs" />
+    <Compile Include="Assets\Script\RakingReport.cs" />
+    <Compile Include="Assets\Script\RankingView.cs" />
     <Compile Include="Assets\Script\RunTime.cs" />
     <Compile Include="Assets\Script\RunTime2.cs" />
     <Compile Include="Assets\Script\RunTime3.cs" />

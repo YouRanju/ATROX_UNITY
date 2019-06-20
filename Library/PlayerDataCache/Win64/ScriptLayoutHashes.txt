@@ -10,6 +10,8 @@ Assets/Scenes/Stage2.unity
 Assets/Scenes/Stage2Clear.unity
 Assets/Scenes/Stage3.unity
 Assets/Scenes/GameOver.unity
+Assets/Scenes/ending.unity
+Assets/Scenes/Ranking.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
@@ -212,3 +214,7 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 02ede14f1b9524f2ab362aa2462352e4 Assembly-CSharp.dll:.St3Boss
 77b99af34a547e866823611d21aacc45 Assembly-CSharp.dll:.BossShot3
 83e769eee07fc231384c812eedbb8224 Assembly-CSharp.dll:.StarColiision
+72cdac84d78c680fc63c9a740192d24b Assembly-CSharp.dll:.RunTime3
+1ff57311482ad8ccf807a979d23708d8 Assembly-CSharp.dll:.endingManager
+75f3a9286244e1b96b89c811ca2c92b6 Assembly-CSharp.dll:.RakingReport
+fa74a8e6a40ee57db650a14d0fbbf1c2 Assembly-CSharp.dll:.RankingView
