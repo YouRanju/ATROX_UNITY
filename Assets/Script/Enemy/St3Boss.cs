@@ -17,10 +17,6 @@ public class St3Boss : MonoBehaviour
 
     private Vector2 Dir;
     private Rigidbody2D Rigid;
-    private float rdt;
-    private int cnt;
-
-    private bool isright = true;
 
     public bool death;
 

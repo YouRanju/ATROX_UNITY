@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf9306c6860fae4b8498e4e7332fe07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 416613166}
+  cam: {fileID: 416613166}
   press: {fileID: 1932512593}
 --- !u!82 &416613169
 AudioSource:

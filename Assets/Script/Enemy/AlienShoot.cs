@@ -11,8 +11,6 @@ public class AlienShoot : MonoBehaviour
     public float oneShoting;
 
     private float sdt;
-    private float speed = 4;
-    private int cnt = 0;
 
     // Start is called before the first frame update
     void Start()

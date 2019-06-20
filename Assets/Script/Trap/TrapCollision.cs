@@ -70,7 +70,6 @@ public class TrapCollision : MonoBehaviour
     {
         if (collision.transform.tag == "Player" && !collision.gameObject.GetComponent<Player>().canSpeed)
         {
-            Debug.Log("trap");
             collision.gameObject.GetComponent<Player>().DecHP();
         }
 

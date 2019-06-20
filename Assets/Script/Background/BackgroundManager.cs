@@ -5,7 +5,6 @@ using UnityEngine;
 public class BackgroundManager : MonoBehaviour
 {
     private float eTime;
-    private Vector2 startPos;
 
     public GameObject m_Spr;
     public GameObject player;
@@ -15,13 +14,10 @@ public class BackgroundManager : MonoBehaviour
     public float m_dirX;
     public float m_Speed;
 
-    bool left = false;
-
     // Start is called before the first frame update
     void Start()
     {
         m_Spr.transform.position = m_Scroll;
-        startPos = m_Scroll;
       
         m_dirX = 0;
     }

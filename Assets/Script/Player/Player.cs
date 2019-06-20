@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public PolygonCollider2D DownColi;
     Rigidbody2D Rigid;
     int cnt = 0; //충돌처리용
-    public Camera camera;
+    public Camera cam;
 
     //사운드
     public AudioSource JumpAudio;
@@ -33,14 +33,11 @@ public class Player : MonoBehaviour
     //점수용
     public Text Score;
     public int scoring;
-    public GameObject onlyScore;
 
     //생명용
     public GameObject[] lifeUI;
     public Text Life;
     public int m_life = 3;
-    float dieTime = 0;
-    public GameObject ouch;
 
     //item용 변수
     public GameObject[] ItemUI;
@@ -60,7 +57,6 @@ public class Player : MonoBehaviour
 
     // 임시변수
     public bool isStart = false; //시작용          
-    bool isGround = true; //이동용
     public int level = 1;
 
     //스테이지 보스용
@@ -83,7 +79,7 @@ public class Player : MonoBehaviour
 
         if (!isStart)
         {
-            camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0, 0, -10);
+            cam.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.06f + new Vector3(0, 0, -10);
             Vector2 vec = transform.position;
             vec.x += 0.2f;
 
@@ -108,7 +104,7 @@ public class Player : MonoBehaviour
         
         if(isStart)
         {
-            camera.transform.localPosition = new Vector3(0, 0, -10);
+            cam.transform.localPosition = new Vector3(0, 0, -10);
             keydelay += Time.deltaTime;
 
             Rigid.constraints = RigidbodyConstraints2D.FreezePositionX;
@@ -138,7 +134,7 @@ public class Player : MonoBehaviour
                     Rigid.AddForce(Vector2.right * 10);
                 }
                 
-                Rigid.velocity += (Vector2.right * 0.08f);
+                Rigid.velocity += (Vector2.right * 0.1f);
             }
             
 
@@ -167,7 +163,7 @@ public class Player : MonoBehaviour
                 {
                     Bomb.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 5);
 
-                    if(Bomb.active == false)
+                    if(Bomb.activeInHierarchy == false)
                     {
                         isBomb = false;
                     }
@@ -290,7 +286,6 @@ public class Player : MonoBehaviour
             m_2ndJump = false;
             m_JumpPower = 8.0f;
             m_PrHeight = this.transform.position.y;
-            isGround = false;
 
             Rigid.velocity = (Vector2.up * m_JumpPower);
             Rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -333,8 +328,6 @@ public class Player : MonoBehaviour
 
                 Rigid.freezeRotation = false;
             }
-
-            isGround = true;
         }
 
         if (collision.transform.tag == "hole" && !canSpeed)

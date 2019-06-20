@@ -9,8 +9,6 @@ public class FullTime : MonoBehaviour
     public Text timeUI;
     public GameObject player;
 
-    public Camera camera;
-
     float ftime;
 
     float dt;

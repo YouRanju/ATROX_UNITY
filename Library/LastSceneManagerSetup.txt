@@ -1,13 +1,31 @@
 sceneSetups:
-- path: Assets/Scenes/ending.unity
+- path: Assets/Scenes/Intro.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/Title.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/Stage1.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/StageClear.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/Stage2.unity
+  isLoaded: 1
+  isActive: 1
+- path: Assets/Scenes/Stage2Clear.unity
   isLoaded: 0
   isActive: 0
 - path: Assets/Scenes/Stage3.unity
   isLoaded: 0
   isActive: 0
+- path: Assets/Scenes/ending.unity
+  isLoaded: 0
+  isActive: 0
 - path: Assets/Scenes/Ranking.unity
   isLoaded: 0
   isActive: 0
-- path: Assets/Scenes/Title.unity
-  isLoaded: 1
-  isActive: 1
+- path: Assets/Scenes/GameOver.unity
+  isLoaded: 0
+  isActive: 0

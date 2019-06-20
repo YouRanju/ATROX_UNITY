@@ -16,7 +16,6 @@ public class RunTime : MonoBehaviour
     GameObject[] itemObj;
     GameObject trapObj;
     GameObject BossObj;
-    int cnt = 0;
 
     //패턴적용용
     public GameObject player;

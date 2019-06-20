@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 348}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 11961
+  controlID: 8919
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 348}
   m_MaxSize: {x: 4002, y: 8048}
   vertical: 1
-  controlID: 11944
+  controlID: 9147
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -214,8 +214,8 @@ MonoBehaviour:
     y: 0
     width: 470
     height: 947
-  m_MinSize: {x: 204, y: 224}
-  m_MaxSize: {x: 4004, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 348}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 11931
+  controlID: 8920
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 08000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 07000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_TargetDisplay: 0
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -499,9 +499,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 960.00006, y: 489, z: 0}
+    m_Target: {x: 14.098779, y: 0.15263915, z: 0}
     speed: 2
-    m_Value: {x: 960.00006, y: 489, z: 0}
+    m_Value: {x: 14.098779, y: 0.15263915, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -533,9 +533,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 268.60074
+    m_Target: 22
     speed: 2
-    m_Value: 268.60074
+    m_Value: 22
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -578,21 +578,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 9697f0ffaa97f0ffdc98f0ffe298f0ffe898f0ff4c99f0ff5299f0ffb099f0ffb699f0ffe29af0ffe69af0fff29af0ffe6adf0ff52c5f0ff1ad5f0ff1cdff0ff36e1f0ff60e3f0ff0c39f1ff6e39f1ff4e49f1ff6249f1ff964af1ffa64af1ffac4af1ff084bf1ff0e4bf1ff164cf1ff244cf1ff324cf1ffd08cf1ffc836f6ff56aff6ff3c24faff5024faff8425faffd625faffdc25faff3a26faff4026faff6c27faff7c27faff8027faff2c2efaff462efaff102ffaff242ffaff5830faffaa30faffb030faffc230faffc830faffd231faffe231faffec31fafffa33faff0e34faff4035faff9235faff9835faffaa35faffb035faffba36faffca36faffd436faffe4bffdffd0fbffffd2fbffffd4fbffff080f0000420f0000ec0f000004100000161000004e1000005e100000bc100000c6340100f445010020460100444601007c460100b24601004c47010078470100ce470100e2470100be4f0100b0380200803b02008c3d0200624e020008900200049502005c9c0200b6a30200f4a3020082a4020014a502007239040052ca0400feca040014fc04004cfc0400d2fc0400dcfc04000cfd040064fd0400f4fd04001afe040088fe040040ff04001e270500462705000c67050016670500
+      m_ExpandedIDs: 4cccfcff60ccfcff62ccfcff66ccfcff6accfcffc4ccfcffc8ccfcffdaccfcffdeccfcff68cdfcff6ccdfcff70cdfcff2ccefcff40cefcff6ccffcff72cffcff78cffcffdccffcffe2cffcfff4cffcfffacffcff8ed0fcffa0d0fcffaed0fcff228affff2a8affff308affffaa8afffff68affff5c8bffff728bffff9c8bffffa68bffff46dbffff5adbffff92dcffff98dcffff9edcffff04ddffff0addffff10ddffff38deffff3cdeffff48deffff94dfffff344b00002c4c000002bc0000cebe000098de000096060100c00601005449010074490100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 3
-        m_OriginalName: 3
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -1004818
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 9}
       m_SearchString: 
@@ -707,14 +707,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Script
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Mirim\Documents\GitHub\ATROX_UNITY
+  m_LastProjectPath: C:\Users\RanjuYou\Documents\GitHub\ATROX_UNITY
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 270}
-    m_SelectedIDs: 0a0b0000
-    m_LastClickedID: 2826
-    m_ExpandedIDs: 00000000d4090000ae0a0000280b0000e20b0000040c00000c0c0000d80c000000ca9a3b
+    scrollPos: {x: 0, y: 186}
+    m_SelectedIDs: 96350000
+    m_LastClickedID: 13718
+    m_ExpandedIDs: 00000000603400003835000096350000a63500005e3600007a360000823600003237000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -742,7 +742,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d4090000ae0a00000a0b0000280b0000e20b00000c0c0000d80c000000ca9a3b
+    m_ExpandedIDs: 00000000603400003835000096350000a63500005e3600007a3600003237000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -794,6 +794,6 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 360}
+    m_ScrollPosition: {x: 0, y: 478}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 140

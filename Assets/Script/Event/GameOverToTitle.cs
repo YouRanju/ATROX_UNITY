@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameOverToTitle : MonoBehaviour
 {
-    public Camera camera;
+    public Camera cam;
     public Text press;
     float dt;
 
@@ -21,7 +21,7 @@ public class GameOverToTitle : MonoBehaviour
     {
         dt += Time.deltaTime;
 
-        camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.02f + new Vector3(0, 0, -10);
+        cam.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.02f + new Vector3(0, 0, -10);
 
         if (Input.anyKey && dt > 1f)
         {

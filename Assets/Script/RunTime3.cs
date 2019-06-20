@@ -16,7 +16,6 @@ public class RunTime3 : MonoBehaviour
     GameObject[] itemObj;
     GameObject trapObj;
     GameObject BossObj;
-    int cnt = 0;
 
     //패턴적용용
     public GameObject player;
@@ -105,8 +104,8 @@ public class RunTime3 : MonoBehaviour
         }
 
         //체크포인트
-        if (runTime < 10.3f) CheckPoint.SetActive(false);
-        if (runTime > 10.3f)
+        if (runTime < 11.3f) CheckPoint.SetActive(false);
+        if (runTime > 11.3f)
         {
             CheckPoint.transform.position = new Vector3(30, CheckPoint.transform.position.y, 0);
             CheckPoint.SetActive(true);
@@ -114,7 +113,7 @@ public class RunTime3 : MonoBehaviour
 
         if (CheckPoint.GetComponent<CheckpointColiision>().check)
         {
-            checkpointtime = 14f;
+            checkpointtime = 14.7f;
         }
 
         //남은거리
@@ -129,7 +128,7 @@ public class RunTime3 : MonoBehaviour
 
             if (dt > 6)
             { 
-                player.GetComponent<Player>().scoring += 3000;
+                player.GetComponent<Player>().scoring += 8000;
                 SceneManager.LoadScene("ending");
             }
         }
@@ -145,7 +144,11 @@ public class RunTime3 : MonoBehaviour
             if (BossObj != null) Destroy(BossObj.gameObject);
             playerLife = player.GetComponent<Player>().m_life;
             player.GetComponent<Player>().isStartBoss2 = false;
-            GameObject.Find("black").SetActive(false);
+            if(GameObject.Find("black") != null)
+            {
+                GameObject.Find("black").SetActive(false);
+            }
+           
         }
     }
 
@@ -255,7 +258,7 @@ public class RunTime3 : MonoBehaviour
                 if (obj[i] == null)
                 {
                     obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(2, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(3, 7);
                     obj[i].SetActive(true);
                     created = true;
                 }
@@ -277,7 +280,8 @@ public class RunTime3 : MonoBehaviour
                 if (obj[i] == null)
                 {
                     obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(3, 7);
+
                     obj[i].SetActive(true);
                 }
             }
@@ -297,7 +301,8 @@ public class RunTime3 : MonoBehaviour
                 if (obj[i] == null)
                 {
                     obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(2, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(3, 7);
+
                     obj[i].SetActive(true);
                     created = true;
                 }
@@ -332,7 +337,8 @@ public class RunTime3 : MonoBehaviour
                 if (obj[i] == null)
                 {
                     obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(3, 7);
+
                     obj[i].SetActive(true);
                 }
             }
@@ -360,7 +366,8 @@ public class RunTime3 : MonoBehaviour
                 if (obj[i] == null)
                 {
                     obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(3, 7);
+
                     obj[i].SetActive(true);
                 }
             }
@@ -388,7 +395,8 @@ public class RunTime3 : MonoBehaviour
                 if (obj[i] == null)
                 {
                     obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(3, 7);
+
                     obj[i].SetActive(true);
                 }
             }
@@ -416,7 +424,8 @@ public class RunTime3 : MonoBehaviour
                 if (obj[i] == null)
                 {
                     obj[i] = (GameObject)Instantiate(Enemys[1], new Vector3(20 + Random.Range(5, 10), Enemys[1].transform.position.y, 0), Quaternion.identity);
-                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(2, 5);
+                    obj[i].GetComponent<AlienShoot>().delayTime = Random.Range(3, 7);
+
                     obj[i].SetActive(true);
                 }
             }
@@ -495,7 +504,7 @@ public class RunTime3 : MonoBehaviour
 
         if (BossObj != null)
         {
-            if (Mathf.CeilToInt(runTime) % 12 == 0)
+            if (Mathf.CeilToInt(runTime) % 19 == 0)
             {
                 upperfloor.SetActive(true);
             }

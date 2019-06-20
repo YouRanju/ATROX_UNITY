@@ -19,13 +19,13 @@ public class AlienLaserMin : MonoBehaviour
 
     void Start()
     {
-        lineRenderer.SetWidth(0, 0);
-        lineRenderer.SetColors(Color.grey, Color.red);
+        lineRenderer.startWidth = 0;
+        lineRenderer.endWidth = 0;
 
         angle = player.transform.position;
         Alien = this.gameObject;
 
-        rand = Random.Range(0, 5);
+        rand = Random.Range(0, 8);
     }
 
     void Update()
@@ -37,8 +37,10 @@ public class AlienLaserMin : MonoBehaviour
             if (sdt > 6)
             {
                 ldt += Time.deltaTime * 0.3f;
-                lineRenderer.SetWidth(ldt, ldt);
-                lineRenderer.SetColors(Color.yellow, Color.white);
+                lineRenderer.startWidth = ldt;
+                lineRenderer.endWidth = ldt;
+                lineRenderer.startColor = Color.yellow;
+                lineRenderer.endColor = Color.white;
                 lineRenderer.SetPosition(0, Alien.transform.position - new Vector3(0, 0.5f, 0));
                 lineRenderer.SetPosition(1, angle);
 
@@ -63,12 +65,14 @@ public class AlienLaserMin : MonoBehaviour
                 if (sdt >= 8.5f)
                 {
                     ldt -= Time.deltaTime * 3f;
-                    lineRenderer.SetWidth(ldt, ldt);
+                    lineRenderer.startWidth = ldt;
+                    lineRenderer.endWidth = ldt;
 
                     if (ldt <= 0)
                     {
                         sdt = 0;
-                        lineRenderer.SetWidth(0, 0);
+                        lineRenderer.startWidth = 0;
+                        lineRenderer.endWidth = 0;
                         coli.size = new Vector3(0, 0, 0);
                         coli.enabled = false;
                     }
@@ -77,9 +81,11 @@ public class AlienLaserMin : MonoBehaviour
             }
             else if (sdt > 2)
             {
-                lineRenderer.SetWidth(0.08f, 0.08f);
+                lineRenderer.startWidth = 0.08f;
+                lineRenderer.endWidth = 0.08f;
                 lineRenderer.useWorldSpace = true;
-                lineRenderer.SetColors(Color.grey, Color.white);
+                lineRenderer.startColor = Color.gray;
+                lineRenderer.endColor = Color.white;
                 ShotInWindow();
             }
         }

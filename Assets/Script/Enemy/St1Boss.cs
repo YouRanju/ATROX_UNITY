@@ -24,8 +24,6 @@ public class St1Boss : MonoBehaviour
     private float rdt;
     private int cnt;
 
-    private bool isright = true;
-
     public bool death;
 
     GameObject obj;
@@ -41,9 +39,11 @@ public class St1Boss : MonoBehaviour
     {
         rdt += Time.deltaTime;
 
-        if (transform.position.x < 5)
+        if (transform.position.x <= 4)
         {
-            if (transform.position.y <= 0)
+            transform.position = new Vector2(4,transform.position.y);
+
+            if (transform.position.y <= 0.6f)
             {
                 GetComponent<Rigidbody2D>().velocity = (Vector2.up * 2.2f);
 

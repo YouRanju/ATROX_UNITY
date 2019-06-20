@@ -17,14 +17,15 @@ public class Shoot : MonoBehaviour
     private float sdt;
     private float dt;
 
-    private Rigidbody2D rb;
     public GameObject manager;
 
     // Start is called before the first frame update
     void Start()
     {
-        lineRenderer.SetWidth(0.1f, 0.1f);
-        lineRenderer.SetColors(Color.red, Color.yellow);
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.yellow;
 
         angle = Vector3.Normalize(new Vector3(3f, 3f, 0));
     }
@@ -34,7 +35,7 @@ public class Shoot : MonoBehaviour
     {
         sdt += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Space) && sdt > 0.2)
+        if (Input.GetKey(KeyCode.Space) && sdt > 0.3f)
         {
             if(Player.GetComponent<Player>().canHom)
             {
