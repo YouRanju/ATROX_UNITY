@@ -99,10 +99,6 @@
     <Compile Include="Assets\Script\Event\TypeEffect.cs" />
     <Compile Include="Assets\Script\FullTime.cs" />
     <Compile Include="Assets\Script\item\Itemcollision.cs" />
-    <Compile Include="Assets\Script\notuse\AlienMoving.cs" />
-    <Compile Include="Assets\Script\notuse\BackgroundAppear.cs" />
-    <Compile Include="Assets\Script\notuse\EnemyManager.cs" />
-    <Compile Include="Assets\Script\notuse\Trapshot.cs" />
     <Compile Include="Assets\Script\Player\ExplosionMove.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Player\Shoot.cs" />

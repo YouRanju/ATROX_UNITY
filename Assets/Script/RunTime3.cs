@@ -145,6 +145,7 @@ public class RunTime3 : MonoBehaviour
             if (BossObj != null) Destroy(BossObj.gameObject);
             playerLife = player.GetComponent<Player>().m_life;
             player.GetComponent<Player>().isStartBoss2 = false;
+            GameObject.Find("black").SetActive(false);
         }
     }
 
@@ -494,7 +495,7 @@ public class RunTime3 : MonoBehaviour
 
         if (BossObj != null)
         {
-            if (Mathf.CeilToInt(runTime) % 4 == 0)
+            if (Mathf.CeilToInt(runTime) % 12 == 0)
             {
                 upperfloor.SetActive(true);
             }
@@ -507,7 +508,7 @@ public class RunTime3 : MonoBehaviour
             {
                 idt += Time.deltaTime;
 
-                if (Mathf.CeilToInt(idt * 100) % 5 == 0)
+                if (Mathf.CeilToInt(idt * 100) % 8 == 0)
                 {
                     created = true;
                 }

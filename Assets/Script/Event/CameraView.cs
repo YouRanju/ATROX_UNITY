@@ -13,10 +13,5 @@ public class CameraView : MonoBehaviour
     private void Update()
     {
         Screen.SetResolution(1920, 1080, true);
-
-        if(Input.GetKeyUp(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
     }
 }

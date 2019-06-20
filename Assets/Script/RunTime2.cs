@@ -494,7 +494,7 @@ public class RunTime2 : MonoBehaviour
 
         if (BossObj != null)
         {
-            if (Mathf.CeilToInt(runTime) % 4 == 0)
+            if (Mathf.CeilToInt(runTime) % 7 == 0)
             {
                 upperfloor.SetActive(true);
             }
@@ -507,7 +507,7 @@ public class RunTime2 : MonoBehaviour
             {
                 idt += Time.deltaTime;
 
-                if (Mathf.CeilToInt(idt * 100) % 5 == 0)
+                if (Mathf.CeilToInt(idt * 100) % 8 == 0)
                 {
                     created = true;
                 }

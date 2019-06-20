@@ -29,7 +29,7 @@ public class Stage2to3 : MonoBehaviour
 
         tank.transform.Rotate(new Vector3(0, 0, rdt * 2));
 
-        if (Input.anyKey && dt > 3f)
+        if (Input.anyKey && dt > 1f)
         {
             SceneManager.LoadScene("Stage3");
             dt = 0;

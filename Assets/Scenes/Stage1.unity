@@ -7166,7 +7166,8 @@ PrefabInstance:
       propertyPath: Explo
       value: 
       objectReference: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1174833434773610203, guid: 2ade7c5f4eda0a148a9f2460c276b141, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2ade7c5f4eda0a148a9f2460c276b141, type: 3}
 --- !u!1001 &2274372410630571326
 PrefabInstance:

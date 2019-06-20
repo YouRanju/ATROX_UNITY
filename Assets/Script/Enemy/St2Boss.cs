@@ -30,7 +30,8 @@ public class St2Boss : MonoBehaviour
     {
         if (transform.position.x < 8f)
         {
-            Rigid.velocity = Vector2.zero;
+            transform.position = new Vector3(8, transform.position.y);
+            Rigid.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
@@ -56,6 +57,14 @@ public class St2Boss : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             player.GetComponent<Player>().DecHP();
+        }
+
+        if(collision.gameObject.name == "upperfloor")
+        {
+            this.GetComponent<PolygonCollider2D>().enabled = false;
+        } else
+        {
+            this.GetComponent<PolygonCollider2D>().enabled = true;
         }
     }
 

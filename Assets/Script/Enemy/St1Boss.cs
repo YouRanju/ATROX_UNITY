@@ -41,6 +41,20 @@ public class St1Boss : MonoBehaviour
     {
         rdt += Time.deltaTime;
 
+        if (transform.position.x < 5)
+        {
+            if (transform.position.y <= 0)
+            {
+                GetComponent<Rigidbody2D>().velocity = (Vector2.up * 2.2f);
+
+            }
+            if (transform.position.y > 2.2f)
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                GetComponent<Rigidbody2D>().gravityScale = 0.3f;
+            }
+        }
+
         Render();
     }
 

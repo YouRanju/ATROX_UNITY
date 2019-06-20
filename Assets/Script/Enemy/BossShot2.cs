@@ -47,7 +47,7 @@ public class BossShot2 : MonoBehaviour
            
             
             obj.GetComponent<Rigidbody2D>().angularVelocity = -rotateAmount * 400f;
-            obj.GetComponent<Rigidbody2D>().velocity = direction * 12;
+            obj.GetComponent<Rigidbody2D>().velocity = direction * 4;
             obj.GetComponent<AlienShotCollision>().isBoss = true;
 
             sdt = 0;

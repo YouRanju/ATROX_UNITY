@@ -35,7 +35,7 @@ public class AlienLaser2 : MonoBehaviour
             Vector3 startPoint = new Vector3(10.7f, y, 0);
             Vector3 endPoint = new Vector3(-10f, y, 0);
 
-            if(sdt > delay+0.4f)
+            if(sdt > delay+0.3f)
             {
                 float lineWidth = ldt * 0.25f;
                 float lineLength = Vector3.Distance(startPoint, endPoint);
@@ -51,7 +51,7 @@ public class AlienLaser2 : MonoBehaviour
                 camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.1f + new Vector3(0, 0, -10);
             }
 
-            if (sdt >= delay+0.9)
+            if (sdt >= delay+0.6)
             {
                 ldt -= Time.deltaTime * 3f;
                 lineRenderer.SetPosition(0, new Vector3(10.7f+ldt, y, 0));

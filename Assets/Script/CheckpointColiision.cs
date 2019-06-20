@@ -20,15 +20,23 @@ public class CheckpointColiision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (GameObject.Find("Player").GetComponent<Player>().canSpeed)
         {
-            m_dirX = -0.3f;
+            m_dirX = -1.2f;
         }
-
         else
         {
-            m_dirX = 0;
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                m_dirX = -0.3f;
+            }
+
+            else
+            {
+                m_dirX = 0;
+            }
         }
+        
 
         m_Scroll += m_dirX;
 
@@ -40,6 +48,8 @@ public class CheckpointColiision : MonoBehaviour
             time += Time.deltaTime* 70;
             gameObject.GetComponent<SpriteRenderer>().color = new Color(time, time, time);
         }
+
+        
 
     }
 
