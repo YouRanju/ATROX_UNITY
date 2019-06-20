@@ -22,6 +22,8 @@ public class DashEnemy : MonoBehaviour
     private float adt;
     private bool col = false;
 
+    public float speed = 1;
+
     bool die;
 
     // Start is called before the first frame update
@@ -31,9 +33,9 @@ public class DashEnemy : MonoBehaviour
         Rigid = GetComponent<Rigidbody2D>();
 
         Dir.x = (Player.transform.position.x < this.transform.position.x) ?
-            -1 : 1;
+            -speed : speed;
         Dir.y = (Player.transform.position.y < this.transform.position.y) ?
-            -1 : 1;
+            -speed : speed;
 
         die = false;
         Rigid.velocity = Dir * 2.0f;
@@ -46,11 +48,11 @@ public class DashEnemy : MonoBehaviour
         Render();
 
         Dir.x = (Player.transform.position.x < this.transform.position.x) ?
-           -1 : 1;
+           -speed : speed;
         Dir.x = (Mathf.Abs(this.transform.position.x - Player.transform.position.x) < 1) ?
             0 : Dir.x;
         Dir.y = (Player.transform.position.y < this.transform.position.y) ?
-            -0.5f : 0.5f;
+            -speed * 0.5f : speed * 0.5f;
         Dir.y = (transform.position.y < -1.9 && Player.transform.position.y < -0.4) ?
             0 : Dir.y;
 

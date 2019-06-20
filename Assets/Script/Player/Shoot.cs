@@ -118,31 +118,57 @@ public class Shoot : MonoBehaviour
         {
             Vector2 target = lineRenderer.GetPosition(1);
             dt += Time.deltaTime;
-       
-            if(dt > 0.002f)
+
+            if (Player.GetComponent<Player>().level != 3)
+            {
+                if (dt > 0.002f)
+                {
+
+                    if (angle.x < 1.8f && !an)
+                    {
+                        angle.x += Time.deltaTime * 3;
+                        angle.y -= Time.deltaTime * 3;
+                    }
+                    else
+                    {
+                        an = true;
+                        angle.x -= Time.deltaTime * 3;
+                        angle.y += Time.deltaTime * 3;
+
+                        if (angle.x < 0f)
+                        {
+                            an = false;
+                        }
+                    }
+                }
+
+                dt = 0;
+
+            }
+            else
             {
                 if (angle.x < 1.8f && !an)
                 {
-                    angle.x += Time.deltaTime * 3 ;
-                    angle.y -= Time.deltaTime * 3;
+                    angle.x += Time.deltaTime * 5;
+                    angle.y -= Time.deltaTime * 5;
                 }
                 else
                 {
                     an = true;
-                    angle.x -= Time.deltaTime * 3;
-                    angle.y += Time.deltaTime * 3;
+                    angle.x -= Time.deltaTime * 5;
+                    angle.y += Time.deltaTime * 5;
 
-                    if (angle.x < 0f)
+                    if (angle.x < -0.8f)
                     {
                         an = false;
                     }
                 }
 
-                dt = 0;
+
             }
-            
+
 
             lineRenderer.SetPosition(1, Vector3.Normalize(angle));
-        }        
+        }  
     } 
 }

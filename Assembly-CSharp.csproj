@@ -70,15 +70,20 @@
     <Compile Include="Assets\Script\Enemy\AlienLaser2.cs" />
     <Compile Include="Assets\Script\Enemy\AlienLaserMin.cs" />
     <Compile Include="Assets\Script\Enemy\AlienShoot.cs" />
+    <Compile Include="Assets\Script\Enemy\AlienShootStrong.cs" />
     <Compile Include="Assets\Script\Enemy\AlienShotCollision.cs" />
     <Compile Include="Assets\Script\Enemy\BossShot.cs" />
     <Compile Include="Assets\Script\Enemy\BossShot2.cs" />
+    <Compile Include="Assets\Script\Enemy\BossShot3.cs" />
     <Compile Include="Assets\Script\Enemy\DashEnemy.cs" />
     <Compile Include="Assets\Script\Enemy\LaserCollision.cs" />
     <Compile Include="Assets\Script\Enemy\St1Boss.cs" />
     <Compile Include="Assets\Script\Enemy\St2Boss.cs" />
+    <Compile Include="Assets\Script\Enemy\St3Boss.cs" />
+    <Compile Include="Assets\Script\Enemy\StarColiision.cs" />
     <Compile Include="Assets\Script\Enemy\UpEnemy.cs" />
     <Compile Include="Assets\Script\Event\CameraView.cs" />
+    <Compile Include="Assets\Script\Event\endingManager.cs" />
     <Compile Include="Assets\Script\Event\GameExit.cs" />
     <Compile Include="Assets\Script\Event\GameOverToTitle.cs" />
     <Compile Include="Assets\Script\Event\GameStartBtn.cs" />
@@ -104,6 +109,7 @@
     <Compile Include="Assets\Script\Player\ShootMove.cs" />
     <Compile Include="Assets\Script\RunTime.cs" />
     <Compile Include="Assets\Script\RunTime2.cs" />
+    <Compile Include="Assets\Script\RunTime3.cs" />
     <Compile Include="Assets\Script\Trap\TrapCollision.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Mirim/Documents/GitHub/ATROX_UNITY/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

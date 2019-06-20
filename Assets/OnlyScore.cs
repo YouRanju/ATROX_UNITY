@@ -9,5 +9,6 @@ public class OnlyScore : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        score = 0;
     }
 }

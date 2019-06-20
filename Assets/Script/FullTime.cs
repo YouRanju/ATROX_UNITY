@@ -21,7 +21,7 @@ public class FullTime : MonoBehaviour
 
     void Start()
     {
-        timeUI.text = 100.ToString();
+        timeUI.text = 130.ToString();
         ftime = 0;
         i = 0;
         checking = true;
@@ -34,16 +34,16 @@ public class FullTime : MonoBehaviour
         {
             ftime += Time.deltaTime;
 
-            timeUI.text = (100 - Mathf.CeilToInt(ftime)).ToString();
+            timeUI.text = (130 - Mathf.CeilToInt(ftime)).ToString();
 
-            if (100 - ftime < 0)
+            if (130 - ftime < 0)
             {
                 SceneManager.LoadScene("GameOver");
             }
         }
         else
         {
-            tem = (100 - Mathf.CeilToInt(ftime)) * 0.06f;
+            tem = (130 - Mathf.CeilToInt(ftime)) * 0.06f;
             timeadd();
         }
        

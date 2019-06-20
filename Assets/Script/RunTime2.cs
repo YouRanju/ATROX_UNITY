@@ -37,6 +37,7 @@ public class RunTime2 : MonoBehaviour
     //아이템 생성용
     Vector3[] EnemyPosition; //죽은 적 위치 정보
     bool created;
+    float idt;
 
     //플레이어 피격 시
     private int playerLife;
@@ -489,21 +490,29 @@ public class RunTime2 : MonoBehaviour
                 BossObj = (GameObject)Instantiate(Boss, new Vector3(Boss.transform.position.x, Boss.transform.position.y, 0), Boss.transform.rotation);
                 BossObj.SetActive(true);
             }
-
-            if(BossObj != null)
-            {
-                if(Mathf.CeilToInt(runTime)%4 == 0)
-                {
-                    upperfloor.SetActive(true);
-                }
-                if(upperfloor.transform.position.x < -20)
-                {
-                    upperfloor.SetActive(false);
-                }
-            }
-
         }
 
+        if (BossObj != null)
+        {
+            if (Mathf.CeilToInt(runTime) % 4 == 0)
+            {
+                upperfloor.SetActive(true);
+            }
+            if (upperfloor.transform.position.x < -20)
+            {
+                upperfloor.SetActive(false);
+            }
+
+            if(runTime > 26f)
+            {
+                idt += Time.deltaTime;
+
+                if (Mathf.CeilToInt(idt * 100) % 5 == 0)
+                {
+                    created = true;
+                }
+            }
+        }
     }
 
 }

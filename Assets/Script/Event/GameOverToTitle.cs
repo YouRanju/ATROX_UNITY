@@ -23,8 +23,9 @@ public class GameOverToTitle : MonoBehaviour
 
         camera.transform.localPosition = (Vector3)Random.insideUnitCircle * 0.02f + new Vector3(0, 0, -10);
 
-        if (Input.anyKey && dt > 3f)
+        if (Input.anyKey && dt > 1f)
         {
+            Destroy(GameObject.Find("OnlyScore"));
             SceneManager.LoadScene("Title");
             dt = 0;
         }

@@ -136,7 +136,7 @@ MonoBehaviour:
   Explosion: {fileID: 3792155834408013280, guid: 1604cd39220eca947a81413121b654d5,
     type: 3}
   ShootAudio: {fileID: 140}
-  dir: {x: 1.1092585, y: 0.30495498, z: 0}
+  dir: {x: 1.7311612, y: -0.31694743, z: 0}
   deathTime: 1.6
   canHo: 0
 --- !u!82 &140

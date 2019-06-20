@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 72baa95454d11ed45b8d6238d7ff21da
+  - enabled: 1
+    path: Assets/Scenes/ending.unity
+    guid: 8370ceb18e16a1b4292a6dd4fa1ab134
+  - enabled: 1
+    path: Assets/Scenes/Ranking.unity
+    guid: 05dc021984e8b924696a6c2523e1bc5e
   m_configObjects: {}

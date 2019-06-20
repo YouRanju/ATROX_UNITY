@@ -139,7 +139,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 ee3456c4a906677f4ffe6821c8531ee3 Assembly-CSharp.dll:.FullTime
 303df3f5723d7e8471bb50ab17e6edfb Assembly-CSharp.dll:.ShootMove
 72cdac84d78c680fc63c9a740192d24b Assembly-CSharp.dll:.RunTime2
-341d59dccab678e1ca435878fb36f975 Assembly-CSharp.dll:.DashEnemy
+b0ed19e22c8181d3932a0e2856396585 Assembly-CSharp.dll:.DashEnemy
 98dc876e9a04a98b28e4e3eeec488399 Assembly-CSharp.dll:.EnemyManager
 b4d3684ade76cd0507ecfbb063678e2e Assembly-CSharp.dll:.GameStartBtn
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
@@ -208,3 +208,7 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 8309c524794bf8c1f07a3a6d514b1aec Assembly-CSharp.dll:.AlienShoot
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.introtoTitle
+8309c524794bf8c1f07a3a6d514b1aec Assembly-CSharp.dll:.AlienShootStrong
+02ede14f1b9524f2ab362aa2462352e4 Assembly-CSharp.dll:.St3Boss
+77b99af34a547e866823611d21aacc45 Assembly-CSharp.dll:.BossShot3
+83e769eee07fc231384c812eedbb8224 Assembly-CSharp.dll:.StarColiision
