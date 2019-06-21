@@ -11,6 +11,8 @@ public class St2Boss : MonoBehaviour
     public AudioSource EnemySound;
     public AudioSource DieSound;
 
+    public PolygonCollider2D portalCol;
+
     public bool death;
     public int hp;
 
@@ -24,12 +26,15 @@ public class St2Boss : MonoBehaviour
 
         Rigid.velocity = (Vector2.left * 30);
         player.GetComponent<Player>().isStartBoss2 = true;
+
+        portalCol.enabled = false;
     }
 
     private void Update()
     {
         if (transform.position.x < 8f)
         {
+            portalCol.enabled = true;
             transform.position = new Vector3(8, transform.position.y);
             Rigid.constraints = RigidbodyConstraints2D.FreezeAll;
         }

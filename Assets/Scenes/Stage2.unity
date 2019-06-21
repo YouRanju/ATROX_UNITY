@@ -577,7 +577,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1211891339
   m_SortingLayer: 2
-  m_SortingOrder: 21
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: f7ed9f9562ff5c948840c327cf423669, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5461,6 +5461,7 @@ MonoBehaviour:
   player: {fileID: 1597286074}
   EnemySound: {fileID: 1161644637}
   DieSound: {fileID: 1161644641}
+  portalCol: {fileID: 1161644636}
   death: 0
   hp: 200
 --- !u!114 &1161644639
@@ -5518,7 +5519,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1211891339
   m_SortingLayer: 2
-  m_SortingOrder: 20
+  m_SortingOrder: 8000
   m_Sprite: {fileID: 21300000, guid: 203b45d3a7d15654980bc317bb8e68e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
