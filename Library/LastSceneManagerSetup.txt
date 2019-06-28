@@ -3,8 +3,8 @@ sceneSetups:
   isLoaded: 0
   isActive: 0
 - path: Assets/Scenes/Title.unity
-  isLoaded: 1
-  isActive: 1
+  isLoaded: 0
+  isActive: 0
 - path: Assets/Scenes/Stage1.unity
   isLoaded: 0
   isActive: 0
@@ -21,11 +21,11 @@ sceneSetups:
   isLoaded: 0
   isActive: 0
 - path: Assets/Scenes/ending.unity
-  isLoaded: 0
-  isActive: 0
+  isLoaded: 1
+  isActive: 1
 - path: Assets/Scenes/Ranking.unity
   isLoaded: 0
   isActive: 0
 - path: Assets/Scenes/GameOver.unity
-  isLoaded: 0
+  isLoaded: 1
   isActive: 0
